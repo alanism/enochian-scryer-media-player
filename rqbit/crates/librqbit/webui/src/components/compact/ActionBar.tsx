@@ -127,12 +127,24 @@ export const ActionBar: React.FC<ActionBarProps> = ({ hideFilters }) => {
       <TapeKey
         kind="play"
         label="RESUME"
+        active={
+          hasSelection &&
+          Array.from(selectedTorrentIds).every(
+            (id) => getTorrentById(id)?.stats?.state === STATE_LIVE,
+          )
+        }
         onClick={resumeSelected}
         disabled={disabled || !hasSelection}
       />
       <TapeKey
         kind="pause"
         label="PAUSE"
+        active={
+          hasSelection &&
+          Array.from(selectedTorrentIds).every(
+            (id) => getTorrentById(id)?.stats?.state === STATE_PAUSED,
+          )
+        }
         onClick={pauseSelected}
         disabled={disabled || !hasSelection}
       />

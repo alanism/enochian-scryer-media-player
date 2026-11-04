@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 
 export function TapeKey({
   kind,
@@ -13,19 +13,32 @@ export function TapeKey({
   disabled?: boolean;
   onClick: () => void;
 }) {
+  const [pressed, setPressed] = useState(false);
+  const down = !!active || pressed;
   return (
     <button
       type="button"
       className="tp-key"
       title={label}
       aria-label={label}
-      data-down={active ? "true" : "false"}
+      data-down={down ? "true" : "false"}
       aria-pressed={!!active}
       disabled={disabled}
       onClick={onClick}
+      onPointerDown={(e) => {
+        e.currentTarget.setPointerCapture(e.pointerId);
+        setPressed(true);
+      }}
+      onPointerUp={() => setPressed(false)}
+      onPointerCancel={() => setPressed(false)}
+      onKeyDown={(e) => {
+        if (e.key === " " || e.key === "Enter") setPressed(true);
+      }}
+      onKeyUp={() => setPressed(false)}
+      onBlur={() => setPressed(false)}
     >
       <span
-        className={`tp-led ${active ? "on" : ""}`}
+        className={`tp-led ${down ? "on" : ""}`}
         style={
           {
             "--lc": kind === "play" ? "var(--go)" : "var(--amber)",
