@@ -1,0 +1,38 @@
+@font-face{font-family:"IBM Plex Mono";src:url("../../assets/enochian/IBMPlexMono-Regular.ttf")}
+:root{--mono:"IBM Plex Mono",monospace;--sans:"IBM Plex Mono",monospace;--accent:#CC0000;--go:#5bc47a;--amber:#F4A934;
+--color-surface:#f5f5f6;--color-surface-raised:#fff;--color-surface-sunken:#e6e6e9;--color-text:#1d1d1f;--color-secondary:#626268;--color-tertiary:#74747a;--color-border:#d4d4d8;--color-border-strong:#adadb2;--color-divider:#d4d4d8;--color-divider-strong:#adadb2;--border-color-divider:#d4d4d8;--border-color-divider-strong:#adadb2;--color-primary:#CC0000;--color-primary-bg:#CC0000;--color-primary-hover:#a80000;--color-primary-bg-hover:#a80000;--color-success:#28783e;--color-warning:#9a650b;--color-error:#CC0000;--lad-off:rgba(0,0,0,.065);--lad-on:#1b1b1d}
+body.dark{--color-surface:#121214;--color-surface-raised:#1b1b1e;--color-surface-sunken:#0b0b0c;--color-text:#ececef;--color-secondary:#a2a2a9;--color-tertiary:#8d8d92;--color-border:#343438;--color-border-strong:#505056;--color-divider:#343438;--color-divider-strong:#505056;--border-color-divider:#343438;--border-color-divider-strong:#505056;--color-primary:#e76464;--color-primary-bg:#CC0000;--color-primary-hover:#f28b8b;--color-primary-bg-hover:#ab0000;--color-success:#5bc47a;--color-warning:#F4A934;--color-error:#f57575;--lad-off:rgba(255,255,255,.075);--lad-on:#F4A934}
+html{font-size:14px}body{margin:0;font:13px/1.5 var(--mono);background:var(--color-surface);color:var(--color-text)}
+.enochian-shell.cp{display:flex;width:100%;max-width:none;padding:0;gap:0;border-radius:0;box-shadow:none;background:var(--color-surface)}
+.en-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding:22px 26px;border-bottom:1px solid var(--color-divider);background:var(--case)}
+.en-brand{display:flex;align-items:baseline;gap:16px}.en-brand h1{font:600 19px var(--mono);letter-spacing:2px;margin:0}.en-brand h1 span{color:var(--sub);font-size:13px;letter-spacing:1px}.en-version{font:10px var(--mono);color:var(--sub)}
+.en-header-controls,.en-settings{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.en-header-controls>.en-button{margin:0}.en-settings{padding-left:10px;border-left:1px solid var(--btn-edge)}
+.en-button.sq-btn{width:auto;min-width:64px;height:auto;min-height:44px;padding:8px 12px;font-size:10px;line-height:1.25;text-transform:uppercase;gap:3px;white-space:normal}
+.en-header .sq-btn{width:64px;height:52px;font-size:9px;flex:none}.en-button>svg{display:none}.en-icon.sq-btn{width:32px;height:28px;flex-shrink:0}.en-icon svg{width:12px;height:12px}.sq-btn:disabled,.tp-key:disabled{opacity:.4;cursor:default}
+.enochian-shell :is(button,a,input,select):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.en-actionbar.tp{max-width:none;width:100%;display:flex;align-items:center;gap:12px;padding:16px 24px;border-radius:0;box-shadow:none;flex-wrap:wrap;background:var(--case)}
+.en-actionbar .tp-key,.en-vlc-action .tp-key{width:72px;height:96px;zoom:.8;flex:none}
+.en-actionbar .en-button{height:48px;min-width:62px}.en-actionbar .tp-key .tp-name{font-size:9px}
+.en-vlc-action{display:inline-flex;vertical-align:middle;align-items:center;gap:10px}.en-vlc-action .tp-key{width:96px;zoom:.72}.en-vlc-action p{max-width:240px;color:var(--color-error);font:11px var(--mono)}
+.en-file-playback{display:flex;flex-direction:column;gap:10px;margin:6px 0 18px}.en-media-file{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--color-divider);padding:8px 12px}.en-media-file>span{overflow-wrap:anywhere}
+.en-progress{display:flex;align-items:center;gap:10px;font:10px var(--mono);font-variant-numeric:tabular-nums;min-width:100px}.en-progress .lad-segs{flex:1;min-width:40px;gap:2px}.en-progress .lad-segs i{height:8px}
+.enochian-shell input:not([type=checkbox]):not([type=file]),.enochian-shell select{background:var(--color-surface-sunken);color:var(--color-text);font:12px var(--mono);border-color:var(--color-divider);border-radius:4px;padding-top:9px;padding-bottom:9px}
+input[type=checkbox]{accent-color:var(--accent)}
+.enochian-shell [class*=text-blue],.enochian-shell [class*=text-slate]{color:var(--color-text)}
+.enochian-shell [class*=bg-blue]{background:color-mix(in srgb,var(--accent) 10%,var(--color-surface))}
+.enochian-shell [class*=bg-slate]{background:var(--color-surface-raised)}
+.enochian-shell [class*=rounded-lg]{border-radius:8px}
+.enochian-shell [class*=text-3xl]{font-size:21px}.enochian-shell [class*=text-xl]{font-size:16px}
+.enochian-shell [class*=sticky][class*=bottom]{padding:10px 18px;border-top:1px solid var(--color-divider);font:10px var(--mono);letter-spacing:.4px;background:var(--case)}
+/* Modal portals inherit component materials, including utility controls. */
+body{--btn:#fff;--btn-edge:#d4d4d8;--case:#fff;--ink:#111}body.dark{--btn:#202024;--btn-edge:#050506;--case:#101012;--ink:#f7f7f8}
+[role=dialog]{font-family:var(--mono)}[role=dialog] h2{font:600 16px var(--mono)}[role=dialog] input,[role=dialog] select{font:12px var(--mono)}
+@media(max-width:760px){.en-header{padding:18px 16px;gap:16px}.en-header-controls{width:100%;gap:8px}.en-header .sq-btn{width:56px;height:46px}.en-settings{padding-left:0;border:0;gap:8px}.en-actionbar.tp{padding:14px}.en-actionbar input{width:145px}.en-brand{flex-wrap:wrap;gap:8px}.en-media-file{padding:8px 0}.en-progress{min-width:80px}.en-file-playback{margin-bottom:12px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+.en-tabs{gap:8px;padding:12px}.en-tab.sq-btn{width:76px;height:34px;font-size:9px;text-transform:uppercase}.en-row-actions.tp{display:flex;gap:10px;align-items:center;background:transparent;box-shadow:none;border-radius:0;padding:4px;width:100%;max-width:none}.en-row-actions .tp-key{width:72px;height:96px;zoom:.5}.en-row-actions .en-icon{zoom:.9}
+
+.en-vlc-action.tp{display:inline-flex;width:auto;max-width:none;padding:0;gap:10px;border-radius:0;background:transparent;box-shadow:none}
+
+/* Fit the existing segmented meter inside rqbit's compact table columns. */
+td .en-progress{min-width:0;gap:4px;width:100%}td .en-progress .lad-segs{min-width:20px;gap:1px}td .en-progress>span:last-child{font-size:9px;flex:none}

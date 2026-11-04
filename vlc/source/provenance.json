@@ -1,0 +1,11 @@
+{
+  "design_source": "https://uiux-nonhumanintelligence.web.app/UIUX",
+  "vlc_source": "https://github.com/videolan/vlc",
+  "vlc_format_ref": "3.0.21",
+  "retrieved": "2026-11-05",
+  "sha256": {
+    "controls.css": "a673dc924139b8d46e6967a0b594d8fbff6498978097e21c421a3f4e3082e8ca",
+    "atlas.html": "da779194fb5a0cf8a7a4400f17ae8328afe833408997e47d8c16e378208cbd35",
+    "skin.dtd": "fdab95160faa87af249dbf244d4177690359038d648b058d8c68d4fbda0c55be"
+  }
+}

@@ -1,0 +1,7 @@
+**/node_modules/
+**/target/
+**/dist/
+**/__pycache__/
+rqbit/enochian/bin/
+rqbit/enochian/web/
+vlc/source/built/

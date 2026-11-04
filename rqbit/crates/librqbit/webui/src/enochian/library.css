@@ -1,0 +1,109 @@
+/* Verbatim component rules from Enochian Elements. Layout is in app.css. */
+  /* ── Enochian Tape Deck ── */
+  .tp{--deck:#121214;--key:linear-gradient(180deg,#2d2d31,#18181a);--key-ink:#ececef;--key-sub:#8a8a90;--edge:#040405;--led-off:#2b2b2f;
+    width:100%;max-width:1000px;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:18px;padding:20px;border-radius:12px;background:var(--deck);
+    box-shadow:0 16px 34px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.07)}
+  .tp[data-finish="ivory"]{--deck:linear-gradient(180deg,#f5f5f6,#e6e6e9);--key:linear-gradient(180deg,#fcfcfc,#e2e2e5);--key-ink:#1d1d1f;--key-sub:#7a7a80;--edge:#adadb2;--led-off:#cdcdd1;
+    box-shadow:0 12px 26px rgba(0,0,0,.13),inset 0 1px 0 #fff}
+  @media (max-width:760px){.tp{grid-template-columns:minmax(0,1fr)}}
+  .tp-display{background:#070708;border-radius:8px;padding:14px 14px 12px;display:grid;gap:10px;box-shadow:inset 0 2px 10px rgba(0,0,0,.9),0 0 0 1px #000}
+  .tp-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .tp-counter{display:flex;gap:5px}
+  .tp-counter svg{width:30px;height:50px;overflow:visible;filter:drop-shadow(0 0 4px color-mix(in srgb,var(--accent) 65%,transparent))}
+  .seg{fill:color-mix(in srgb,var(--accent) 11%,transparent)} .seg.on{fill:var(--accent)}
+  .tp-dir{display:flex;gap:2px}
+  .tp-dir svg{width:12px;height:16px}
+  .tp-dir path{fill:none;stroke:#1d3a29;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .tp-dir path.on{stroke:var(--go);filter:drop-shadow(0 0 3px var(--go))}
+  .tp-status{font:600 12px var(--mono);letter-spacing:1.6px;color:var(--amber);min-height:16px}
+  .tp-status.warn{color:var(--accent)}
+  .tp-mini{display:flex;gap:8px}
+  .tp-mini button{display:flex;align-items:center;gap:7px;border:1px solid #2c2c30;background:#18181b;color:#c9c9ce;border-radius:4px;padding:6px 10px;cursor:pointer;font:600 10px var(--mono);letter-spacing:1px}
+  .tp-mini button:active{transform:translateY(1px)}
+  .tp-mini button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .tp-mini i{width:6px;height:6px;border-radius:50%;background:#333}
+  .tp-mini button[aria-pressed="true"] i{background:var(--amber);box-shadow:0 0 6px var(--amber)}
+  .tp-keys{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;align-content:center}
+  @media (max-width:520px){.tp-keys{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .tp-key{position:relative;height:96px;border:1px solid var(--edge);border-radius:6px;background:var(--key);color:var(--key-ink);cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:9px;padding:0 4px 12px;
+    box-shadow:0 5px 0 var(--edge),0 8px 12px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12);transition:transform .07s ease,box-shadow .07s ease}
+  .tp-key[data-down="true"]{transform:translateY(4px);box-shadow:0 1px 0 var(--edge),0 2px 4px rgba(0,0,0,.35),inset 0 2px 5px rgba(0,0,0,.3)}
+  .tp-key:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .tp-key svg{width:20px;height:20px;fill:currentColor}
+  .tp-led{position:absolute;top:10px;left:50%;width:24px;height:5px;margin-left:-12px;border-radius:2px;background:var(--led-off);box-shadow:inset 0 1px 1px rgba(0,0,0,.5)}
+  .tp-led.on{background:var(--lc);box-shadow:0 0 9px var(--lc)}
+  .tp-led.blink{animation:tpblink .8s steps(1) infinite}
+  @keyframes tpblink{50%{background:var(--led-off);box-shadow:none}}
+  .tp-name{font:600 9px var(--mono);letter-spacing:1.2px;color:var(--key-sub);text-transform:uppercase}
+  .tp-key.refuse{animation:tpshake .34s}
+  @keyframes tpshake{20%{translate:-3px 0}45%{translate:3px 0}70%{translate:-2px 0}100%{translate:0 0}}
+
+
+  /* ── Enochian Drum Machine ── */
+  .cp{--case:#fff;--pad:radial-gradient(ellipse at 50% 42%,#fff,#f0f0f2 82%);--pad-edge:#dedee2;--ink:#111;--sub:#8a8a8f;--btn:#fff;--btn-edge:#d4d4d8;--knob-ring:#dcdce0;
+    --case-shadow:0 14px 34px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08);
+    width:min(1000px,100%);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(14px,2.4vw,28px);padding:clamp(16px,2.6vw,28px);border-radius:22px;background:var(--case);box-shadow:var(--case-shadow);transition:background .22s ease}
+  .cp:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+  .cp[data-finish="obsidian"]{--case:#101012;--pad:radial-gradient(ellipse at 50% 42%,#2a2a2e,#1b1b1e 82%);--pad-edge:#050506;--ink:#f7f7f8;--sub:#9a9aa0;--btn:#202024;--btn-edge:#050506;--knob-ring:#2c2c30;
+    --case-shadow:0 18px 42px rgba(0,0,0,.34),0 2px 8px rgba(0,0,0,.2)}
+  .cp-knobs{display:grid;grid-template-columns:repeat(2,auto);gap:12px 18px;align-content:center}
+  .cp-main{display:grid;gap:10px;min-width:0}
+  .cp-display{display:flex;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;padding:9px 12px;border-radius:8px;background:#0b0b0c;color:#f2f2f4;font:500 11px var(--mono);letter-spacing:.8px;box-shadow:inset 0 2px 6px rgba(0,0,0,.8);font-variant-numeric:tabular-nums}
+  .cp-display .rec{color:var(--accent)} .cp-display .dim{color:#8d8d92}
+  .cp-steps{display:grid;grid-template-columns:repeat(16,minmax(0,1fr));gap:4px}
+  .cp-steps i{height:5px;border-radius:3px;background:var(--pad-edge)}
+  .cp-steps i:nth-child(4n+1){height:7px;margin-top:-1px}
+  .cp-steps i.has{background:var(--sub)}
+  .cp-steps i.now{background:var(--accent)}
+  .cp-pads{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.4vw,14px)}
+  .cp-cell{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .cp-num{font:600 8.5px var(--mono);letter-spacing:.6px;color:var(--ink)}
+  .cp-pad{position:relative;aspect-ratio:1;border-radius:6px;border:1px solid var(--pad-edge);background:var(--pad);cursor:pointer;overflow:hidden;padding:0;touch-action:none;
+    box-shadow:0 2px 0 var(--pad-edge),0 4px 10px rgba(0,0,0,.08),inset 0 1px 2px rgba(255,255,255,.7);transition:transform .05s ease,box-shadow .05s ease}
+  .cp-pad[data-down="true"]{transform:translateY(2px) scale(.985);box-shadow:0 0 0 var(--pad-edge),inset 0 2px 6px rgba(0,0,0,.14)}
+  .cp-pad:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .cp-fn{position:absolute;left:8px;top:7px;font:italic 500 10px var(--sans);color:var(--sub);transition:color .12s}
+  .cp-voice{position:absolute;left:8px;bottom:7px;font:600 9px var(--mono);letter-spacing:.8px;text-transform:uppercase;color:var(--ink);transition:opacity .12s}
+  .cp[data-shift="true"] .cp-fn{color:var(--accent);font-weight:700}
+  .cp[data-shift="true"] .cp-voice{opacity:.28}
+  .cp-flash{position:absolute;inset:0;pointer-events:none;opacity:0;
+    background:radial-gradient(circle at 50% 55%,color-mix(in srgb,var(--accent) 60%,transparent),color-mix(in srgb,var(--accent) 16%,transparent) 58%,transparent 80%)}
+  .cp-side{display:flex;flex-direction:column;gap:9px;justify-content:center}
+  .sq-btn{width:48px;height:40px;border-radius:5px;border:1px solid var(--btn-edge);background:var(--btn);color:var(--ink);cursor:pointer;font:600 8.5px/1.15 var(--mono);letter-spacing:.6px;
+    display:grid;place-items:center;padding:0;box-shadow:0 2px 0 var(--btn-edge),0 3px 6px rgba(0,0,0,.08);transition:transform .05s ease,box-shadow .05s ease}
+  .sq-btn:active,.sq-btn[data-down="true"]{transform:translateY(2px);box-shadow:0 0 0 var(--btn-edge)}
+  .sq-btn[aria-pressed="true"]{background:var(--ink);color:var(--case);border-color:var(--ink)}
+  .sq-btn.rec[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .sq-btn svg{width:13px;height:13px;fill:currentColor}
+  .sq-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  @media (max-width:760px){.cp{grid-template-columns:minmax(0,1fr)}.cp-knobs{grid-template-columns:repeat(4,auto);justify-content:center}.cp-side{flex-direction:row;flex-wrap:wrap;justify-content:center}}
+
+
+  .agl{--lad-bg:#121214;--lad-off:rgba(255,255,255,.075);--lad-on:#F4A934;--lad-ink:#a9a9ae;--lad-txt:#f2f2f4;
+    width:min(520px,100%);padding:14px 14px 12px;border-radius:10px;background:var(--lad-bg);display:grid;gap:7px;box-shadow:0 14px 30px rgba(0,0,0,.22),inset 0 2px 8px rgba(0,0,0,.6)}
+  .agl[data-finish="ivory"]{--lad-bg:#ecece8;--lad-off:rgba(0,0,0,.065);--lad-on:#1b1b1d;--lad-ink:#68686d;--lad-txt:#111;box-shadow:0 10px 24px rgba(0,0,0,.10),inset 0 2px 6px rgba(0,0,0,.08)}
+  .agl-row{display:grid;grid-template-columns:96px minmax(0,1fr) 82px;align-items:center;gap:8px;min-height:18px;border-radius:4px;transition:opacity .4s}
+  .agl-row.gone{opacity:.25}
+  .agl-row[role="button"]{cursor:pointer}
+  .agl-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .agl-name{font:600 9px var(--mono);letter-spacing:.8px;color:var(--lad-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .agl-name b{color:var(--lad-txt);font-weight:600}
+  .agl-st{font:600 9px var(--mono);letter-spacing:1px;text-align:right;color:var(--lad-ink);white-space:nowrap}
+  .agl-st.work{color:#F4A934} .agl[data-finish="ivory"] .agl-st.work{color:#111}
+  .agl-st.ask{color:var(--accent);animation:tpblink .8s steps(1) infinite}
+  .agl-st.done{color:var(--lad-txt)}
+  .agl .lad-segs i{height:12px}
+  .agl-scale{display:grid;grid-template-columns:96px minmax(0,1fr) 82px;gap:8px;font:500 8px var(--mono);color:var(--lad-ink)}
+  .agl-scale span:nth-child(2){display:flex;justify-content:space-between}
+  .agl-scale i{font-style:normal}
+  /* ── Enochian Usage Monitor: subscription session / weekly / model caps with week pacing ── */
+  .qt-wrap{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:28px;align-items:center;width:100%;max-width:1040px}
+  @media (max-width:900px){.qt-wrap{grid-template-columns:minmax(0,1fr);justify-items:center}}
+  .qt-panel{display:grid;gap:14px;min-width:0;width:100%;max-width:520px}
+
+  .lad-segs{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:3px}
+  .lad-segs i{height:14px;border-radius:2px;background:var(--lad-off)}
+  .lad-segs i.on,.lad-segs i.hold{background:var(--lad-on);box-shadow:0 0 6px color-mix(in srgb,var(--lad-on) 55%,transparent)}
+  .lad[data-finish="ivory"] .lad-segs i.on,.lad[data-finish="ivory"] .lad-segs i.hold{box-shadow:none}
+  .lad-segs i.hot.on,.lad-segs i.hot.hold{background:var(--accent);box-shadow:0 0 7px color-mix(in srgb,var(--accent) 65%,transparent)}

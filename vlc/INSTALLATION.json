@@ -1,0 +1,9 @@
+{
+  "default_mp4_player": "enochian-vlc.desktop",
+  "file_type": "video/mp4",
+  "launched_from_file_association": true,
+  "skin": "Obsidian",
+  "playback_status": "(<'Playing'>,)",
+  "desktop_entry_validated": true,
+  "test_audio": "Silent video (no audio track)"
+}

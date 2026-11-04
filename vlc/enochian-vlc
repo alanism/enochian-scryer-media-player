@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# A separate VLC entry point. Does not change the stock VLC interface or defaults.
+set -euo pipefail
+bundle_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+finish="${ENOCHIAN_FINISH:-obsidian}"
+size="${ENOCHIAN_SIZE:-standard}"
+if [[ "${1:-}" == --compact ]]; then size=compact; shift; fi
+if [[ "${1:-}" == --ivory ]]; then finish=ivory; shift; fi
+if [[ "${1:-}" == --obsidian ]]; then finish=obsidian; shift; fi
+case "$finish" in
+  ivory) skin="$bundle_dir/skins/Enochian-Ivory.vlt" ;;
+  obsidian) skin="$bundle_dir/skins/Enochian-Obsidian.vlt" ;;
+  *) printf 'Unknown finish: %s. Use ivory or obsidian.\n' "$finish" >&2; exit 2 ;;
+esac
+if [[ "$size" == compact ]]; then skin="${skin%.vlt}-Compact.vlt"; fi
+if ! command -v vlc >/dev/null; then
+  printf '%s\n' 'VLC is missing. On Omarchy install:' '  sudo pacman -S vlc vlc-gui-skins2 vlc-plugin-ffmpeg xorg-xwayland' >&2
+  exit 1
+fi
+if [[ -z "${DISPLAY:-}" ]]; then
+  printf '%s\n' 'This VLC skin needs XWayland. Launch it inside your Omarchy desktop session.' >&2
+  exit 1
+fi
+if [[ ! -r "$skin" ]]; then printf 'Missing skin: %s\n' "$skin" >&2; exit 1; fi
+if ! vlc --list 2>/dev/null | grep -E '^[[:space:]]+skins2[[:space:]]' >/dev/null; then
+  printf '%s\n' 'The VLC Skins2 interface is missing. Install: sudo pacman -S vlc-gui-skins2' >&2
+  exit 1
+fi
+# Force Qt dialogs and the embedded video output onto the same XWayland display.
+# --no-one-instance prevents a stock VLC instance from swallowing the skin launch.
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/enochian-vlc"
+mkdir -p "$config_dir"
+export QT_QPA_PLATFORM=xcb
+exec vlc --config="$config_dir/vlcrc" --no-one-instance --no-qt-privacy-ask --no-metadata-network-access \
+  --intf=skins2 --skins2-last="$skin" \
+  --vout=xcb_x11 --avcodec-hw=none --no-video-title-show "$@"

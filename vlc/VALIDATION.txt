@@ -1,0 +1,42 @@
+VALIDATION — 5 November 2026
+
+Runtime: official Arch/Omarchy VLC 3.0.24 packages extracted into a temporary
+workspace. Tested using the available XWayland desktop display. The system's
+VLC package installation was not changed.
+
+PASS — Obsidian and Ivory: live Skins2 parser accepts the theme without skin
+       parsing errors, invalid expressions, or missing tooltip fonts.
+PASS — Both normal skins: VLC selects skins2 as the embedded video window and
+       xcb_x11 as the video output; decoder supplies the first video picture.
+PASS — Both normal skins: MPEG-4/AAC test clip enters playing state, pauses,
+       resumes, seeks to 7 seconds, and stops.
+PASS — Volume set command accepted. Audio output was intentionally silent
+       (VLC dummy audio module); audible playback/volume was not verified.
+PASS — All four .vlt archives: XML DTD validation, packaged asset references,
+       unique object IDs, image decoding and 101-frame dial geometry.
+PASS — Dial interaction uses VLC's 45°..315° bottom-origin convention, matching
+       the original face's visual -135°..135° rotation.
+PASS — Installer tested in an isolated XDG_DATA_HOME; resulting desktop entry
+       passes desktop-file-validate. Both shell scripts pass syntax checks.
+
+Preview PNGs are compositions of the actual packaged skin assets and exact
+control positions. They illustrate the idle appearance; they are not screen
+captures of video playback and contain no fabricated media collection.
+
+Limits:
+- Playback commands were exercised through VLC's local control interface.
+  Every GUI button was not manually clicked, and pointer/keyboard interaction
+  across all auxiliary dialogs was not exhaustively tested.
+- Compact skins were format/asset validated; live playback was tested in the
+  normal-size skins.
+- Audible system audio, physical media keys, suspend/resume, multiple monitors,
+  high-DPI fractional scaling and hardware decoding were not verified.
+- File selection, preferences, context menus and errors remain VLC Qt dialogs.
+- This is a Linux Skins2/XWayland reskin, not a VLC 4 native Wayland fork.
+
+Sources:
+https://github.com/videolan/vlc
+https://uiux-nonhumanintelligence.web.app/UIUX
+https://archlinux.org/packages/extra/x86_64/vlc-gui-skins2/
+
+Installed-system check (2026-11-05): PASS. Enochian VLC desktop entry validates; xdg-mime and gio report it as the video/mp4 default; xdg-open launched the installed Obsidian skin and MPRIS confirmed Playing for the selected silent test MP4.

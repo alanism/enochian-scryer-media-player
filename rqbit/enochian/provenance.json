@@ -1,0 +1,14 @@
+{
+  "upstream": "https://github.com/ikatson/rqbit.git",
+  "upstream_commit": "f23bacdddcc5318caa813418b8eb1b1d7307faaa",
+  "engine_release": "v9.1.0",
+  "engine_url": "https://github.com/ikatson/rqbit/releases/download/v9.1.0/rqbit-linux-amd64",
+  "engine_sha256": "921061a82ee6a6b26754c6367886b5b6b4ce5916d3edd5db79c6cd5f2c23499f",
+  "ui_source": "https://uiux-nonhumanintelligence.web.app/UIUX",
+  "controls": [
+    "Enochian Tape Deck 05.07: original play/pause glyphs, lamps, keys",
+    "Enochian Drum Machine: original sq-btn utilities",
+    "Segmented ladder: original lad-segs progress meter"
+  ],
+  "changes": "Composition, labels, and element sizes adjusted; original materials, shadows, corners, glyphs, and states retained."
+}
