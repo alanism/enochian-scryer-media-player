@@ -1,8 +1,9 @@
 VALIDATION — 5 November 2026
 
-Runtime: official Arch/Omarchy VLC 3.0.24 packages extracted into a temporary
-workspace. Tested using the available XWayland desktop display. The system's
-VLC package installation was not changed.
+Initial runtime checks used official Arch/Omarchy VLC 3.0.24 packages
+extracted into a temporary workspace on the available XWayland display.
+The same components were then installed through the system package manager;
+the installed-system check is recorded below.
 
 PASS — Obsidian and Ivory: live Skins2 parser accepts the theme without skin
        parsing errors, invalid expressions, or missing tooltip fonts.

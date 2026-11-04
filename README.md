@@ -4,6 +4,12 @@ A matching media suite for Omarchy: **Enochian VLC** for playback and **Enochian
 
 The suite reuses the original controls from [Enochian Elements](https://uiux-nonhumanintelligence.web.app/UIUX). Tape Deck transport keys, Drum Machine utility buttons, rotary volume and ribbed sliders retain their original artwork, materials and states. The two apps offer matching Obsidian and Ivory finishes.
 
+![Enochian VLC Obsidian skin](vlc/previews/obsidian.png)
+
+![Enochian Rqbit Obsidian](previews/rqbit-obsidian.png)
+
+[Ivory VLC preview](vlc/previews/ivory.png) · [Ivory rqbit preview](previews/rqbit-ivory.png)
+
 ## Install on Omarchy
 
 Install the system playback components with:
@@ -20,7 +26,7 @@ enochian/build.sh
 cd ..
 ```
 
-The ready-to-install Linux bundle already contains that engine and interface. Install both apps, with the player as the MP4 default:
+The [ready-to-install Linux bundle](https://github.com/alanism/enochian-scryer-media-player/releases/latest) already contains that engine and interface. Download and extract it before running the installer. Install both apps, with the player as the MP4 default:
 
 ```sh
 ./install.sh --make-default
@@ -42,7 +48,7 @@ The VLC interface uses XWayland on Omarchy. Its main player, playlist and equali
 
 ## Checked on this machine
 
-The MP4 desktop association opened the installed Obsidian VLC skin and reported Playing. rqbit's production frontend build passed. A private local MP4 torrent verified byte-for-byte HTTP 206 ranges, pause/resume, opening the installed VLC, Playing status and a five-second seek. Browser checks covered transfer selection, Overview/Files, the VLC action and both finishes without app console errors. See the component READMEs for the tested scope and remaining limits. No remote public torrent swarm or audible playback was tested.
+The MP4 desktop association opened the installed Obsidian VLC skin and reported Playing. rqbit's production frontend build passed. A private local MP4 torrent verified byte-for-byte HTTP 206 ranges, pause/resume, opening the installed VLC, Playing status and a five-second seek. Browser checks covered transfer selection, Overview/Files, the VLC action and both finishes without app console errors. Final checks also verified the amber Pause lamp, green Resume lamp, and compact progress-meter fit. See the component READMEs for the tested scope and remaining limits. No remote public torrent swarm or audible playback was tested.
 
 ## Sources and notices
 
