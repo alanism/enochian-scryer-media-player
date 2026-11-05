@@ -15,7 +15,7 @@ START ON OMARCHY
    Ivory finish:
    ./enochian-vlc --ivory
 
-   Smaller window for a split-screen tile (832 x 608):
+   Smaller window for a split-screen tile (832 x 650):
    ./enochian-vlc --compact --ivory
 
    Open a file, preserving spaces in its name:
@@ -46,7 +46,7 @@ Seek and equalizer: Enochian Slider 01 (03.04), original ribbed cap.
   reduced and rotated. These are live VLC sliders, not decorative images.
 
 Utility keys: the Enochian Drum Machine's existing sq-btn component.
-  Labels adapted to OPEN, QUEUE, EQ, MENU, FULL, CLOSE and other actions.
+  Labels adapted to OPEN, PLAYLIST, EQ, MENU, FULL, CLOSE and other actions.
 
 Finish colors are the atlas's existing Ivory and Obsidian definitions.
 Control geometry was not redrawn. The surrounding player layout composes
@@ -57,7 +57,7 @@ PLAYER FEATURES
 Embedded video; drop files to play; elapsed time and duration; current
 filename; playlist previous/next; play/pause/stop; seek; rotary volume;
 mute; shuffle; loop queue; a skinned playlist window with add/remove/load/
-save; a skinned 10-band equalizer with preamp and enable control; network
+save/sort and a Manage route to the native advanced playlist editor; a skinned 10-band equalizer with preamp and enable control; network
 stream dialog; fullscreen; VLC context menu and standard keyboard hotkeys.
 
 Space = play/pause    S = stop    N/P = next/previous    F = fullscreen
@@ -78,7 +78,7 @@ VLC's dbus plugin remains available for desktop media integration, but
 physical media keys, audio output and suspend behavior have not been
 manually verified on every Omarchy hardware configuration.
 
-Normal size: 1040 x 760 minimum. Compact: 832 x 608 minimum.
+Normal size: 1040 x 812 minimum. Compact: 832 x 650 minimum.
 Use Omarchy's usual window move/resize actions; video expands with the
 window while the controls retain their sizes. The skin does not install
 window rules or force floating mode. For a narrower tile, use Compact.

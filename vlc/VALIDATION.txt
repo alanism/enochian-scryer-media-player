@@ -28,8 +28,8 @@ Limits:
 - Playback commands were exercised through VLC's local control interface.
   Every GUI button was not manually clicked, and pointer/keyboard interaction
   across all auxiliary dialogs was not exhaustively tested.
-- Compact skins were format/asset validated; live playback was tested in the
-  normal-size skins.
+- The initial pass exercised live playback in normal skins. The later
+  iteration below also exercises both compact skins.
 - Audible system audio, physical media keys, suspend/resume, multiple monitors,
   high-DPI fractional scaling and hardware decoding were not verified.
 - File selection, preferences, context menus and errors remain VLC Qt dialogs.
@@ -41,3 +41,12 @@ https://uiux-nonhumanintelligence.web.app/UIUX
 https://archlinux.org/packages/extra/x86_64/vlc-gui-skins2/
 
 Installed-system check (2026-11-05): PASS. Enochian VLC desktop entry validates; xdg-mime and gio report it as the video/mp4 default; xdg-open launched the installed Obsidian skin and MPRIS confirmed Playing for the selected silent test MP4.
+
+Design-loop iteration 1 (2026-11-05): all four rebuilt skins (1040 x 812
+standard; 832 x 650 compact) pass asset/DTD checks and real Playing readback.
+Real VLC API checks pass pause/seek/resume, boundary seeks, playback rate,
+fullscreen, playlist create/select/reorder/title sort/remove, M3U8 import,
+HTTP range seek and missing-file recovery. The harness wrote the M3U8 file;
+native Save/export and picker/drag gestures are NOT verified by these tests.
+Dummy audio provides no meaningful device-volume readback; audibility and
+device volume remain unverified. See ../docs/evaluation/index.html.

@@ -1,0 +1,287 @@
+{
+  "id": "gmunk",
+  "version": "1.0",
+  "name": "GMUNK — Enochian desktop evaluation",
+  "source_file": "gmunk_design_hero.md",
+  "source_sha256": "dfddf4c08acf3e1ac5384129fa511493a7bd3879dbc08cc1d596b5e064351b56",
+  "attribution": "Project-specific adaptation of a supplied reference; not an official rubric, endorsement or review by the named designer.",
+  "scope": "Apply cinematic/slide advice to real desktop utility, clarity, material fidelity, hierarchy and motion. Existing user elements and usability requirements take priority over film-specific prescriptions. No fictional data or decorative motion is required for points.",
+  "target": 95,
+  "minimum_criterion": 4,
+  "levels": {
+    "1": "Absent or contradicts the task.",
+    "2": "Partially present, with a major visible or functional gap.",
+    "3": "Usable on the main path, with clear consistency or coverage gaps.",
+    "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+    "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+  },
+  "criteria": [
+    {
+      "id": "grid",
+      "title": "Structural grid",
+      "acceptance": "Main groups share explicit axes and spacing tokens across player, playlist, transfer and settings views.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "geometry",
+      "title": "Primitive geometry",
+      "acceptance": "Existing Enochian circles, lines, caps and type form one consistent vocabulary.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "materials",
+      "title": "Material authenticity",
+      "acceptance": "Original Enochian gradients, texture, glyphs and shadows match their source.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "depth",
+      "title": "Depth and lighting",
+      "acceptance": "Control depth and pressed states retain consistent lighting and never obscure text.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "type",
+      "title": "Readable micro-typography",
+      "acceptance": "Control and data labels remain legible at the actual desktop/compact size.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "precision",
+      "title": "Micro-geometric precision",
+      "acceptance": "Borders, baselines, hit regions and glyphs fit without clipping or off-by-one drift.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "density",
+      "title": "Structure before density",
+      "acceptance": "Information is grouped before detail is added; essential tasks are not crowded out.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "interactivity",
+      "title": "Tangible real controls",
+      "acceptance": "Every visible control changes a real media/transfer value or performs the named action.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "state",
+      "title": "State visibility",
+      "acceptance": "Ready, playing, paused, downloading, complete and failed states are visually distinct and truthful.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "press",
+      "title": "Physical press feedback",
+      "acceptance": "Pointer and keyboard activation retain the original key travel and release behavior.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "integration",
+      "title": "Live screen integration",
+      "acceptance": "Actual running views, not only static compositions, support the design claims.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "latency",
+      "title": "Immediate response",
+      "acceptance": "Actions acknowledge promptly and longer work shows relevant progress.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "continuity",
+      "title": "Temporal continuity",
+      "acceptance": "Pause/resume/seek/window transitions retain context and avoid disruptive resets.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "palette",
+      "title": "Palette discipline",
+      "acceptance": "Ivory and Obsidian preserve the existing base and signal roles.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "contrast",
+      "title": "Contrast under real conditions",
+      "acceptance": "Labels, focus and status are legible in both finishes without relying on color alone.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "purpose",
+      "title": "Every detail serves the task",
+      "acceptance": "Displayed details explain the current file, queue, transfer or next action.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "familiarity",
+      "title": "Relatable physical metaphors",
+      "acceptance": "Transport, volume, seek, switches and utilities match familiar functions.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "composition",
+      "title": "Cross-view composition",
+      "acceptance": "Player, playlist, cards, list and dialogs share a coherent visual structure.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "scale",
+      "title": "Scale resilience",
+      "acceptance": "Normal/compact and supported narrow layouts retain readable, reachable controls.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "performance",
+      "title": "Live responsiveness",
+      "acceptance": "Motion and rendering do not stall real playback, input or transfer interactions.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    }
+  ],
+  "rules": [
+    "Use the same evidence and mandatory journeys as the frozen Ryo rubric.",
+    "Score twenty criteria 1–5, total 100. All criteria must reach at least 4 and this lens must independently reach 95.",
+    "Preserve original Enochian elements; do not redesign controls to imitate the source designer.",
+    "Backend-only evidence cannot establish excellent interaction quality. Record evidence methods and uncertain areas.",
+    "The Satori 10 architectural layers plus 10 performance criteria are normalized to twenty five-point criteria; slide-only sizes and ratios are adapted to supported application views."
+  ]
+}

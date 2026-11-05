@@ -1,0 +1,287 @@
+{
+  "title": "Enochian Scryer — build plan",
+  "updated": "2026-11-05T17:38:40.323363+07:00",
+  "phase": "Iteration 1 fixes verified · native player interaction checks remain before 95+",
+  "goal": "95+ on every evaluation; all areas covered",
+  "scores": [
+    {
+      "name": "Ryo Lu",
+      "score": 77
+    },
+    {
+      "name": "GMUNK",
+      "score": 84
+    },
+    {
+      "name": "Jayse Hansen",
+      "score": 84
+    },
+    {
+      "name": "Satori",
+      "score": 82
+    }
+  ],
+  "scoreNote": "Iteration 1 self-evaluation: improved from 67 / 69 / 73 / 69. The 95+ gate remains open; native VLC interaction checks still need verification.",
+  "tasks": [
+    {
+      "id": "rubric-ryo",
+      "title": "Freeze the Ryo Lu evaluation",
+      "status": "done",
+      "lens": "Ryo Lu",
+      "steps": [
+        {
+          "label": "20 criteria and five anchors",
+          "done": true
+        },
+        {
+          "label": "95+ gate and no area below 4",
+          "done": true
+        },
+        {
+          "label": "Baseline recorded",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "rubric-council",
+      "title": "Add GMUNK, Jayse and Satori",
+      "status": "done",
+      "lens": "Design council",
+      "steps": [
+        {
+          "label": "Read the three supplied references",
+          "done": true
+        },
+        {
+          "label": "Adapt each to the existing desktop app",
+          "done": true
+        },
+        {
+          "label": "Freeze separate 100-point evaluations",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "baseline",
+      "title": "Inspect the starting app",
+      "status": "done",
+      "lens": "Evaluation",
+      "steps": [
+        {
+          "label": "Review current code and prior evidence",
+          "done": true
+        },
+        {
+          "label": "Record conservative starting scores",
+          "done": true
+        },
+        {
+          "label": "List unverified workflows",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "native-player",
+      "title": "Improve player and playlist controls",
+      "status": "done",
+      "lens": "Player",
+      "steps": [
+        {
+          "label": "Resize the original utility keys",
+          "done": true
+        },
+        {
+          "label": "Add clear Playlist / Sort / Manage routes",
+          "done": true
+        },
+        {
+          "label": "Rebuild and inspect both finishes",
+          "done": true
+        },
+        {
+          "label": "Verify normal and compact playback",
+          "done": true
+        }
+      ],
+      "note": "Both finishes inspected. Real playback verified in all four skins through VLC APIs; native click and device-audio checks remain on separate workflow cards."
+    },
+    {
+      "id": "recovery",
+      "title": "Fix forms, cancellation and recovery",
+      "status": "done",
+      "lens": "Ryo Lu",
+      "steps": [
+        {
+          "label": "Reset destructive choices after every dismissal",
+          "done": true
+        },
+        {
+          "label": "Label fields and improve busy states",
+          "done": true
+        },
+        {
+          "label": "Verify invalid input and retry",
+          "done": true
+        },
+        {
+          "label": "Check modal and menu keyboard focus",
+          "done": true
+        }
+      ],
+      "note": "Observed invalid-link correction, settings Save/Cancel, destructive-choice resets via Close/Escape/outside click, dialog Tab loops, menu Escape, and pause/resume focus continuity."
+    },
+    {
+      "id": "files-playback",
+      "title": "Exercise file and playback workflows",
+      "status": "review",
+      "lens": "Player QA",
+      "steps": [
+        {
+          "label": "Open single and multiple files",
+          "done": true
+        },
+        {
+          "label": "Verify play / pause / resume / stop",
+          "done": true
+        },
+        {
+          "label": "Verify seek / volume / tracks / fullscreen",
+          "done": false
+        },
+        {
+          "label": "Test missing files and unavailable URLs",
+          "done": false
+        }
+      ],
+      "note": "Real VLC API checks passed: single/multiple files, transport, seek boundaries, speed, fullscreen, local HTTP seek and missing-file recovery. Native picker, track controls and device audio still need direct verification."
+    },
+    {
+      "id": "playlists",
+      "title": "Exercise playlist workflows",
+      "status": "blocked",
+      "lens": "Playlist QA",
+      "steps": [
+        {
+          "label": "Create and append multiple items",
+          "done": true
+        },
+        {
+          "label": "Select / remove / sort / reorder",
+          "done": true
+        },
+        {
+          "label": "Save and reopen a named playlist",
+          "done": false
+        },
+        {
+          "label": "Verify order, spaces and missing-file recovery",
+          "done": false
+        }
+      ],
+      "note": "Core create/select/next/previous/reorder/sort/remove and M3U8 import passed via the real VLC API. Native Save export and drag gestures need desktop interaction, which the available browser controls cannot perform."
+    },
+    {
+      "id": "transfers",
+      "title": "Exercise transfer workflows",
+      "status": "review",
+      "lens": "Companion QA",
+      "steps": [
+        {
+          "label": "Add a torrent file and link",
+          "done": true
+        },
+        {
+          "label": "Select files / pause / resume / limits",
+          "done": true
+        },
+        {
+          "label": "Play completed and partial media",
+          "done": true
+        },
+        {
+          "label": "Show file / cancel / removal",
+          "done": false
+        }
+      ],
+      "note": "File/link import and two-file sequential review verified in an isolated engine. Pause/resume and decimal limits verified. Existing v0.2 playback/reveal evidence retained; broader removal/restart cases remain."
+    },
+    {
+      "id": "visual-qa",
+      "title": "Inspect layout and accessibility",
+      "status": "done",
+      "lens": "GMUNK · Jayse · Satori",
+      "steps": [
+        {
+          "label": "Both Enochian finishes",
+          "done": true
+        },
+        {
+          "label": "Normal and compact / narrow layouts",
+          "done": true
+        },
+        {
+          "label": "Labels, focus, targets and no overflow",
+          "done": true
+        },
+        {
+          "label": "Compare with original elements",
+          "done": true
+        }
+      ],
+      "note": "Both finishes inspected at 1280px and 445px; no document overflow, visible utility targets >=44px. Native packaged previews and four-size skin bounds/playback checked; native dialog interaction remains separate."
+    },
+    {
+      "id": "scoring-loop",
+      "title": "Run the four-score improvement loop",
+      "status": "blocked",
+      "lens": "All four evaluations",
+      "steps": [
+        {
+          "label": "Build a reproducible scoring gate",
+          "done": true
+        },
+        {
+          "label": "Attach journey evidence to each grade",
+          "done": true
+        },
+        {
+          "label": "Fix the lowest verified gaps",
+          "done": true
+        },
+        {
+          "label": "Reach 95+ on every rubric with no weak area",
+          "done": false
+        }
+      ],
+      "note": "Separate scores: Ryo 77, GMUNK 84, Jayse 84, Satori 82. Rubrics are unchanged. Native picker, playlist Save/export, control gestures and audio verification block the 95+ gate."
+    },
+    {
+      "id": "release",
+      "title": "Install and publish this improvement build",
+      "status": "working",
+      "lens": "Delivery",
+      "steps": [
+        {
+          "label": "Run regression and skin checks",
+          "done": true
+        },
+        {
+          "label": "Preserve existing transfer records",
+          "done": true
+        },
+        {
+          "label": "Publish source and Linux bundle",
+          "done": false
+        },
+        {
+          "label": "Update scores, evidence and this board",
+          "done": false
+        }
+      ],
+      "note": "Production build, regression tests and all four skin checks passed. Installed update restarted cleanly with every existing transfer ID/hash preserved; MP4 default retained."
+    }
+  ]
+}

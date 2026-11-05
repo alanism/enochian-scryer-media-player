@@ -22,4 +22,4 @@ for finish in ['Obsidian','Ivory']:
   with tarfile.open(root/'skins'/f'Enochian-{finish}-Compact.vlt','w:gz') as t:
    for p in sorted(base.rglob('*')):
     if p.is_file():t.add(p,arcname=str(p.relative_to(base)),recursive=False)
-  print('Built',finish,'Compact: 832 × 608')
+  print('Built',finish,'Compact:',doc.getroot().find('Window/Layout').get('width'),'×',doc.getroot().find('Window/Layout').get('height'))

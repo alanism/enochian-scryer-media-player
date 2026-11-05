@@ -15,7 +15,7 @@ import { FileListInput } from "../FileListInput";
 import { useTorrentStore } from "../../stores/torrentStore";
 
 export const FileSelectionModal = (props: {
-  onHide: () => void;
+  onHide: (completed?: boolean) => void;
   listTorrentResponse: AddTorrentResponse | null;
   listTorrentError: ErrorWithLabel | null;
   listTorrentLoading: boolean;
@@ -95,7 +95,7 @@ export const FileSelectionModal = (props: {
     API.uploadTorrent(data, opts)
       .then(
         () => {
-          onHide();
+          onHide(true);
           refreshTorrents();
         },
         (e) => {
@@ -144,14 +144,18 @@ export const FileSelectionModal = (props: {
     }
   };
   return (
-    <Modal isOpen={true} onClose={clear} title="Add Torrent">
+    <Modal
+      isOpen={true}
+      onClose={uploading ? undefined : clear}
+      title="Add Torrent"
+    >
       <ModalBody>
         {getBody()}
         <ErrorComponent error={uploadError} />
       </ModalBody>
       <ModalFooter>
         {uploading && <Spinner />}
-        <Button onClick={clear} variant="cancel">
+        <Button onClick={clear} variant="cancel" disabled={uploading}>
           Cancel
         </Button>
         <Button
@@ -159,7 +163,7 @@ export const FileSelectionModal = (props: {
           variant="primary"
           disabled={listTorrentLoading || uploading || selectedFiles.size == 0}
         >
-          OK
+          {uploading ? "Adding torrent…" : "Start transfer"}
         </Button>
       </ModalFooter>
     </Modal>

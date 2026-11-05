@@ -1,0 +1,63 @@
+{
+  "method": "Observed rendered UI through the in-app browser, synthetic private local torrents; separate test engine/state.",
+  "checks": [
+    {
+      "name": "Invalid link correction",
+      "result": "pass",
+      "detail": "Invalid text shows an alert; correcting to a whitespace-padded HTTP torrent URL opens file/destination review and starts the isolated partial transfer."
+    },
+    {
+      "name": "Multiple torrent file import",
+      "result": "pass",
+      "detail": "Selected two .torrent files through the browser file chooser. Alpha received review, then Bravo received a separate review, then both completed from pre-existing synthetic media."
+    },
+    {
+      "name": "Limits save and cancellation",
+      "result": "pass",
+      "detail": "Saved 2.5 MB/s down and 0.75 MB/s up. Reopened and read both values. Edited to 9/9, canceled, reopened: 2.5/0.75 retained."
+    },
+    {
+      "name": "Destructive choice reset",
+      "result": "pass",
+      "detail": "Checked Also delete downloaded files; closed with Close, reopened: unchecked. Repeated with Escape: unchecked. After backdrop fix, repeated by clicking outside the panel: unchecked. No downloaded file was deleted."
+    },
+    {
+      "name": "Pause/resume keyboard continuity",
+      "result": "pass",
+      "detail": "Clicked Pause: state became Paused, focus stayed on Resume transfer. Pressed Enter: Downloading, focus returned to Pause transfer."
+    },
+    {
+      "name": "Card context-menu focus",
+      "result": "pass",
+      "detail": "Right-click opened Show file with focus on the menu item. Escape closed it and restored focus to the same card. Native file-manager reveal is covered by prior v0.2 evidence, not re-observed here."
+    },
+    {
+      "name": "Dialog focus loop",
+      "result": "pass",
+      "detail": "After correction: Tab from last OK loops to Close; Shift+Tab from Close loops to OK; Escape returns focus to Setup. Verified in the 445px visible browser."
+    },
+    {
+      "name": "Both finishes and narrow layout",
+      "result": "pass",
+      "detail": "Observed Ivory and Obsidian at 1280px and 445px. No document overflow. Header utility keys 62x52; narrow transfer keys 186x52; Tape Deck Play 96x96."
+    }
+  ],
+  "limits": [
+    "Native VLC file pickers, Save export, drag/reorder and device audio were not directly operated.",
+    "No public torrent swarm, screen-reader session, hardware/high-DPI or suspend test.",
+    "Screenshots show real browser frames; the internally scrolling card list is not a stitched full-list view."
+  ],
+  "fixed_after_observation": [
+    "Destructive checkbox persisted across dismissal.",
+    "Multiple .torrent selection bypassed review.",
+    "Modal overlay did not dismiss by clicking outside the panel.",
+    "Pause/resume replaced the focused control.",
+    "Tab could leave the dialog for browser chrome."
+  ],
+  "test_harness_corrections": [
+    "Dummy audio does not provide a meaningful device-volume readback; volume remains unverified.",
+    "VLC HTTP routes register at startup; test-only reorder template moved before launch.",
+    "Installed VLC sort accepts the title key despite older numeric README examples.",
+    "Playlist parsing is asynchronous; wait for imported children before asserting order."
+  ]
+}

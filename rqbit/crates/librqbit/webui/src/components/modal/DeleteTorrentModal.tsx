@@ -70,7 +70,7 @@ export const DeleteTorrentModal: React.FC<{
     : "Delete torrent";
 
   return (
-    <Modal isOpen={show} onClose={onHide} title={title}>
+    <Modal isOpen={show} onClose={deleting ? undefined : close} title={title}>
       <ModalBody>
         <p className="text-gray-700 dark:text-slate-300 mb-3">
           {isBulk
@@ -119,11 +119,17 @@ export const DeleteTorrentModal: React.FC<{
 
       <ModalFooter>
         {deleting && <Spinner />}
-        <Button variant="cancel" onClick={close}>
+        <Button variant="cancel" onClick={close} disabled={deleting}>
           Cancel
         </Button>
         <Button variant="danger" onClick={deleteTorrents} disabled={deleting}>
-          {isBulk ? `Delete ${torrents.length} Torrents` : "Delete Torrent"}
+          {deleting
+            ? "Removing…"
+            : deleteFiles
+              ? "Delete files and remove"
+              : isBulk
+                ? `Remove ${torrents.length} torrents`
+                : "Remove torrent"}
         </Button>
       </ModalFooter>
     </Modal>

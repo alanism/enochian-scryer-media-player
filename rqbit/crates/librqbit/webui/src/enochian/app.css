@@ -52,4 +52,5 @@ td .en-progress{min-width:0;gap:4px;width:100%}td .en-progress .lad-segs{min-wid
 .en-transfer-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
 .en-transfer-actions .sq-btn{width:104px;height:52px;font-size:10px}
 .en-card-feedback{font:12px var(--mono);color:var(--color-success);padding:8px 12px}
+.en-modal-close.sq-btn{width:72px;min-width:72px;height:44px;font:10px var(--mono);text-transform:uppercase}
 @media(max-width:760px){.en-card-content{padding:16px}.en-card-controls{align-items:flex-start;gap:20px}.en-transfer-status{white-space:normal}.en-transfer-actions{width:100%}.en-transfer-actions .sq-btn{width:calc((100% - 10px)/2);min-height:52px}.en-card-body>div:first-child{display:none}}

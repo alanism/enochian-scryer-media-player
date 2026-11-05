@@ -1,4 +1,9 @@
-const saved = localStorage.getItem("enochian.finish.v1");
+let saved: string | null = null;
+try {
+  saved = localStorage.getItem("enochian.finish.v1");
+} catch {
+  /* The interface still works when storage is unavailable. */
+}
 let darkMode = saved !== "ivory";
 export const DarkMode = {
   isDark: () => darkMode,
@@ -11,7 +16,11 @@ export const DarkMode = {
       .forEach((el) =>
         el.setAttribute("data-finish", value ? "obsidian" : "ivory"),
       );
-    localStorage.setItem("enochian.finish.v1", value ? "obsidian" : "ivory");
+    try {
+      localStorage.setItem("enochian.finish.v1", value ? "obsidian" : "ivory");
+    } catch {
+      /* This session can still change finish. */
+    }
     return value;
   },
   toggle: () => {

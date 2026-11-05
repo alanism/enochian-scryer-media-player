@@ -1,0 +1,289 @@
+{
+  "version": "1.0",
+  "name": "Enochian Scryer — Ryo Lu lens design evaluation",
+  "source": "https://github.com/alanism/alan-coding-dark-factory/blob/ba629d91156d0a549e79b7f96852be4c03b93cea/heroes/Design_Council/ryo_lu_design_hero.md",
+  "attribution": "A project-specific rubric inspired by the supplied card; not an official Ryo Lu rubric or endorsement.",
+  "target": 95,
+  "minimum_criterion": 4,
+  "criteria": [
+    {
+      "id": "first_run",
+      "title": "First launch and empty states",
+      "acceptance": "Identify both apps, start the first task and understand an empty queue.",
+      "levels": {
+        "1": "No usable entry point",
+        "2": "Next action obscure",
+        "3": "First task needs guidance",
+        "4": "Clear actions and useful empty states",
+        "5": "Entry, empty/loading and repeat launch verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "open_local",
+      "title": "Open local media",
+      "acceptance": "Open single/multiple files, spaces in names, append/drop and invalid media.",
+      "levels": {
+        "1": "Cannot open media",
+        "2": "One fragile path",
+        "3": "Single-file opening works",
+        "4": "Single/multiple files and identity verified",
+        "5": "Open, enqueue/drop, identity and invalid-file recovery verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "open_stream",
+      "title": "Open streams and URLs",
+      "acceptance": "Play valid media URLs and recover from invalid or unreachable addresses.",
+      "levels": {
+        "1": "No URL path",
+        "2": "Unreliable URL playback",
+        "3": "Valid URL plays",
+        "4": "Valid/invalid URL handling works",
+        "5": "URL playback, range/seek, loading and failure recovery verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "transport",
+      "title": "Playback transport and agency",
+      "acceptance": "Play/pause/resume/stop/previous/next act predictably with truthful state.",
+      "levels": {
+        "1": "Playback blocked",
+        "2": "Some transport fails",
+        "3": "Core transport with ambiguity",
+        "4": "All transport states work",
+        "5": "Actions, empty-queue boundaries and visible state verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "seek",
+      "title": "Time, seeking and continuity",
+      "acceptance": "Time/duration/seek agree; boundary seeks do not strand playback.",
+      "levels": {
+        "1": "Time or seek broken",
+        "2": "Unreliable seek",
+        "3": "Normal seek works",
+        "4": "Forward/backward seek and duration agree",
+        "5": "Seek, pause/seek/resume and start/end boundaries verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "media_adjustments",
+      "title": "Audio and media adjustments",
+      "acceptance": "Volume/mute and available track/speed/subtitle controls are discoverable and reversible.",
+      "levels": {
+        "1": "Essential adjustments absent",
+        "2": "Settings frequently fail",
+        "3": "Volume/mute works",
+        "4": "Core and advanced routes work",
+        "5": "Reversible adjustments, readbacks and absent-track cases verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "viewing",
+      "title": "Viewing and window modes",
+      "acceptance": "Fullscreen/exit and normal/compact layouts retain reachable controls and fitted video.",
+      "levels": {
+        "1": "Controls inaccessible",
+        "2": "A mode traps the user",
+        "3": "Main view works",
+        "4": "Fullscreen/exit and both sizes work",
+        "5": "Transitions, playback continuity and visible bounds verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "playlist_create",
+      "title": "Create a playlist",
+      "acceptance": "Add multiple items, inspect names and start the intended item without losing the queue.",
+      "levels": {
+        "1": "Cannot create queue",
+        "2": "Items lost or misidentified",
+        "3": "Multiple items play",
+        "4": "Add/select works",
+        "5": "Create/add/select/append and duplicate-name cases verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "playlist_edit",
+      "title": "Edit and navigate playlists",
+      "acceptance": "Remove/reorder/navigate with clear selection and current item.",
+      "levels": {
+        "1": "Cannot edit",
+        "2": "Wrong items changed",
+        "3": "Basic remove/navigation",
+        "4": "Remove/reorder/next/previous work",
+        "5": "Edits, navigation and empty/boundary cases verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "playlist_persist",
+      "title": "Save and reopen playlists",
+      "acceptance": "Named playlist round-trip preserves order and identity; missing files have recovery.",
+      "levels": {
+        "1": "Cannot save/reload",
+        "2": "Saved data incomplete",
+        "3": "Basic save/load",
+        "4": "Order and identities survive",
+        "5": "Named round-trip, spaces/Unicode and missing-file recovery verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "torrent_add",
+      "title": "Add torrents and links",
+      "acceptance": "Import file/link, inspect inclusion/destination, cancel and recover from invalid input.",
+      "levels": {
+        "1": "Cannot add",
+        "2": "One partial add path",
+        "3": "Main add path works",
+        "4": "File/link, selection and cancel work",
+        "5": "Both paths, invalid input, destination and cancel verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "transfer_control",
+      "title": "Control transfers and selected files",
+      "acceptance": "Pause/resume/inclusion/limits/removal affect the intended record.",
+      "levels": {
+        "1": "Controls fail",
+        "2": "Wrong target or state",
+        "3": "Pause/resume works",
+        "4": "Selection and controls independent",
+        "5": "Pause/resume/inclusion/limits/removal verified against real state"
+      },
+      "weight": 5
+    },
+    {
+      "id": "media_handoff",
+      "title": "Torrent-to-player handoff",
+      "acceptance": "Completed/per-file actions select the right media/player; incomplete double-click does not launch.",
+      "levels": {
+        "1": "No handoff",
+        "2": "Wrong media/player",
+        "3": "Main handoff works",
+        "4": "Completed/per-file behavior works",
+        "5": "Completed/partial/per-file handoff and finish/state preservation verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "locations",
+      "title": "Show files and destinations",
+      "acceptance": "Reveal the correct item; missing files and custom destinations have clear outcomes.",
+      "levels": {
+        "1": "No location access",
+        "2": "Wrong location",
+        "3": "Main reveal works",
+        "4": "Reveal/missing/custom paths work",
+        "5": "Reveal, fallback, missing/custom paths and feedback verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "status_truth",
+      "title": "Progress and status truth",
+      "acceptance": "Percentages, pieces and pending/success/error signals agree with actual state.",
+      "levels": {
+        "1": "Absent or false state",
+        "2": "Misleading completion",
+        "3": "Mostly correct",
+        "4": "Success/error/paused/checking truthful",
+        "5": "Relevant states and zero/invalid counters verified; no misleading success"
+      },
+      "weight": 5
+    },
+    {
+      "id": "settings",
+      "title": "Settings and progressive disclosure",
+      "acceptance": "Common preferences are simple; advanced paths remain; save/cancel/reopen are predictable.",
+      "levels": {
+        "1": "Settings inaccessible",
+        "2": "Save/cancel unreliable",
+        "3": "Common settings work",
+        "4": "Common/advanced and persistence work",
+        "5": "Save/cancel/reopen/error and preference persistence verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "keyboard_access",
+      "title": "Keyboard, focus and labels",
+      "acceptance": "Core tasks have keyboard routes, visible focus, labels and usable targets without traps.",
+      "levels": {
+        "1": "Core tasks inaccessible",
+        "2": "Unlabeled/trapped controls",
+        "3": "Main keyboard routes",
+        "4": "Core focus/label/target checks pass",
+        "5": "Core journeys and modal/menu focus restoration verified; native input limits stated"
+      },
+      "weight": 5
+    },
+    {
+      "id": "recovery",
+      "title": "Errors, cancellation and destructive safety",
+      "acceptance": "Explain next steps; cancel commits nothing; destructive choices reset before reuse.",
+      "levels": {
+        "1": "Loss or no recovery",
+        "2": "Unsafe cancel/destructive state",
+        "3": "Basic confirmation/errors",
+        "4": "Cancel/reset/error recovery works",
+        "5": "Failure/retry/cancel/backdrop/Escape and destructive-state reset verified"
+      },
+      "weight": 5
+    },
+    {
+      "id": "visual_fidelity",
+      "title": "Enochian fidelity and hierarchy",
+      "acceptance": "Original elements match functions; both finishes are legible without clipping/material drift.",
+      "levels": {
+        "1": "Elements replaced/broken",
+        "2": "Major mismatch",
+        "3": "Recognizable with gaps",
+        "4": "Correct mapping and readable finishes",
+        "5": "Reference plus real-view sizing, contrast, focus and overflow checks pass"
+      },
+      "weight": 5
+    },
+    {
+      "id": "lifecycle",
+      "title": "Install, defaults and continuity",
+      "acceptance": "Install/update/default/restart/background behavior preserve records with a recovery route.",
+      "levels": {
+        "1": "Cannot install/launch",
+        "2": "Updates lose data/defaults",
+        "3": "Main install works",
+        "4": "Install/default/restart preserve data",
+        "5": "Upgrade/restart/default/background/failure recovery verified in isolation"
+      },
+      "weight": 5
+    }
+  ],
+  "rules": [
+    "Score each of 20 criteria with integer 1–5; sum is out of 100.",
+    "Freeze anchors/weights before the loop. Do not omit difficult journeys or award points for test count alone.",
+    "Every score needs a reason and evidence/method. Unverified requirements remain gaps, not assumed passes.",
+    "Report observed UI separately from API/source/mock/format checks. Backend-only evidence cannot establish excellent interaction quality.",
+    "Pass requires >=95 total, every criterion >=4, mandatory journeys passed and no unresolved critical/high defect.",
+    "Self-evaluation is not independent expert review. Preserve unsuccessful runs and remaining limits.",
+    "Repeat: evaluate → identify gaps → bounded fixes → build/test → drive relevant journeys → rescore unchanged rubric. Stop at the gate or a concrete validation blocker."
+  ],
+  "mandatory_journeys": [
+    "open_local",
+    "playback",
+    "playlist_create_edit",
+    "playlist_save_reload",
+    "torrent_add_control",
+    "torrent_play_show_file",
+    "settings_cancel",
+    "recovery"
+  ]
+}

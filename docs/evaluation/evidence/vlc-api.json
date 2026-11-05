@@ -1,0 +1,108 @@
+{
+  "cases": [
+    {
+      "name": "obsidian-standard real playback",
+      "passed": true,
+      "detail": "Skins2 launcher selected; real MPEG-4/AAC media entered Playing.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "transport and paused seeking",
+      "passed": true,
+      "detail": "Pause \u2192 seek to 10s \u2192 resume; actual state and position read back.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "seek boundaries",
+      "passed": true,
+      "detail": "Start and near-end seeks read back correctly.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "volume commands only",
+      "passed": true,
+      "detail": "Dummy output readbacks 0, 0; device volume and audibility remain unverified.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "playback rate",
+      "passed": true,
+      "detail": "1.25\u00d7 \u2192 1\u00d7 read back correctly.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "fullscreen round trip",
+      "passed": true,
+      "detail": "Full-screen state toggled and returned without losing playback.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "playlist create and append",
+      "passed": true,
+      "detail": "Three local files, spaces and Unicode, retained their exact URIs/order.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "playlist selection and navigation",
+      "passed": true,
+      "detail": "Selected second item; Next/Previous read back the intended IDs.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "playlist reorder core",
+      "passed": true,
+      "detail": "Real VLC playlist.move reordered items; native Manage drag gesture remains a separate UI check.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "playlist sort and remove",
+      "passed": true,
+      "detail": "Sorted by title and removed only the second item; source media remain on disk.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "playlist file import round trip",
+      "passed": true,
+      "detail": "M3U8 snapshot reopened in order. File was written by this harness; native Save dialog/export was not driven.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "network URL playback and seek",
+      "passed": true,
+      "detail": "Local range-enabled HTTP media played and sought to 20s.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "missing-file engine recovery",
+      "passed": true,
+      "detail": "Playback recovered after a missing-file input; no native error-dialog interaction claimed.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "ivory-standard real playback",
+      "passed": true,
+      "detail": "Skins2 launcher selected; real MPEG-4/AAC media entered Playing.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "obsidian-compact real playback",
+      "passed": true,
+      "detail": "Skins2 launcher selected; real MPEG-4/AAC media entered Playing.",
+      "method": "VLC loopback HTTP API"
+    },
+    {
+      "name": "ivory-compact real playback",
+      "passed": true,
+      "detail": "Skins2 launcher selected; real MPEG-4/AAC media entered Playing.",
+      "method": "VLC loopback HTTP API"
+    }
+  ],
+  "passed": true,
+  "failure": null,
+  "native_gui_clicks_observed": false,
+  "limits": [
+    "Native file-picker, drag/reorder and Save dialog were not driven.",
+    "Audio output used dummy; device volume and physical audibility were not verified."
+  ],
+  "mandatory_native_save_export_verified": false
+}

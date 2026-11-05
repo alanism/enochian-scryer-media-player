@@ -1,0 +1,179 @@
+{
+  "rubric_version": "1.0",
+  "stage": "baseline",
+  "revision": "79daa648d533a934a875d1de302e75fa5701d919",
+  "scores": [
+    {
+      "id": "grid",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "geometry",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "materials",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "depth",
+      "score": 3,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "type",
+      "score": 2,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "precision",
+      "score": 3,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "density",
+      "score": 3,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "interactivity",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "state",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "press",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "integration",
+      "score": 3,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "latency",
+      "score": 3,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "continuity",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "palette",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "contrast",
+      "score": 3,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "purpose",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "familiarity",
+      "score": 4,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "composition",
+      "score": 3,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "scale",
+      "score": 3,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "performance",
+      "score": 3,
+      "reason": "Conservative initial score from prior runtime/screenshots and source; expanded evidence is pending.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    }
+  ],
+  "mandatory_journeys": {
+    "open_local": false,
+    "playback": false,
+    "playlist_create_edit": false,
+    "playlist_save_reload": false,
+    "torrent_add_control": false,
+    "torrent_play_show_file": false,
+    "settings_cancel": false,
+    "recovery": false
+  },
+  "unresolved_high_severity": [],
+  "total": 69
+}

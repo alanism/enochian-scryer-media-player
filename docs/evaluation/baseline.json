@@ -1,0 +1,180 @@
+{
+  "rubric_version": "1.0",
+  "revision": "79daa648d533a934a875d1de302e75fa5701d919",
+  "stage": "baseline",
+  "assessment": "Conservative self-assessment from existing evidence and current source inspection; incomplete journeys remain gaps.",
+  "scores": [
+    {
+      "id": "first_run",
+      "score": 4,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "open_local",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "open_stream",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "transport",
+      "score": 4,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "seek",
+      "score": 4,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "media_adjustments",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "viewing",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "playlist_create",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "playlist_edit",
+      "score": 2,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "playlist_persist",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "torrent_add",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "transfer_control",
+      "score": 4,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "media_handoff",
+      "score": 4,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "locations",
+      "score": 4,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "status_truth",
+      "score": 4,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "settings",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "keyboard_access",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "recovery",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "visual_fidelity",
+      "score": 4,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    },
+    {
+      "id": "lifecycle",
+      "score": 3,
+      "reason": "Partial prior evidence; expand this journey before claiming the top anchor.",
+      "evidence": [
+        "docs/COUNCIL_REVIEW.md"
+      ]
+    }
+  ],
+  "mandatory_journeys": {
+    "open_local": false,
+    "playback": false,
+    "playlist_create_edit": false,
+    "playlist_save_reload": false,
+    "torrent_add_control": false,
+    "torrent_play_show_file": false,
+    "settings_cancel": false,
+    "recovery": false
+  },
+  "unresolved_high_severity": [],
+  "total": 67
+}

@@ -40,6 +40,14 @@ Cards now show the original Tape Deck **Play in VLC** key directly. Separate, la
 
 When updating an already running companion, use its **Stop transfers and service** launcher action before installing, then reopen the app. Transfer records persist across the restart.
 
+## Build plan and design evaluation
+
+Open [the HTML Kanban board](docs/build-board.html) locally to follow the work. It has expandable task cards, individual progress bars, an overall checklist percentage, and separate design scores. Serve `docs/` with `python3 -m http.server 19400 --bind 127.0.0.1 --directory docs` for live updates; opening the HTML directly shows its embedded snapshot. Task updates are made with `python3 tools/evaluation/plan.py TASK_ID --status working --completed N --note "Evidence or remaining work"`.
+
+[Iteration 1 evaluation and evidence](docs/evaluation/index.html) applies four frozen, 20-criterion, five-level rubrics. Current self-evaluations are Ryo Lu **77**, GMUNK **84**, Jayse Hansen **84**, and Satori **82** out of 100. The independent 95+ gates remain unmet: native VLC picker, playlist Save/export and control gestures still need direct desktop validation. No designer endorsement or independent expert review is claimed.
+
+This iteration enlarges the original player keys and labels, adds explicit Playlist/Sort/Manage routes, reviews each torrent in a multiple-file import, resets destructive choices on dismissal, uses MB/s limits, and preserves keyboard focus through dialogs and transfer controls. Standard player size is now 1040×812; compact is 832×650. Advanced native VLC dialogs remain Qt dialogs.
+
 ## Why two apps
 
 rqbit already streams files through range-enabled HTTP and prioritizes pieces requested by a player. Keeping transfers in a companion avoids tying download lifetime to a VLC window. The local bridge accepts a torrent/file choice and launches the installed Enochian VLC with the stream URL and matching finish. No public server or browser extension is needed.

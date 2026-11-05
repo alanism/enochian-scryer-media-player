@@ -1,0 +1,287 @@
+{
+  "id": "satori",
+  "version": "1.0",
+  "name": "Satori grid and layout — Enochian desktop evaluation",
+  "source_file": "The Satori Grid & Slide Layout Rubric.md",
+  "source_sha256": "98f5f68c6fc2b1b8ec2b6d44e87823772c7b4746fc8f6218fe8ca1b0a14623b7",
+  "attribution": "Project-specific adaptation of a supplied reference; not an official rubric, endorsement or review by the named designer.",
+  "scope": "Apply cinematic/slide advice to real desktop utility, clarity, material fidelity, hierarchy and motion. Existing user elements and usability requirements take priority over film-specific prescriptions. No fictional data or decorative motion is required for points.",
+  "target": 95,
+  "minimum_criterion": 4,
+  "levels": {
+    "1": "Absent or contradicts the task.",
+    "2": "Partially present, with a major visible or functional gap.",
+    "3": "Usable on the main path, with clear consistency or coverage gaps.",
+    "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+    "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+  },
+  "criteria": [
+    {
+      "id": "canvas",
+      "title": "Spatial canvas and anchors",
+      "acceptance": "Primary groups align to intentional canvas axes rather than arbitrary positions.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "grid",
+      "title": "Modular grid",
+      "acceptance": "Explicit columns or equivalent modules organize dominant and supporting groups.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "echo",
+      "title": "Spacing and margin repetition",
+      "acceptance": "Repeated margins and gutters create consistent spatial echoes.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "negative",
+      "title": "Macro/micro negative space",
+      "acceptance": "Major zones breathe and dense local information remains readable.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "ramp",
+      "title": "Typographic ramp",
+      "acceptance": "A documented proportional type ramp distinguishes title, label, body and data.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "weights",
+      "title": "Font and weight pairing",
+      "acceptance": "One coherent family and meaningful weight/size differences identify roles.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "focal",
+      "title": "Focal primacy",
+      "acceptance": "The task-relevant primary action or media object has clear primacy.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "choreography",
+      "title": "Eye choreography",
+      "acceptance": "Entry, context and action follow a predictable reading path.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "friction",
+      "title": "Friction and flow zones",
+      "acceptance": "Extra friction is reserved for consequential choices; routine tasks flow.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "scales",
+      "title": "Scale checkpoints",
+      "acceptance": "Real supported desktop/compact/narrow sizes are checked for disappearing detail and overflow.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "intention",
+      "title": "Intention test",
+      "acceptance": "The screen purpose and first action can be identified quickly without instructions.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "relief",
+      "title": "Cognitive relief",
+      "acceptance": "Calm surfaces and grouped controls prevent competing attention demands.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "active_space",
+      "title": "Active negative space",
+      "acceptance": "Spacing communicates grouping and the next action, not just decoration.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "rhythm",
+      "title": "Temporal flow rhythm",
+      "acceptance": "The open/play/edit/save journey preserves context through its transitions.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "isolation",
+      "title": "Contrast and isolation",
+      "acceptance": "Important actions/status are isolated through existing contrast and scale roles.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "harmonics",
+      "title": "Spacing harmonics",
+      "acceptance": "Related layout areas repeat the same spacing vocabulary.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "proportionality",
+      "title": "Type proportionality",
+      "acceptance": "Type size/leading remain deliberate and legible across all supported views.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "platform",
+      "title": "Aspect and platform fluency",
+      "acceptance": "Layouts suit an Omarchy desktop, compact window and supported browser widths.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "psychology",
+      "title": "Shape-role clarity",
+      "acceptance": "Existing circles, caps, sliders and transport glyphs consistently identify their jobs.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    },
+    {
+      "id": "disruption",
+      "title": "Controlled grid emphasis",
+      "acceptance": "The primary transport/media area gains intentional emphasis without arbitrary rotation or broken alignment.",
+      "levels": {
+        "1": "Absent or contradicts the task.",
+        "2": "Partially present, with a major visible or functional gap.",
+        "3": "Usable on the main path, with clear consistency or coverage gaps.",
+        "4": "Strong, verified for the main path; a bounded polish or validation gap remains.",
+        "5": "The criterion acceptance is verified across relevant views/states with no known material gap."
+      },
+      "weight": 5
+    }
+  ],
+  "rules": [
+    "Use the same evidence and mandatory journeys as the frozen Ryo rubric.",
+    "Score twenty criteria 1–5, total 100. All criteria must reach at least 4 and this lens must independently reach 95.",
+    "Preserve original Enochian elements; do not redesign controls to imitate the source designer.",
+    "Backend-only evidence cannot establish excellent interaction quality. Record evidence methods and uncertain areas.",
+    "The Satori 10 architectural layers plus 10 performance criteria are normalized to twenty five-point criteria; slide-only sizes and ratios are adapted to supported application views."
+  ]
+}

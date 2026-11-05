@@ -10,7 +10,7 @@ DIST=ROOT.parent
 FONT=ROOT/'IBMPlexMono-Regular.ttf'
 CSS=(ROOT/'reference/controls.css').read_text()
 ATLAS=(ROOT/'reference/atlas.html').read_text()
-W,H=1040,760
+W,H=1040,812
 KEYS={
  'previous':('rew','Previous item'), 'play':('play','Play'),
  'next':('ff','Next item'), 'stop':('stop','Stop'), 'pause':('pause','Pause')}
@@ -37,7 +37,7 @@ class Sheet:
   self.x+=w+4;self.rowh=max(h,self.rowh)
  def render(self,out):
   page=f'''<!doctype html><meta charset="utf-8"><style>@font-face{{font-family:"IBM Plex Mono";src:url("{FONT.as_uri()}")}}{CSS}
- html,body{{margin:0!important;background:transparent!important}}.asset{{position:absolute;overflow:hidden;background:transparent!important}} .asset *{{box-sizing:border-box;transition:none!important;animation:none!important}} .asset .tp{{width:100%;height:100%;max-width:none;padding:0;display:block;border-radius:0;box-shadow:none}} .asset .tp-key{{width:80px}} .asset:not(.asset-case) .tp{{background:transparent}} .asset .fx{{padding:0;border-radius:0;width:100%;height:100%;display:block;background:transparent}} .asset .cp{{background:transparent;display:block;padding:0;width:100%;height:100%;box-shadow:none;border-radius:0}} .asset .sq-btn{{width:64px}} .small{{position:absolute;left:8px;top:3px;transform:scale(.8);transform-origin:0 0}} .asset .hs{{width:100%;max-width:none;height:48px}} .asset .hs-th{{left:8px;top:24px}} .asset .hs-line{{left:0;right:0}} .asset .dial{{transform:scale(.5);transform-origin:0 0}} .asset .dial .dark-base,.asset .dial .dark-knob{{transition:none}} .asset .tp-display{{height:100%;width:100%}} .asset .tp-mini button{{height:30px}}
+ html,body{{margin:0!important;background:transparent!important}}.asset{{position:absolute;overflow:hidden;background:transparent!important}} .asset *{{box-sizing:border-box;transition:none!important;animation:none!important}} .asset .tp{{width:100%;height:100%;max-width:none;padding:0;display:block;border-radius:0;box-shadow:none}} .asset .tp-key{{width:80px}} .asset:not(.asset-case) .tp{{background:transparent}} .asset .fx{{padding:0;border-radius:0;width:100%;height:100%;display:block;background:transparent}} .asset .cp{{background:transparent;display:block;padding:0;width:100%;height:100%;box-shadow:none;border-radius:0}} .asset .sq-btn{{width:64px}} .utility{{position:absolute;left:3px;top:3px;transform:scale(1.4);transform-origin:0 0}} .transport{{position:absolute;left:8px;top:3px;transform:scale(1.25);transform-origin:0 0}} .asset .transport .tp-key{{width:64px}} .small{{position:absolute;left:8px;top:3px;transform:scale(.8);transform-origin:0 0}} .asset .hs{{width:100%;max-width:none;height:48px}} .asset .hs-th{{left:8px;top:24px}} .asset .hs-line{{left:0;right:0}} .asset .dial{{transform:scale(.5);transform-origin:0 0}} .asset .dial .dark-base,.asset .dial .dark-knob{{transition:none}} .asset .tp-display{{height:100%;width:100%}} .asset .tp-mini button{{height:30px}}
  </style>{''.join(self.parts)}'''
   src=out/'sheet.html';src.write_text(page)
   height=self.y+self.rowh+4
@@ -58,13 +58,13 @@ def assets(finish,out):
    key=original_key(kind)
    if state in ['down','on']:key=key.replace('class="tp-key"','class="tp-key" data-down="true"')
    if state=='on':key=key.replace('class="tp-led"','class="tp-led on"')
-   s.add(name+'-'+state,80,90,f'<div class="tp" data-finish="{finish}"><div class="small">{key}</div></div>')
+   s.add(name+'-'+state,96,148,f'<div class="tp" data-finish="{finish}"><div class="transport">{key}</div></div>')
  # Existing compact Drum Machine keys, relabelled for application actions.
- labels={'open':'OPEN','queue':'QUEUE','eq':'EQ','full':'FULL','menu':'MENU','close':'CLOSE','mute':'MUTE','repeat':'REPEAT','shuffle':'SHUFFLE','add':'ADD','remove':'REMOVE','save':'SAVE','network':'STREAM','min':'MIN','restore':'BACK'}
+ labels={'open':'OPEN','queue':'PLAYLIST','eq':'EQ','full':'FULL','menu':'MENU','close':'CLOSE','mute':'MUTE','repeat':'REPEAT','shuffle':'SHUFFLE','add':'ADD','remove':'REMOVE','save':'SAVE','sort':'SORT','manage':'MANAGE','network':'STREAM','min':'MIN','restore':'BACK'}
  for name,label in labels.items():
   for state in ['up','down','on']:
    attr='data-down="true"' if state=='down' else 'aria-pressed="true"' if state=='on' else ''
-   s.add(name+'-'+state,80,52,f'<div class="cp" data-finish="{finish}"><button class="sq-btn small" {attr}>{label}</button></div>')
+   s.add(name+'-'+state,96,76,f'<div class="cp" data-finish="{finish}"><button class="sq-btn utility" {attr}>{label}</button></div>')
  # Original Slider 01 thumb and track, with unaltered ribbing and shadows.
  s.add('seek-thumb',82,48,f'<div class="fx" data-finish="{finish}"><div class="hs trk"><span class="hs-th"><i></i><i></i><i></i><i></i><i></i></span></div></div>','compact')
  s.add('seek-track',992,48,f'<div class="fx" data-finish="{finish}"><div class="hs trk"><span class="hs-line"></span></div></div>','compact')
@@ -72,7 +72,7 @@ def assets(finish,out):
  for i in range(101):
   s.add(f'dial-{i}',110,110,f'<div class="dial" data-finish="{finish}"><svg class="ticks" viewBox="0 0 220 220">{ticks()}</svg><div class="dark-base"></div><div class="dark-knob" style="transform:rotate({-135+i*2.7}deg)"><div class="dash"></div></div></div>','foundation')
  s.add('display',312,104,'<div class="tp-display"></div>')
- s.add('case',1040,760,f'<div class="tp" data-finish="{finish}"></div>')
+ s.add('case',W,H,f'<div class="tp" data-finish="{finish}"></div>')
  s.render(out)
  seq=Image.new('RGBA',(110,11110))
  for i in range(101):seq.paste(Image.open(out/f'dial-{i}.png'),(0,i*110))
@@ -89,9 +89,9 @@ def xml(finish,out):
  dark=finish=='obsidian'; ink='#f2f2f4' if dark else '#1d1d1f'; sub='#9a9aa0' if dark else '#737379'; case='#121214' if dark else '#ededf0'
  root=ET.Element('Theme',version='2.0',tooltipfont='defaultfont',magnet='0')
  E(root,'ThemeInfo',name=f'Enochian VLC · {finish.title()}',author='Enochian',webpage='https://uiux-nonhumanintelligence.web.app/UIUX')
- for size,name in [(11,'defaultfont'),(11,'mono'),(14,'title'),(22,'time')]:E(root,'Font',id=name,file=FONT.name,size=size)
+ for size,name in [(12,'defaultfont'),(12,'mono'),(16,'title'),(24,'time')]:E(root,'Font',id=name,file=FONT.name,size=size)
  names=['case','display','seek-track','seek-thumb','eq-thumb','eq-track','volume']
- names += [f'{k}-{st}' for k in list(KEYS)+['open','queue','eq','full','menu','close','mute','repeat','shuffle','add','remove','save','network','min','restore'] for st in ['up','down','on']]
+ names += [f'{k}-{st}' for k in list(KEYS)+['open','queue','eq','full','menu','close','mute','repeat','shuffle','add','remove','save','sort','manage','network','min','restore'] for st in ['up','down','on']]
  for name in names:E(root,'Bitmap',id=name,file='assets/'+name+'.png',alphacolor='#FF00FF')
  def text(p,x,y,t,font='mono',color=ink,width=0,anchor=None,**kw):
   a=dict(x=x,y=y,text=t,font=font,color=color,width=width,**kw)
@@ -109,14 +109,14 @@ def xml(finish,out):
  l=E(main,'Layout',id='player',width=W,height=H,minwidth=W,minheight=H)
  E(l,'Image',image='case',resize='scale',rightbottom='rightbottom',action='move',action2='main.maximize()')
  text(l,30,24,'ENOCHIAN','title');text(l,188,27,'VLC / MEDIA PLAYER',color=sub)
- button(l,'open',470,12,'dialogs.file()','Open media · Ctrl+O','righttop')
- button(l,'queue',550,12,'queue.show()','Open queue','righttop')
- button(l,'eq',630,12,'equalizerwin.show()','Open equalizer','righttop')
- button(l,'menu',710,12,'dialogs.popup()','VLC menu','righttop')
- button(l,'min',790,12,'vlc.minimize()','Minimize','righttop')
- button(l,'full',870,12,'vlc.fullscreen()','Video fullscreen (F)','righttop')
- button(l,'close',950,12,'vlc.quit()','Quit VLC','righttop')
- E(l,'Video',id='screen',x=24,y=76,width=992,height=436,rightbottom='rightbottom',autoresize='false',help='Drop a file to play · F fullscreen · Space play/pause')
+ button(l,'open',350,10,'dialogs.file()','Open media · Ctrl+O','righttop')
+ button(l,'queue',448,10,'queue.show()','Create or edit a playlist','righttop')
+ button(l,'eq',546,10,'equalizerwin.show()','Open equalizer','righttop')
+ button(l,'menu',644,10,'dialogs.popup()','Tracks, subtitles, speed and preferences','righttop')
+ button(l,'min',742,10,'vlc.minimize()','Minimize','righttop')
+ button(l,'full',840,10,'vlc.fullscreen()','Video fullscreen (F)','righttop')
+ button(l,'close',938,10,'vlc.quit()','Quit VLC','righttop')
+ E(l,'Video',id='screen',x=24,y=96,width=992,height=416,rightbottom='rightbottom',autoresize='false',help='Drop files to play · F fullscreen · Space play/pause')
  # Bottom controls stay fixed in size while the video expands with the window.
  E(l,'Image',image='seek-track',x=24,y=526,lefttop='leftbottom',rightbottom='rightbottom',resize='scale')
  E(l,'Slider',id='seek',x=65,y=550,points='(0,0),(910,0)',up='seek-thumb',down='seek-thumb',over='seek-thumb',value='time',thickness=34,lefttop='leftbottom',rightbottom='rightbottom',tooltiptext='$T / $D')
@@ -127,36 +127,38 @@ def xml(finish,out):
  text(l,40,675,'PLAYING',color='#3ccf7a',anchor='leftbottom',visible='vlc.isPlaying')
  text(l,40,675,'PAUSED',color='#F4A934',anchor='leftbottom',visible='vlc.isPaused')
  text(l,40,675,'READY · OPEN OR DROP MEDIA',color='#9a9aa0',anchor='leftbottom',visible='vlc.isStopped')
- button(l,'previous',352,600,'playlist.previous()','Previous item (P) · original REW key','leftbottom')
- check(l,'play',432,600,'vlc.isPlaying','vlc.play()','vlc.pause()','Play / pause (Space)','leftbottom')
- check(l,'pause',512,600,'vlc.isPaused','vlc.pause()','vlc.play()','Pause / resume','leftbottom')
- button(l,'stop',592,600,'vlc.stop()','Stop (S)','leftbottom')
- button(l,'next',672,600,'playlist.next()','Next item (N) · original FF key','leftbottom')
+ button(l,'previous',352,584,'playlist.previous()','Previous item (P) · original REW key','leftbottom')
+ check(l,'play',448,584,'vlc.isPlaying','vlc.play()','vlc.pause()','Play / pause (Space)','leftbottom')
+ check(l,'pause',544,584,'vlc.isPaused','vlc.pause()','vlc.play()','Pause / resume','leftbottom')
+ button(l,'stop',640,584,'vlc.stop()','Stop (S)','leftbottom')
+ button(l,'next',736,584,'playlist.next()','Next item (N) · original FF key','leftbottom')
  E(l,'RadialSlider',id='volume-knob',x=874,y=584,sequence='volume',nbimages=101,minangle=45,maxangle=315,value='volume',lefttop='rightbottom',rightbottom='rightbottom',tooltiptext='Volume $V%')
  text(l,887,704,'VOL $V%',color=sub,anchor='rightbottom',width=110)
- check(l,'shuffle',352,702,'playlist.isRandom','playlist.setRandom(true)','playlist.setRandom(false)','Shuffle queue','leftbottom')
- check(l,'repeat',432,702,'playlist.isLoop','playlist.setLoop(true)','playlist.setLoop(false)','Loop queue','leftbottom')
- check(l,'mute',512,702,'vlc.isMute','vlc.mute()','vlc.mute()','Mute / unmute (M)','leftbottom')
- button(l,'network',592,702,'dialogs.net()','Open network stream','leftbottom')
+ check(l,'shuffle',352,728,'playlist.isRandom','playlist.setRandom(true)','playlist.setRandom(false)','Shuffle playlist','leftbottom')
+ check(l,'repeat',448,728,'playlist.isLoop','playlist.setLoop(true)','playlist.setLoop(false)','Loop playlist','leftbottom')
+ check(l,'mute',544,728,'vlc.isMute','vlc.mute()','vlc.mute()','Mute / unmute (M)','leftbottom')
+ button(l,'network',640,728,'dialogs.net()','Open network stream','leftbottom')
  text(l,30,724,'$H',color=sub,width=300,anchor='leftbottom')
  # The queue is skinned as a separate window so the video retains usable space.
  q=E(root,'Window',id='queue',visible='false',x=150,y=120)
- ql=E(q,'Layout',id='queue-layout',width=620,height=540,minwidth=620,minheight=540)
+ ql=E(q,'Layout',id='queue-layout',width=620,height=600,minwidth=620,minheight=600)
  E(ql,'Image',image='case',resize='scale',rightbottom='rightbottom',action='move')
- text(ql,26,26,'PLAY QUEUE','title');button(ql,'close',528,12,'queue.hide()','Close queue','righttop')
- E(ql,'Playlist',id='mediaqueue',x=24,y=76,width=572,height=370,font='title',fgcolor=ink,playcolor='#CC0000',bgcolor1=case,bgcolor2=case,selcolor='#333337' if dark else '#d4d4d8',rightbottom='rightbottom')
- button(ql,'add',16,470,'playlist.add()','Add media','leftbottom')
- button(ql,'remove',96,470,'playlist.del()','Remove selected item','leftbottom')
- button(ql,'save',176,470,'playlist.save()','Save playlist','leftbottom')
- button(ql,'open',256,470,'playlist.load()','Load playlist','leftbottom')
- text(ql,32,516,'Double-click to play · Delete removes selected',color=sub,anchor='leftbottom')
+ text(ql,26,26,'PLAYLIST','title');button(ql,'close',512,10,'queue.hide()','Close playlist','righttop')
+ E(ql,'Playlist',id='mediaqueue',x=24,y=96,width=572,height=370,font='title',fgcolor=ink,playcolor='#CC0000',bgcolor1=case,bgcolor2=case,selcolor='#333337' if dark else '#d4d4d8',rightbottom='rightbottom')
+ button(ql,'add',16,486,'playlist.add()','Add files to this playlist','leftbottom')
+ button(ql,'remove',114,486,'playlist.del()','Remove selected item; keep the file','leftbottom')
+ button(ql,'save',212,486,'playlist.save()','Save a named playlist','leftbottom')
+ button(ql,'open',310,486,'playlist.load()','Reopen a saved playlist','leftbottom')
+ button(ql,'sort',408,486,'playlist.sort()','Sort playlist by title','leftbottom')
+ button(ql,'manage',506,486,'dialogs.playlist()','Advanced playlist editor: drag to reorder','leftbottom')
+ text(ql,24,578,'Add files · Double-click to play · Manage to reorder',color=sub,anchor='leftbottom')
  # A native equalizer with original Slider 01 caps; no simulated meters.
  eq=E(root,'Window',id='equalizerwin',visible='false',x=150,y=170)
  el=E(eq,'Layout',id='equalizer-layout',width=820,height=390,minwidth=820,maxwidth=820,minheight=390,maxheight=390)
  E(el,'Image',image='case',resize='scale',rightbottom='rightbottom',action='move')
- text(el,26,26,'EQUALIZER','title');button(el,'close',728,12,'equalizerwin.hide()','Close equalizer')
+ text(el,26,26,'EQUALIZER','title');button(el,'close',712,10,'equalizerwin.hide()','Close equalizer')
  check(el,'eq',24,76,'equalizer.isEnabled','equalizer.enable()','equalizer.disable()','Enable / disable equalizer')
- text(el,28,140,'+20 dB',color=sub);text(el,28,240,'−20 dB',color=sub)
+ text(el,28,160,'+20 dB',color=sub);text(el,28,240,'−20 dB',color=sub)
  for i,label in enumerate(['PRE','60','170','310','600','1K','3K','6K','12K','14K','16K']):
   x=122+i*60
   E(el,'Image',image='eq-track',x=x-2,y=122)
@@ -189,7 +191,7 @@ def preview(skin,root,finish):
  from PIL import ImageDraw, ImageFont
  dark=finish=='obsidian';ink='#f2f2f4' if dark else '#1d1d1f'
  im=Image.open(skin/'assets/case.png').convert('RGBA');draw=ImageDraw.Draw(im)
- fonts={n:ImageFont.truetype(str(FONT),s) for n,s in [('mono',11),('title',14),('time',22)]}
+ fonts={n:ImageFont.truetype(str(FONT),s) for n,s in [('mono',12),('title',16),('time',24)]}
  layout=root.find('Window/Layout')
  for e in layout:
   if e.tag=='Image' and e.get('image')!='case':
@@ -199,7 +201,7 @@ def preview(skin,root,finish):
   if e.tag=='Text' and '$' not in e.get('text','') and not e.get('visible'):
    draw.text((int(e.get('x')),int(e.get('y'))-2),e.get('text'),font=fonts[e.get('font')],fill=e.get('color',ink))
  # Video is a neutral empty stage, not a fabricated film or fake media library.
- draw.rectangle((24,76,1015,511),fill='#09090a')
+ draw.rectangle((24,96,1015,511),fill='#09090a')
  draw.text((443,250),'ENOCHIAN',font=fonts['time'],fill='#e9e9eb')
  draw.text((350,293),'OPEN A FILE OR DROP YOUR MEDIA HERE',font=fonts['mono'],fill='#87878e')
  for s,x,y,f,c in [('No media loaded',40,600,'mono','#f2f2f4'),('00:00',40,626,'time','#CC0000'),('/ 00:00',206,638,'mono','#9a9aa0'),('READY',40,673,'mono','#9a9aa0'),('VOL 50%',887,702,'mono',ink)]:draw.text((x,y),s,font=fonts[f],fill=c)

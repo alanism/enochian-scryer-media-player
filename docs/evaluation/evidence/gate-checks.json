@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Reject top grades supported only by API evidence",
+    "passed": true
+  },
+  {
+    "name": "Reject missing criteria",
+    "passed": true
+  },
+  {
+    "name": "A 100-point total cannot override unverified mandatory journeys",
+    "passed": true
+  },
+  {
+    "name": "Reject a mismatched frozen-rubric hash",
+    "passed": true
+  }
+]

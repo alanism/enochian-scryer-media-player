@@ -1,0 +1,80 @@
+{
+  "evaluated_at": "2026-11-05T10:35:41.038960+00:00",
+  "results": [
+    {
+      "rubric": "ryo",
+      "total": 77,
+      "target": 95,
+      "weak_criteria": [
+        "open_local",
+        "open_stream",
+        "media_adjustments",
+        "playlist_persist"
+      ],
+      "unverified_journeys": [
+        "open_local",
+        "playback",
+        "playlist_create_edit",
+        "playlist_save_reload",
+        "recovery"
+      ],
+      "unresolved_high_severity": [],
+      "passed": false,
+      "scorecard": "docs/evaluation/iteration-1-ryo.json"
+    },
+    {
+      "rubric": "gmunk",
+      "total": 84,
+      "target": 95,
+      "weak_criteria": [],
+      "unverified_journeys": [
+        "open_local",
+        "playback",
+        "playlist_create_edit",
+        "playlist_save_reload",
+        "recovery"
+      ],
+      "unresolved_high_severity": [],
+      "passed": false,
+      "scorecard": "docs/evaluation/iteration-1-gmunk.json"
+    },
+    {
+      "rubric": "jayse",
+      "total": 84,
+      "target": 95,
+      "weak_criteria": [
+        "playlist"
+      ],
+      "unverified_journeys": [
+        "open_local",
+        "playback",
+        "playlist_create_edit",
+        "playlist_save_reload",
+        "recovery"
+      ],
+      "unresolved_high_severity": [],
+      "passed": false,
+      "scorecard": "docs/evaluation/iteration-1-jayse.json"
+    },
+    {
+      "rubric": "satori",
+      "total": 82,
+      "target": 95,
+      "weak_criteria": [
+        "friction"
+      ],
+      "unverified_journeys": [
+        "open_local",
+        "playback",
+        "playlist_create_edit",
+        "playlist_save_reload",
+        "recovery"
+      ],
+      "unresolved_high_severity": [],
+      "passed": false,
+      "scorecard": "docs/evaluation/iteration-1-satori.json"
+    }
+  ],
+  "passed": false,
+  "kind": "Evidence-backed self-evaluation; no independent expert endorsement"
+}

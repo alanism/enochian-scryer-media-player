@@ -1,0 +1,439 @@
+{
+  "rubric": "gmunk",
+  "rubric_version": "1.0",
+  "revision": "working tree after 79daa648d533a934a875d1de302e75fa5701d919; iteration 1",
+  "assessment": "Evidence-backed self-evaluation after bounded fixes. Not an independent review. Native desktop interaction gaps prevent release-gate completion. No rubric anchors changed.",
+  "scores": [
+    {
+      "id": "grid",
+      "score": 4,
+      "reason": "Player, playlist and companion groups use explicit shared axes; Qt advanced dialogs remain outside the shared grid.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "geometry",
+      "score": 5,
+      "reason": "Original caps, knob, slider and card geometry retained; only uniform scale, labels and composition changed.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "materials",
+      "score": 5,
+      "reason": "Source material rules match the rendered Ivory/Obsidian controls and packaged skin artwork.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "depth",
+      "score": 4,
+      "reason": "Real controls preserve original bevel/shadow states; native hover/pressed-state coverage remains partial.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "type",
+      "score": 4,
+      "reason": "Enlarged player keys and fonts improve readability; compact labels and native dialogs need direct reading checks.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "precision",
+      "score": 4,
+      "reason": "Skin DTD, references and image geometry pass; fractional scaling and auxiliary-window pixel inspection remain.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "density",
+      "score": 4,
+      "reason": "Clear media/transfer separation at 1280px and wrapping at 445px; native playlist density needs observation.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "interactivity",
+      "score": 4,
+      "reason": "Controls map to real engine actions; native pointer/dial and drag gestures remain unobserved.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "state",
+      "score": 4,
+      "reason": "True complete/paused/downloading and finish selection observed; native transport lamps need direct observation.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "press",
+      "score": 4,
+      "reason": "Original physical key states retained; exhaustive press/release screenshots for native controls remain.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "integration",
+      "score": 4,
+      "reason": "Real media playback and live torrent state operate behind the UI; native video-fit capture remains.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "latency",
+      "score": 4,
+      "reason": "Browser actions return visible states and busy labels; no quantitative latency benchmark was claimed.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "continuity",
+      "score": 4,
+      "reason": "Focus returns after transfer and modal actions; native window transitions and suspend remain.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "palette",
+      "score": 5,
+      "reason": "Both existing palettes remain exact source definitions with selective real-state accents.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "contrast",
+      "score": 4,
+      "reason": "Both finishes inspected on the real browser at two widths; native display/high-DPI contrast remains.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "purpose",
+      "score": 4,
+      "reason": "Meters report real values and utilities serve named actions; advanced Qt surfaces are less cohesive.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "familiarity",
+      "score": 5,
+      "reason": "Tape Deck controls operate media and square utility keys operate transfer/file commands consistently.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "composition",
+      "score": 4,
+      "reason": "Both finishes and two widths share grouping; advanced native dialogs remain a visible exception.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "scale",
+      "score": 4,
+      "reason": "445px companion and four packaged player sizes checked; fractional scaling and multiple monitors remain.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "performance",
+      "score": 4,
+      "reason": "Production build and real interactions pass; no stress, long-session or frame-time benchmark.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    }
+  ],
+  "mandatory_journeys": {
+    "open_local": {
+      "passed": false,
+      "method": "api",
+      "note": "Single/multiple exact URI playback passed; native picker/drop not observed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "playback": {
+      "passed": false,
+      "method": "api",
+      "note": "All four skins and real transport/seek/fullscreen passed; native click and audio checks remain.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "playlist_create_edit": {
+      "passed": false,
+      "method": "api",
+      "note": "Core create/select/reorder/sort/remove passed; native Manage drag not observed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "playlist_save_reload": {
+      "passed": false,
+      "method": "format",
+      "note": "Harness-written M3U8 imported; native Save export not observed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "torrent_add_control": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Actual browser file/link imports, sequential review, pause/resume and decimal limits passed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "torrent_play_show_file": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Prior v0.2 observed UI and real-player/reveal evidence remains applicable to unchanged bridge paths; context-menu access rechecked.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "settings_cancel": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Saved limits, read back, edited/canceled and read prior values; modal keyboard return and destructive resets passed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "recovery": {
+      "passed": false,
+      "method": "observed-ui",
+      "note": "Companion invalid-link correction/reset passed; native missing-file dialog interaction remains unverified.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    }
+  },
+  "unresolved_high_severity": []
+}

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { TorrentListItem, TorrentStats } from "../../api-types";
 import { APIContext } from "../../context";
 import { Button } from "./Button";
@@ -16,6 +16,13 @@ export const TorrentActions: React.FC<{
 
   let [disabled, setDisabled] = useState<boolean>(false);
   let [deleting, setDeleting] = useState<boolean>(false);
+  const actionsRef = useRef<HTMLDivElement>(null);
+
+  const restoreActionFocus = () => {
+    if (document.activeElement === document.body) {
+      actionsRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+    }
+  };
 
   const refreshTorrents = useTorrentStore((state) => state.refreshTorrents);
   const openDetailsModal = useUIStore((state) => state.openDetailsModal);
@@ -29,6 +36,7 @@ export const TorrentActions: React.FC<{
   const API = useContext(APIContext);
 
   const unpause = () => {
+    const hadFocus = actionsRef.current?.contains(document.activeElement);
     setDisabled(true);
     API.start(id)
       .then(
@@ -42,10 +50,14 @@ export const TorrentActions: React.FC<{
           });
         },
       )
-      .finally(() => setDisabled(false));
+      .finally(() => {
+        setDisabled(false);
+        if (hadFocus) requestAnimationFrame(restoreActionFocus);
+      });
   };
 
   const pause = () => {
+    const hadFocus = actionsRef.current?.contains(document.activeElement);
     setDisabled(true);
     API.pause(id)
       .then(
@@ -59,7 +71,10 @@ export const TorrentActions: React.FC<{
           });
         },
       )
-      .finally(() => setDisabled(false));
+      .finally(() => {
+        setDisabled(false);
+        if (hadFocus) requestAnimationFrame(restoreActionFocus);
+      });
   };
 
   const startDeleting = () => {
@@ -74,20 +89,16 @@ export const TorrentActions: React.FC<{
 
   return (
     <div
+      ref={actionsRef}
       className="en-transfer-actions"
       role="group"
       aria-label="Transfer controls"
       data-enochian-finish
       data-finish={document.documentElement.dataset.finish}
     >
-      {canUnpause && (
-        <Button onClick={unpause} disabled={disabled}>
-          Resume transfer
-        </Button>
-      )}
-      {canPause && (
-        <Button onClick={pause} disabled={disabled}>
-          Pause transfer
+      {(canUnpause || canPause) && (
+        <Button onClick={canUnpause ? unpause : pause} disabled={disabled}>
+          {canUnpause ? "Resume transfer" : "Pause transfer"}
         </Button>
       )}
       {canConfigure && (

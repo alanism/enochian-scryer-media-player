@@ -1,7 +1,6 @@
 import React from "react";
 import { Fieldset } from "../forms/Fieldset";
 import { FormInput } from "../forms/FormInput";
-import { formatBytes } from "../../helper/formatBytes";
 
 export interface RateLimitsTabProps {
   downloadBps: number | null | undefined;
@@ -9,17 +8,6 @@ export interface RateLimitsTabProps {
   onDownloadBpsChange: (value: number | null) => void;
   onUploadBpsChange: (value: number | null) => void;
 }
-
-const formatLimitHelp = (
-  bps: number | null | undefined,
-  label: string,
-): string => {
-  const value = bps ?? 0;
-  if (value > 0) {
-    return `Limit total ${label} speed to this number of bytes per second (current ${formatBytes(value)} per second)`;
-  }
-  return `Limit total ${label} speed to this number of bytes per second (currently disabled)`;
-};
 
 export const RateLimitsTab: React.FC<RateLimitsTabProps> = ({
   downloadBps,
@@ -30,26 +18,40 @@ export const RateLimitsTab: React.FC<RateLimitsTabProps> = ({
   return (
     <Fieldset>
       <FormInput
-        label="Download rate limit"
+        label="Download limit (MB/s)"
         name="download_bps"
         inputType="number"
-        value={downloadBps?.toString() ?? ""}
+        min={0}
+        step="any"
+        value={downloadBps ? String(downloadBps / 1_000_000) : ""}
+        placeholder="Unlimited"
         onChange={(e) => {
           const val = e.target.valueAsNumber;
-          onDownloadBpsChange(isNaN(val) || val <= 0 ? null : val);
+          onDownloadBpsChange(
+            !Number.isFinite(val) || val <= 0
+              ? null
+              : Math.round(val * 1_000_000),
+          );
         }}
-        help={formatLimitHelp(downloadBps, "download")}
+        help="Leave blank for unlimited download speed."
       />
       <FormInput
-        label="Upload rate limit"
+        label="Upload limit (MB/s)"
         name="upload_bps"
         inputType="number"
-        value={uploadBps?.toString() ?? ""}
+        min={0}
+        step="any"
+        value={uploadBps ? String(uploadBps / 1_000_000) : ""}
+        placeholder="Unlimited"
         onChange={(e) => {
           const val = e.target.valueAsNumber;
-          onUploadBpsChange(isNaN(val) || val <= 0 ? null : val);
+          onUploadBpsChange(
+            !Number.isFinite(val) || val <= 0
+              ? null
+              : Math.round(val * 1_000_000),
+          );
         }}
-        help={formatLimitHelp(uploadBps, "upload")}
+        help="Leave blank for unlimited upload speed."
       />
     </Fieldset>
   );

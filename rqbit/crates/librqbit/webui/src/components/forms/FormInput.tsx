@@ -6,6 +6,8 @@ export const FormInput: React.FC<{
   autoFocus?: boolean;
   name: string;
   inputType?: string;
+  min?: number;
+  step?: number | string;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
   placeholder?: string;
   help?: string;
@@ -21,6 +23,8 @@ export const FormInput: React.FC<{
   label,
   help,
   inputType,
+  min,
+  step,
   placeholder,
 }) => {
   return (
@@ -29,16 +33,24 @@ export const FormInput: React.FC<{
       <input
         autoFocus={autoFocus}
         type={inputType}
+        min={min}
+        step={step}
         className="block border border-divider rounded bg-transparent py-1.5 pl-2 focus:ring-0 focus:border-primary sm:leading-6"
         id={name}
         name={name}
+        aria-label={label || placeholder || name}
+        aria-describedby={help ? `${name}-help` : undefined}
         disabled={disabled}
         placeholder={placeholder}
         value={value}
         onKeyDown={onKeyDown}
         onChange={onChange}
       />
-      {help && <div className="text-sm text-secondary">{help}</div>}
+      {help && (
+        <div id={`${name}-help`} className="text-sm text-secondary">
+          {help}
+        </div>
+      )}
     </div>
   );
 };

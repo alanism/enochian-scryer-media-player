@@ -45,7 +45,7 @@ export const TabbedConfigModal: React.FC<TabbedConfigModalProps> = ({
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={isSaving ? undefined : onClose}
       title={title}
       className="sm:max-w-4xl"
     >
@@ -72,7 +72,7 @@ export const TabbedConfigModal: React.FC<TabbedConfigModalProps> = ({
       </ModalBody>
       <ModalFooter>
         {onClose && (
-          <Button variant="cancel" onClick={onClose}>
+          <Button variant="cancel" onClick={onClose} disabled={isSaving}>
             Cancel
           </Button>
         )}
@@ -82,7 +82,7 @@ export const TabbedConfigModal: React.FC<TabbedConfigModalProps> = ({
           </Button>
         )}
         <Button variant="primary" onClick={onSave} disabled={isSaving}>
-          {saveButtonText}
+          {isSaving ? "Saving…" : saveButtonText}
         </Button>
       </ModalFooter>
     </Modal>

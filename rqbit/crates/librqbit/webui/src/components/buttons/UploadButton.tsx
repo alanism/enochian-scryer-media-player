@@ -11,7 +11,7 @@ import { Button } from "./Button";
 export const UploadButton: React.FC<{
   onClick: () => void;
   data: string | File | null;
-  resetData: () => void;
+  resetData: (completed?: boolean) => void;
   children: ReactNode;
   className?: string;
 }> = ({ onClick, data, resetData, children, className }) => {
@@ -28,25 +28,30 @@ export const UploadButton: React.FC<{
       return;
     }
 
+    let cancelled = false;
     let t = setTimeout(async () => {
       setLoading(true);
       try {
         const response = await API.uploadTorrent(data, { list_only: true });
-        setListTorrentResponse(response);
+        if (!cancelled) setListTorrentResponse(response);
       } catch (e) {
-        setListTorrentError({
-          text: "Error listing torrent files",
-          details: e as ApiErrorDetails,
-        });
+        if (!cancelled)
+          setListTorrentError({
+            text: "Error listing torrent files",
+            details: e as ApiErrorDetails,
+          });
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     }, 0);
-    return () => clearTimeout(t);
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
   }, [data]);
 
-  const clear = () => {
-    resetData();
+  const clear = (completed?: boolean) => {
+    resetData(completed);
     setListTorrentError(null);
     setListTorrentResponse(null);
     setLoading(false);

@@ -1,0 +1,439 @@
+{
+  "rubric": "jayse",
+  "rubric_version": "1.0",
+  "revision": "working tree after 79daa648d533a934a875d1de302e75fa5701d919; iteration 1",
+  "assessment": "Evidence-backed self-evaluation after bounded fixes. Not an independent review. Native desktop interaction gaps prevent release-gate completion. No rubric anchors changed.",
+  "scores": [
+    {
+      "id": "purpose",
+      "score": 5,
+      "reason": "Visible media play and separate transfer utilities make the primary roles immediately legible in both finishes.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "state",
+      "score": 5,
+      "reason": "Real completed/partial/paused status pairs plain text with progress and contextual transfer actions.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "primary",
+      "score": 4,
+      "reason": "Tape Deck play is prominent with explicit transfer verbs; native playback-state visibility needs observation.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "sequence",
+      "score": 4,
+      "reason": "Link/file review and repeated imports follow a clear sequence; native open/save flow remains unverified.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "truth",
+      "score": 5,
+      "reason": "Synthetic real-engine cards show true completion and transferred bytes without fictional media or peer totals.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "accent",
+      "score": 4,
+      "reason": "Existing accent/state lamps are selective; native interaction-state captures remain partial.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "space",
+      "score": 4,
+      "reason": "Controls and cards retain distinct groups at 1280/445px; native playlist density remains.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "monochrome",
+      "score": 4,
+      "reason": "Both finishes keep readable hierarchy without relying solely on colored state; wider display checks remain.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "shape",
+      "score": 5,
+      "reason": "Media, transfer, knob and slider roles consistently reuse the original library forms.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "motion",
+      "score": 4,
+      "reason": "Busy/press feedback serves real actions; no unnecessary cinematic motion added. Long-session checks remain.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "reduced",
+      "score": 4,
+      "reason": "Existing reduced-motion behavior is preserved by source inspection; assistive preference testing remains.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "focus",
+      "score": 4,
+      "reason": "Modal loops, return focus, menu Escape and transfer toggle retention pass; native VLC paths remain.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "context",
+      "score": 4,
+      "reason": "Pause/resume changes with state and incomplete cards advertise streaming; boundary/error combinations remain.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "depth",
+      "score": 4,
+      "reason": "Files/Details, Menu and Manage expose depth without more main-panel keys; Qt integration remains.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "playlist",
+      "score": 3,
+      "reason": "Playlist, Sort and Manage labels improved; native create/edit/save story still lacks direct interaction evidence.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "identity",
+      "score": 4,
+      "reason": "UI names and real Unicode/space URIs preserved; duplicate-name/native picker cases remain.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "recovery",
+      "score": 4,
+      "reason": "Invalid-link alert/retry and safe dismissal are observed; native errors remain a gap.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "feedback",
+      "score": 4,
+      "reason": "Busy labels and true state readbacks are visible; native export success/failure remains unobserved.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "system",
+      "score": 5,
+      "reason": "Original component snapshots and shared adapters retain a consistent Enochian language across both apps.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    {
+      "id": "grounding",
+      "score": 4,
+      "reason": "Real engine/control checks ground the interface; native GUI/audio observations still limit the result.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source",
+        "generated-preview"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    }
+  ],
+  "mandatory_journeys": {
+    "open_local": {
+      "passed": false,
+      "method": "api",
+      "note": "Single/multiple exact URI playback passed; native picker/drop not observed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "playback": {
+      "passed": false,
+      "method": "api",
+      "note": "All four skins and real transport/seek/fullscreen passed; native click and audio checks remain.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "playlist_create_edit": {
+      "passed": false,
+      "method": "api",
+      "note": "Core create/select/reorder/sort/remove passed; native Manage drag not observed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "playlist_save_reload": {
+      "passed": false,
+      "method": "format",
+      "note": "Harness-written M3U8 imported; native Save export not observed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "torrent_add_control": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Actual browser file/link imports, sequential review, pause/resume and decimal limits passed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "torrent_play_show_file": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Prior v0.2 observed UI and real-player/reveal evidence remains applicable to unchanged bridge paths; context-menu access rechecked.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "settings_cancel": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Saved limits, read back, edited/canceled and read prior values; modal keyboard return and destructive resets passed.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    },
+    "recovery": {
+      "passed": false,
+      "method": "observed-ui",
+      "note": "Companion invalid-link correction/reset passed; native missing-file dialog interaction remains unverified.",
+      "evidence": [
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/vlc-api.json",
+        "docs/COUNCIL_REVIEW.md",
+        "docs/ENOCHIAN_CONTROL_MAP.md"
+      ]
+    }
+  },
+  "unresolved_high_severity": []
+}
