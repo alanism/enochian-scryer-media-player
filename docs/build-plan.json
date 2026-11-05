@@ -1,7 +1,7 @@
 {
   "title": "Enochian Scryer — build plan",
-  "updated": "2026-11-05T22:17:57.705078+07:00",
-  "phase": "v0.5.0 verified · preparing public release",
+  "updated": "2026-11-05T22:21:46.186202+07:00",
+  "phase": "v0.5.1 · final publication verification",
   "goal": "95+ on every evaluation; all areas covered",
   "scores": [
     {
@@ -465,8 +465,8 @@
     },
     {
       "id": "release-050",
-      "title": "Deliver v0.5.0 window and subtitle update",
-      "status": "working",
+      "title": "Deliver v0.5.1 window and subtitle update",
+      "status": "review",
       "lens": "Release",
       "steps": [
         {
@@ -475,13 +475,14 @@
         },
         {
           "label": "Push source and installable public Linux release",
-          "done": false
+          "done": true
         },
         {
           "label": "Verify public assets and final board",
           "done": false
         }
-      ]
+      ],
+      "note": "Four skins and installed player pass; public v0.5.0 delivered. v0.5.1 adds fresh-XDG default verification; isolated install now confirms Enochian VLC is MP4 default."
     }
   ]
 }

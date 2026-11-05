@@ -12,5 +12,7 @@
   "subtitle_renderer": "vlc-plugin-freetype 3.0.24-1",
   "default_mp4": "enochian-vlc.desktop",
   "torrent_companion": "No production state or files modified",
-  "runtime_downloader": "Official opensubs-cli 0.1.1 copied with dependencies"
+  "runtime_downloader": "Official opensubs-cli 0.1.1 copied with dependencies",
+  "fresh_xdg_profile_default": "enochian-vlc.desktop",
+  "fresh_installer_fix": "Create XDG_CONFIG_HOME before xdg-mime; verify actual association instead of trusting command exit status."
 }
