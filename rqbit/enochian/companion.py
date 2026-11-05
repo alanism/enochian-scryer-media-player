@@ -88,7 +88,10 @@ class Handler(BaseHTTPRequestHandler):
         if not self.allowed():return
         path=urllib.parse.urlsplit(self.path).path
         if path=='/enochian/health':
-            self.reply(200,{'app':'enochian-rqbit','engine':engine_json('/').get('version')});return
+            try:self.reply(200,{'app':'enochian-rqbit','engine':engine_json('/').get('version')})
+            except (OSError,ValueError,http.client.HTTPException):
+                self.reply(503,{'app':'enochian-rqbit','error':'The transfer engine is unavailable. Restart Enochian Rqbit.'})
+            return
         if path in ('/web','/web/','/web/index.html'):
             data=(DIST/'index.html').read_text().replace('<head>','<head><meta name="enochian-bridge" content="1">')
             self.send_bytes(200,data.encode(),'text/html; charset=utf-8');return
@@ -108,8 +111,12 @@ class Handler(BaseHTTPRequestHandler):
                 self.reply(413,{'error':'Request is too large'});return
             body=self.rfile.read(length)
             path=urllib.parse.urlsplit(self.path).path
-            if path=='/enochian/play':self.play(json.loads(body));return
-            if path=='/enochian/show-file':self.show_file(json.loads(body));return
+            if path in ('/enochian/play','/enochian/show-file'):
+                data=json.loads(body)
+                if not isinstance(data,dict):raise ValueError('Desktop actions require a JSON object')
+                if path=='/enochian/play':self.play(data)
+                else:self.show_file(data)
+                return
             if path=='/enochian/stop':
                 self.reply(200,{'stopped':True})
                 threading.Thread(target=self.server.shutdown,daemon=True).start();return
@@ -172,7 +179,7 @@ class Handler(BaseHTTPRequestHandler):
         if not re.match(r'^/(?:\?|$|torrents(?:[/?]|$)|stats(?:[/?]|$)|dht/|stream_logs(?:\?|$)|rust_log(?:\?|$)|metrics(?:\?|$))',self.path):
             self.reply(404,{'error':'Unknown route'});return
         headers={k:self.headers[k] for k in ('Accept','Content-Type','Range','If-Range') if k in self.headers}
-        conn=None
+        conn=None;headers_sent=False
         try:
             conn,r=engine_request(self.command,self.path,body,headers)
             self.send_response(r.status)
@@ -180,11 +187,13 @@ class Handler(BaseHTTPRequestHandler):
                 if k.lower() not in ('transfer-encoding','connection','server','date','access-control-allow-origin'):
                     self.send_header(k,v)
             self.send_header('Connection','close');self.send_header('X-Content-Type-Options','nosniff');self.end_headers()
+            headers_sent=True
             if self.command!='HEAD':
                 while block:=r.read1(65536):self.wfile.write(block)
         except (BrokenPipeError,ConnectionResetError):pass
         except (OSError,http.client.HTTPException):
-            self.close_connection=True
+            if headers_sent:self.close_connection=True
+            else:self.reply(502,{'error':'The transfer engine is unavailable. Restart Enochian Rqbit.','human_readable':'The transfer engine is unavailable. Restart Enochian Rqbit.'})
         finally:
             if conn:conn.close()
 

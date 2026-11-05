@@ -6,6 +6,8 @@ import { Speed } from "./Speed";
 import { formatBytes } from "../helper/formatBytes";
 import { getCompletionETA } from "../helper/getCompletionETA";
 import { StatusIcon } from "./StatusIcon";
+import { torrentProgress, torrentStatus } from "../helper/torrentPresentation";
+import { PlayInVLC } from "../enochian/PlayInVLC";
 
 export const TorrentCardContent: React.FC<{
   torrent: TorrentListItem;
@@ -17,11 +19,7 @@ export const TorrentCardContent: React.FC<{
   const totalBytes = statsResponse?.total_bytes ?? 1;
   const progressBytes = statsResponse?.progress_bytes ?? 0;
   const finished = statsResponse?.finished || false;
-  const progressPercentage = error
-    ? 100
-    : totalBytes == 0
-      ? 100
-      : (progressBytes / totalBytes) * 100;
+  const progressPercentage = torrentProgress(statsResponse);
 
   const formatPeersString = () => {
     let peer_stats = statsResponse?.live?.snapshot.peer_stats;
@@ -43,8 +41,8 @@ export const TorrentCardContent: React.FC<{
   };
 
   return (
-    <div className="flex flex-col border p-1.5 sm:p-2 border-divider rounded-xl shadow-xs hover:drop-shadow-sm bg-surface-raised">
-      <section className="flex flex-col lg:flex-row items-center gap-1.5 sm:gap-2">
+    <div className="en-card-content border border-divider rounded-xl bg-surface-raised">
+      <section className="en-card-body">
         {/* Icon */}
         <div className="hidden md:block">{statusIcon("w-10 h-10")}</div>
         {/* Name, progress, stats */}
@@ -53,9 +51,12 @@ export const TorrentCardContent: React.FC<{
             <div className="md:hidden">
               {statusIcon("w-4 h-4 sm:w-5 sm:h-5")}
             </div>
-            <div className="text-left text-sm sm:text-base lg:text-lg text-ellipsis break-all line-clamp-2 sm:line-clamp-none">
+            <div className="en-card-title text-left text-sm sm:text-base lg:text-lg text-ellipsis break-all line-clamp-2 sm:line-clamp-none">
               {torrent.name}
             </div>
+            <span className="en-transfer-status">
+              {torrentStatus(statsResponse)}
+            </span>
           </div>
           {error ? (
             <p className="text-error">
@@ -91,7 +92,7 @@ export const TorrentCardContent: React.FC<{
                   <>
                     <div className="flex gap-1 sm:gap-2 items-center">
                       <GoClock className="w-3 h-3 sm:w-4 sm:h-4" />
-                      {getCompletionETA(statsResponse)}
+                      {finished ? "Complete" : getCompletionETA(statsResponse)}
                     </div>
                     <div className="flex gap-1 sm:gap-2 items-center">
                       <Speed statsResponse={statsResponse} />
@@ -102,13 +103,22 @@ export const TorrentCardContent: React.FC<{
             </>
           )}
         </div>
-        {/* Actions */}
-        {statsResponse && (
-          <div className="">
-            <TorrentActions torrent={{ ...torrent, stats: statsResponse }} />
-          </div>
-        )}
       </section>
+      {statsResponse && (
+        <div className="en-card-controls">
+          <div className="en-playback-group">
+            <PlayInVLC
+              torrentId={id}
+              disabled={state === STATE_INITIALIZING || !!error}
+              completedOnly={finished}
+            />
+            <span>
+              {finished ? "Play downloaded media" : "Stream while downloading"}
+            </span>
+          </div>
+          <TorrentActions torrent={{ ...torrent, stats: statsResponse }} />
+        </div>
+      )}
     </div>
   );
 };

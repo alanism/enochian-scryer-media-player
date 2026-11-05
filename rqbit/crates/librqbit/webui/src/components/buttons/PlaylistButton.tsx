@@ -4,7 +4,6 @@ import { FaClipboardList } from "react-icons/fa";
 import { APIContext } from "../../context";
 import { useErrorStore } from "../../stores/errorStore";
 import { Button } from "./Button";
-import { IconButton } from "./IconButton";
 
 interface PlaylistButtonProps {
   torrentId: number;
@@ -53,7 +52,7 @@ function usePlaylistClipboard(torrentId: number) {
   return { playlistUrl, copyPlaylistUrlToClipboard };
 }
 
-export const PlaylistIconButton: React.FC<PlaylistButtonProps> = ({
+export const PlaylistCopyButton: React.FC<PlaylistButtonProps> = ({
   torrentId,
   disabled,
 }) => {
@@ -61,14 +60,12 @@ export const PlaylistIconButton: React.FC<PlaylistButtonProps> = ({
     usePlaylistClipboard(torrentId);
 
   return (
-    <IconButton
-      href={playlistUrl ?? "#"}
+    <Button
       onClick={copyPlaylistUrlToClipboard}
       disabled={disabled || !playlistUrl}
-      title="Copy playlist URL"
     >
-      <FaClipboardList className="hover:text-green-500" />
-    </IconButton>
+      Copy playlist
+    </Button>
   );
 };
 

@@ -1,14 +1,12 @@
-import { TapeKey } from "../../enochian/TapeKey";
 import { useContext, useState } from "react";
 import { TorrentListItem, TorrentStats } from "../../api-types";
 import { APIContext } from "../../context";
-import { IconButton } from "./IconButton";
+import { Button } from "./Button";
 import { DeleteTorrentModal } from "../modal/DeleteTorrentModal";
-import { FaCog, FaPause, FaPlay, FaTrash } from "react-icons/fa";
 import { useErrorStore } from "../../stores/errorStore";
 import { useTorrentStore } from "../../stores/torrentStore";
 import { useUIStore } from "../../stores/uiStore";
-import { PlaylistIconButton } from "./PlaylistButton";
+import { PlaylistCopyButton } from "./PlaylistButton";
 
 export const TorrentActions: React.FC<{
   torrent: TorrentListItem & { stats: TorrentStats };
@@ -76,43 +74,31 @@ export const TorrentActions: React.FC<{
 
   return (
     <div
-      className="en-row-actions tp flex w-full justify-center gap-1 sm:gap-2 dark:text-slate-300"
+      className="en-transfer-actions"
+      role="group"
+      aria-label="Transfer controls"
       data-enochian-finish
       data-finish={document.documentElement.dataset.finish}
     >
       {canUnpause && (
-        <TapeKey
-          kind="play"
-          label="RESUME"
-          onClick={unpause}
-          disabled={disabled}
-        />
+        <Button onClick={unpause} disabled={disabled}>
+          Resume transfer
+        </Button>
       )}
       {canPause && (
-        <TapeKey
-          kind="pause"
-          label="PAUSE"
-          onClick={pause}
-          disabled={disabled}
-        />
+        <Button onClick={pause} disabled={disabled}>
+          Pause transfer
+        </Button>
       )}
       {canConfigure && (
-        <IconButton
-          onClick={() => openDetailsModal(id)}
-          disabled={disabled}
-          title="Files and details"
-        >
-          <FaCog className="hover:text-green-600" />
-        </IconButton>
+        <Button onClick={() => openDetailsModal(id)} disabled={disabled}>
+          Files &amp; details
+        </Button>
       )}
-      <IconButton
-        onClick={startDeleting}
-        disabled={disabled}
-        title="Remove torrent"
-      >
-        <FaTrash className="hover:text-red-500" />
-      </IconButton>
-      <PlaylistIconButton torrentId={id} disabled={disabled} />
+      <Button onClick={startDeleting} disabled={disabled} variant="danger">
+        Remove torrent
+      </Button>
+      <PlaylistCopyButton torrentId={id} disabled={disabled} />
       <DeleteTorrentModal
         show={deleting}
         onHide={cancelDeleting}

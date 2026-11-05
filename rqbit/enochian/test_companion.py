@@ -1,5 +1,7 @@
 """Desktop handoff tests: run with python3 -m unittest discover -s enochian."""
 import subprocess
+import io
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -121,6 +123,34 @@ class DesktopHandoffTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.handler.play({'torrent_id': 7, 'completed_only': 'true'})
         self.engine.assert_not_called()
+
+    def test_desktop_request_requires_a_json_object(self):
+        for value in [[], None, True, 'torrent']:
+            with self.subTest(value=value):
+                body = json.dumps(value).encode()
+                self.handler.path = '/enochian/play'
+                self.handler.headers = {'Content-Length': str(len(body))}
+                self.handler.rfile = io.BytesIO(body)
+                self.handler.allowed = Mock(return_value=True)
+                self.handler.reply.reset_mock()
+                self.handler.do_POST()
+                self.assertEqual(self.handler.reply.call_args.args[0], 400)
+        self.popen.assert_not_called()
+
+    def test_health_returns_a_service_error_when_engine_is_unavailable(self):
+        self.engine.side_effect = ConnectionRefusedError('Engine offline')
+        self.handler.path = '/enochian/health'
+        self.handler.allowed = Mock(return_value=True)
+        self.handler.do_GET()
+        self.assertEqual(self.handler.reply.call_args.args[0], 503)
+
+    def test_proxy_returns_json_when_engine_connection_fails(self):
+        self.start_patch('engine_request', side_effect=ConnectionRefusedError('Engine offline'))
+        self.handler.path = '/torrents?with_stats=true'
+        self.handler.command = 'GET'
+        self.handler.headers = {}
+        self.handler.proxy()
+        self.assertEqual(self.handler.reply.call_args.args[0], 502)
 
 
 if __name__ == '__main__':

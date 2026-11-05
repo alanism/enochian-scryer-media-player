@@ -9,6 +9,7 @@ import { formatBytes } from "../../helper/formatBytes";
 import { getCompletionETA } from "../../helper/getCompletionETA";
 import { PlaylistLink } from "../buttons/PlaylistButton";
 import { ProgressBar } from "../ProgressBar";
+import { pieceCount, torrentProgress } from "../../helper/torrentPresentation";
 
 interface OverviewTabProps {
   torrent: TorrentListItem | null;
@@ -43,17 +44,11 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ torrent }) => {
   const paused = statsResponse.initializing_paused ?? false;
 
   const totalPieces = torrent.total_pieces ?? 0;
-  const downloadedPieces =
-    statsResponse.live?.snapshot.downloaded_and_checked_pieces ?? 0;
   const pieceSize = totalPieces > 0 ? totalBytes / totalPieces : 0;
 
   const totalUploadedBytes = statsResponse.live?.snapshot.uploaded_bytes ?? 0;
 
-  const progressPct = error
-    ? 100
-    : totalBytes === 0
-      ? 100
-      : (progressBytes / totalBytes) * 100;
+  const progressPct = torrentProgress(statsResponse);
 
   const downSpeed = statsResponse.live?.download_speed?.human_readable ?? "-";
   const upSpeed = statsResponse.live?.upload_speed?.human_readable ?? "-";
@@ -118,10 +113,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ torrent }) => {
       <div className="flex flex-wrap gap-x-4 gap-y-1">
         {totalPieces > 0 && (
           <span>
-            <LV
-              label="Pieces"
-              value={`${downloadedPieces.toLocaleString()}/${totalPieces.toLocaleString()}`}
-            />
+            <LV label="Pieces" value={pieceCount(statsResponse, totalPieces)} />
             {pieceSize > 0 && (
               <span className="text-tertiary">
                 {" "}
@@ -147,7 +139,11 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ torrent }) => {
         )}
       </div>
 
-      <PlayInVLC torrentId={torrent.id} disabled={state === "initializing"} />
+      <PlayInVLC
+        torrentId={torrent.id}
+        disabled={state === "initializing" || !!error}
+        completedOnly={finished}
+      />
 
       {/* Metadata */}
       <div className="flex flex-col gap-1">

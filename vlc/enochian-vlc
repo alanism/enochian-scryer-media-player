@@ -4,9 +4,19 @@ set -euo pipefail
 bundle_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 finish="${ENOCHIAN_FINISH:-obsidian}"
 size="${ENOCHIAN_SIZE:-standard}"
-if [[ "${1:-}" == --compact ]]; then size=compact; shift; fi
-if [[ "${1:-}" == --ivory ]]; then finish=ivory; shift; fi
-if [[ "${1:-}" == --obsidian ]]; then finish=obsidian; shift; fi
+while (($#)); do
+  case "$1" in
+    --compact) size=compact; shift ;;
+    --ivory) finish=ivory; shift ;;
+    --obsidian) finish=obsidian; shift ;;
+    --) break ;;
+    *) break ;;
+  esac
+done
+case "$size" in
+  standard|compact) ;;
+  *) printf 'Unknown size: %s. Use standard or compact.\n' "$size" >&2; exit 2 ;;
+esac
 case "$finish" in
   ivory) skin="$bundle_dir/skins/Enochian-Ivory.vlt" ;;
   obsidian) skin="$bundle_dir/skins/Enochian-Obsidian.vlt" ;;

@@ -25,6 +25,7 @@ export const TorrentCard: React.FC<{
   const menuItem = useRef<HTMLButtonElement>(null);
   const busy = useRef(false);
   const [error, setError] = useState("");
+  const [feedback, setFeedback] = useState("");
   const [position, setPosition] = useState<{ x: number; y: number } | null>(
     null,
   );
@@ -55,14 +56,21 @@ export const TorrentCard: React.FC<{
     };
   }, [position]);
 
-  const run = async (action: () => Promise<void>) => {
+  const run = async (action: () => Promise<void>, message: string) => {
     if (busy.current) return;
     busy.current = true;
     setError("");
+    setFeedback(message);
     setPosition(null);
     try {
       await action();
+      setFeedback(
+        message === "Opening Enochian VLC…"
+          ? "Opened in Enochian VLC"
+          : "File shown in file manager",
+      );
     } catch (e) {
+      setFeedback("");
       setError(e instanceof Error ? e.message : "Desktop action failed");
     } finally {
       busy.current = false;
@@ -89,7 +97,10 @@ export const TorrentCard: React.FC<{
       onDoubleClick={(event) => {
         if (desktop && completed && !interactiveTarget(event.target)) {
           event.preventDefault();
-          void run(() => playInVLC(torrent.id, undefined, true));
+          void run(
+            () => playInVLC(torrent.id, undefined, true),
+            "Opening Enochian VLC…",
+          );
         }
       }}
       onContextMenu={(event) => {
@@ -108,11 +119,19 @@ export const TorrentCard: React.FC<{
           showMenu(bounds.left + 16, bounds.top + 16);
         } else if (event.key === "Enter" && completed && !event.repeat) {
           event.preventDefault();
-          void run(() => playInVLC(torrent.id, undefined, true));
+          void run(
+            () => playInVLC(torrent.id, undefined, true),
+            "Opening Enochian VLC…",
+          );
         }
       }}
     >
       <TorrentCardContent torrent={torrent} />
+      {feedback && (
+        <p role="status" className="en-card-feedback">
+          {feedback}
+        </p>
+      )}
       {error && (
         <p role="alert" className="en-card-error">
           {error}
@@ -135,7 +154,7 @@ export const TorrentCard: React.FC<{
               aria-label="Show file"
               onClick={() => {
                 card.current?.focus();
-                void run(() => showTorrentFile(torrent.id));
+                void run(() => showTorrentFile(torrent.id), "Showing file…");
               }}
               onKeyDown={(event) => {
                 if (

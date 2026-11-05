@@ -1,4 +1,3 @@
-import { TapeKey } from "../../enochian/TapeKey";
 import { useContext, useState, useCallback, useMemo } from "react";
 import { FaPause, FaPlay, FaTrash } from "react-icons/fa";
 import { GoSearch, GoX } from "react-icons/go";
@@ -120,34 +119,18 @@ export const ActionBar: React.FC<ActionBarProps> = ({ hideFilters }) => {
 
   return (
     <div
-      className="en-actionbar tp bg-surface-raised border-b border-divider"
+      className="en-actionbar bg-surface-raised border-b border-divider"
+      role="group"
+      aria-label="Selected transfer controls"
       data-enochian-finish
       data-finish={document.documentElement.dataset.finish}
     >
-      <TapeKey
-        kind="play"
-        label="RESUME"
-        active={
-          hasSelection &&
-          Array.from(selectedTorrentIds).every(
-            (id) => getTorrentById(id)?.stats?.state === STATE_LIVE,
-          )
-        }
-        onClick={resumeSelected}
-        disabled={disabled || !hasSelection}
-      />
-      <TapeKey
-        kind="pause"
-        label="PAUSE"
-        active={
-          hasSelection &&
-          Array.from(selectedTorrentIds).every(
-            (id) => getTorrentById(id)?.stats?.state === STATE_PAUSED,
-          )
-        }
-        onClick={pauseSelected}
-        disabled={disabled || !hasSelection}
-      />
+      <Button onClick={resumeSelected} disabled={disabled || !hasSelection}>
+        Resume transfers
+      </Button>
+      <Button onClick={pauseSelected} disabled={disabled || !hasSelection}>
+        Pause transfers
+      </Button>
       <Button
         onClick={openDeleteModal}
         disabled={disabled || !hasSelection}

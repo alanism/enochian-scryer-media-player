@@ -5,10 +5,12 @@ export function PlayInVLC({
   torrentId,
   fileId,
   disabled,
+  completedOnly = false,
 }: {
   torrentId: number;
   fileId?: number;
   disabled?: boolean;
+  completedOnly?: boolean;
 }) {
   const [busy, setBusy] = useState(false),
     [error, setError] = useState("");
@@ -18,7 +20,7 @@ export function PlayInVLC({
     setBusy(true);
     setError("");
     try {
-      await playInVLC(torrentId, fileId);
+      await playInVLC(torrentId, fileId, completedOnly);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Playback failed");
     } finally {

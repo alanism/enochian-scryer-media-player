@@ -36,6 +36,10 @@ Open **Enochian VLC** or **Enochian Rqbit** from the Omarchy launcher. The compa
 
 In the companion's **Cards** view, double-click a completed torrent to play its downloaded media in Enochian VLC. Right-click a card and choose **Show file** to reveal the download in your file manager. Incomplete cards wait for completion; the explicit **Play in VLC** key still supports streaming while a download is in progress.
 
+Cards now show the original Tape Deck **Play in VLC** key directly. Separate, labeled Drum Machine utility keys control transfers and files. Both finish and view choices stay visible; the chosen view is remembered. See the [Enochian control/function map](docs/ENOCHIAN_CONTROL_MAP.md) and [engineering/design council review](docs/COUNCIL_REVIEW.md) for decisions, fixes and verification.
+
+When updating an already running companion, use its **Stop transfers and service** launcher action before installing, then reopen the app. Transfer records persist across the restart.
+
 ## Why two apps
 
 rqbit already streams files through range-enabled HTTP and prioritizes pieces requested by a player. Keeping transfers in a companion avoids tying download lifetime to a VLC window. The local bridge accepts a torrent/file choice and launches the installed Enochian VLC with the stream URL and matching finish. No public server or browser extension is needed.

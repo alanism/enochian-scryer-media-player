@@ -22,7 +22,7 @@ export function TapeKey({
       title={label}
       aria-label={label}
       data-down={down ? "true" : "false"}
-      aria-pressed={!!active}
+      aria-pressed={active === undefined ? undefined : !!active}
       disabled={disabled}
       onClick={onClick}
       onPointerDown={(e) => {

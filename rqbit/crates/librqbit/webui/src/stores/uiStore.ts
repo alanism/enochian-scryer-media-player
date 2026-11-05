@@ -5,10 +5,24 @@ import {
   StatusFilter,
 } from "../helper/torrentFilters";
 
-const LARGE_SCREEN_BREAKPOINT = 1024;
+const VIEW_KEY = "enochian.view.v1";
 
 function getDefaultViewMode(): "full" | "compact" {
-  return window.innerWidth >= LARGE_SCREEN_BREAKPOINT ? "compact" : "full";
+  try {
+    const saved = localStorage.getItem(VIEW_KEY);
+    if (saved === "full" || saved === "compact") return saved;
+  } catch {
+    /* Storage may be unavailable in a private browser session. */
+  }
+  return "full";
+}
+
+function rememberView(mode: "full" | "compact") {
+  try {
+    localStorage.setItem(VIEW_KEY, mode);
+  } catch {
+    /* The view still works without persistence. */
+  }
 }
 
 export interface UIStore {
@@ -41,11 +55,13 @@ export const useUIStore = create<UIStore>((set, get) => ({
   viewMode: getDefaultViewMode(),
 
   setViewMode: (mode) => {
+    rememberView(mode);
     set({ viewMode: mode });
   },
 
   toggleViewMode: () => {
     const newMode = get().viewMode === "compact" ? "full" : "compact";
+    rememberView(newMode);
     set({ viewMode: newMode });
   },
 

@@ -13,7 +13,7 @@ install -m644 "$src/ENGINE-LICENSE.txt" "$dest/ENGINE-LICENSE.txt"
 python - "$dest" "$data_dir/applications/enochian-rqbit.desktop" <<'PY'
 from pathlib import Path
 import sys,re
-root=Path(sys.argv[1]);exe=str(root/'companion.py')
+root=Path(sys.argv[1]);exe=str(root/'companion.py').replace('%','%%')
 if not re.fullmatch(r'[a-zA-Z0-9_./+-]+',exe):exe='"'+exe.replace('\\','\\\\').replace('"','\\"').replace('$','\\$').replace('`','\\`')+'"'
 Path(sys.argv[2]).write_text(f'''[Desktop Entry]
 Version=1.0

@@ -6,6 +6,7 @@
     "crates/librqbit/webui"
   ],
   "scripts": {
+    "test:enochian": "python3 -m unittest discover -s enochian -q && node --test enochian/test-ui.mjs",
     "format": "prettier --write 'desktop/src/**/*.{ts,tsx}' 'crates/librqbit/webui/src/**/*.{ts,tsx}'",
     "format:check": "prettier --check 'desktop/src/**/*.{ts,tsx}' 'crates/librqbit/webui/src/**/*.{ts,tsx}'"
   },
