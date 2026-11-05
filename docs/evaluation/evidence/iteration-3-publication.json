@@ -1,0 +1,10 @@
+{
+  "release": "https://github.com/alanism/enochian-scryer-media-player/releases/tag/v0.5.1",
+  "linux_zip_sha256": "5e9365b6a8b61601c3e4e41cb8ccc445812de7f61ce5fd145e6980ee551702a0",
+  "github_asset_digest_matches": true,
+  "source_revision": "8a6bc09173252af8b5f7e7b8463e25d0f3ce1aaf",
+  "packaged_installer_matches_tested_source": true,
+  "packaged_subtitle_client": "0.1.1",
+  "fresh_config_mp4_default": "enochian-vlc.desktop",
+  "note": "The ZIP contains the packaging-time board; separately attached standalone HTML carries final delivery state."
+}
