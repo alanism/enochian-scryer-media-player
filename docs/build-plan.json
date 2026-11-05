@@ -1,7 +1,7 @@
 {
   "title": "Enochian Scryer — build plan",
-  "updated": "2026-11-05T21:03:19.442067+07:00",
-  "phase": "Final correction · verify fresh-profile EQ DSP startup",
+  "updated": "2026-11-05T21:06:45.405551+07:00",
+  "phase": "Complete · verified, installed and published v0.4.1",
   "goal": "95+ on every evaluation; all areas covered",
   "scores": [
     {
@@ -374,7 +374,7 @@
     {
       "id": "eq-startup",
       "title": "Verify fresh-profile EQ audio filtering",
-      "status": "working",
+      "status": "done",
       "lens": "Final control audit",
       "steps": [
         {
@@ -387,10 +387,10 @@
         },
         {
           "label": "Install and publish the verified correction",
-          "done": false
+          "done": true
         }
       ],
-      "note": "Cold native first-enable now loads the real equalizer DSP module; fader values and disable verified. Missing bands initialize flat; saved nonzero gains (including leading whitespace) remain untouched. Corrected launcher installed; preparing v0.4.1."
+      "note": "Missing EQ bands initialize flat and saved gains are preserved. Native first-enable loaded the actual DSP filter, fader values changed it and disable removed it. Corrected launcher installed; v0.4.1 source and Linux release assets verified publicly."
     }
   ]
 }
