@@ -46,3 +46,13 @@ drawn.
 The earlier fidelity check above describes the prior council review. Iteration 2 rebuilds the four archives from the same source artwork to fix native text widths, X11 cached alpha compositing, rotary hit bounds and an explicit closing Playlist tag required before later EQ bindings. No cap, face, glyph, shadow or corner geometry is redrawn.
 
 The player type ramp is 12px labels/data, 16px headings and 24px elapsed time; compact uniformly scales these and the artwork to 80% (rounded to whole pixels). Main/playlist/EQ groups use repeated utility and transport modules. Actual standard and compact windows in both finishes are captured in the [current evaluation](evaluation/index.html). Small gray source labels remain a documented readability deduction.
+
+
+Player update (v0.5.0): SUBS reuses the original Drum Machine utility key.
+DOWNLOAD/OPEN/CANCEL/CLOSE in the native subtitle prompt use the same key
+artwork. The volume dial's Obsidian border paint is transparent at the user's
+explicit request; its dimensions, face, marker and lighting are unchanged.
+The lower-right resize grip reuses a resized/rotated ribbed slider cap.
+FULL/BACK retain the original utility key and invoke window fullscreen even
+without media; Escape restores. Standard and Compact controls retain their
+relative scale, with active-monitor quarter-screen initial geometry.

@@ -1,0 +1,47 @@
+{
+  "evaluated_at": "2026-11-05T15:17:13.179054+00:00",
+  "results": [
+    {
+      "rubric": "ryo",
+      "total": 95,
+      "target": 95,
+      "weak_criteria": [],
+      "unverified_journeys": [],
+      "unresolved_high_severity": [],
+      "passed": true,
+      "scorecard": "docs/evaluation/iteration-3-ryo.json"
+    },
+    {
+      "rubric": "gmunk",
+      "total": 96,
+      "target": 95,
+      "weak_criteria": [],
+      "unverified_journeys": [],
+      "unresolved_high_severity": [],
+      "passed": true,
+      "scorecard": "docs/evaluation/iteration-3-gmunk.json"
+    },
+    {
+      "rubric": "jayse",
+      "total": 95,
+      "target": 95,
+      "weak_criteria": [],
+      "unverified_journeys": [],
+      "unresolved_high_severity": [],
+      "passed": true,
+      "scorecard": "docs/evaluation/iteration-3-jayse.json"
+    },
+    {
+      "rubric": "satori",
+      "total": 96,
+      "target": 95,
+      "weak_criteria": [],
+      "unverified_journeys": [],
+      "unresolved_high_severity": [],
+      "passed": true,
+      "scorecard": "docs/evaluation/iteration-3-satori.json"
+    }
+  ],
+  "passed": true,
+  "kind": "Evidence-backed self-evaluation; no independent expert endorsement"
+}

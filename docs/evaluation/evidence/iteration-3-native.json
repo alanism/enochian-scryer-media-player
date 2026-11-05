@@ -1,0 +1,111 @@
+{
+  "revision": "v0.5.0",
+  "kind": "Observed native UI + API/source; generated media only",
+  "installed": {
+    "installed_launcher": true,
+    "initial": [
+      960,
+      525
+    ],
+    "fullscreen": [
+      1920,
+      1080
+    ],
+    "fullscreen_mode": 2,
+    "escape_restore": [
+      960,
+      525
+    ],
+    "playback_continuity": true,
+    "volume_unchanged": true,
+    "default_mp4": "enochian-vlc.desktop"
+  },
+  "skins": [
+    {
+      "finish": "obsidian",
+      "size": [
+        960,
+        540
+      ],
+      "english_track": true,
+      "explicit_srt_added": true,
+      "transport": true
+    },
+    {
+      "finish": "ivory",
+      "size": [
+        960,
+        540
+      ],
+      "english_track": true,
+      "explicit_srt_added": true,
+      "transport": true
+    },
+    {
+      "finish": "obsidian-compact",
+      "size": [
+        960,
+        540
+      ],
+      "english_track": true,
+      "explicit_srt_added": true,
+      "transport": true
+    },
+    {
+      "finish": "ivory-compact",
+      "size": [
+        960,
+        540
+      ],
+      "english_track": true,
+      "explicit_srt_added": true,
+      "transport": true
+    }
+  ],
+  "resize": {
+    "method": "Native XTest on private display",
+    "corner": [
+      960,
+      540,
+      1080,
+      620
+    ],
+    "right": [
+      1080,
+      620,
+      1180,
+      620
+    ],
+    "bottom": [
+      1180,
+      620,
+      1180,
+      680
+    ],
+    "minimum": [
+      820,
+      360
+    ]
+  },
+  "subtitles": {
+    "local_english": "Generated .en.srt selected, actual text visibly rendered",
+    "explicit_add": "Separate SRT added through URI-guarded Lua route; active track ID changed",
+    "consent": "Missing English opens Download/Open/Cancel; Enter now defaults to focused Cancel",
+    "provider": "Actual official client download after clicking Download for generated Big Buck Bunny (2008).mp4; resulting SRT validated",
+    "changed_input": "Test clip ended while downloading; saved SRT was not applied to another input; useful native dialog observed",
+    "limitations": [
+      "Provider matching/timing accuracy, account/quota states and in-flight Cancel timing not exhaustively tested",
+      "Plain matching .srt is treated as the default; no language inference",
+      "GTK3 consent uses original bitmap utility keys; native file chooser remains GTK",
+      "High-DPI/multiple monitors and physical speakers not tested"
+    ]
+  },
+  "checks": {
+    "python_tests": 21,
+    "frontend_tests": 5,
+    "production_frontend_build": "passed",
+    "skins": "four DTD/assets/101-frame/resize action verifications passed",
+    "default_mp4": "enochian-vlc.desktop"
+  },
+  "prior_evidence": "Unchanged playlist, torrent and settings journeys retain iteration-2 evidence. No new independent designer endorsement."
+}

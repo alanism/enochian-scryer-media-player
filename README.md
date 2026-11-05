@@ -2,7 +2,7 @@
 
 A matching media suite for Omarchy: **Enochian VLC** for playback and **Enochian Rqbit** for torrent transfers, connected by a **Play in VLC** key.
 
-The suite reuses the original controls from [Enochian Elements](https://uiux-nonhumanintelligence.web.app/UIUX). Tape Deck transport keys, Drum Machine utility buttons, rotary volume and ribbed sliders retain their original artwork, materials and states. The two apps offer matching Obsidian and Ivory finishes.
+The suite reuses the original controls from [Enochian Elements](https://uiux-nonhumanintelligence.web.app/UIUX). Tape Deck transport keys, Drum Machine utility buttons, rotary volume and ribbed sliders retain their original artwork, materials and states. The two apps offer matching Obsidian and Ivory finishes. At the user's request, the Obsidian volume knob omits its bright outer trim.
 
 ![Enochian VLC Obsidian skin](vlc/previews/obsidian.png)
 
@@ -15,7 +15,7 @@ The suite reuses the original controls from [Enochian Elements](https://uiux-non
 Install the system playback components with:
 
 ```sh
-omarchy pkg add vlc vlc-gui-skins2 vlc-plugin-ffmpeg xorg-xwayland
+omarchy pkg add vlc vlc-gui-skins2 vlc-plugin-ffmpeg vlc-plugin-freetype xorg-xwayland python-gobject gtk3 nodejs
 ```
 
 Python 3 and Chromium are also needed for the transfer companion. For a checkout from GitHub, build its interface and fetch the verified engine first:
@@ -24,6 +24,7 @@ Python 3 and Chromium are also needed for the transfer companion. For a checkout
 cd rqbit
 enochian/build.sh
 cd ..
+npm ci --prefix vlc/subtitle-client
 ```
 
 The [ready-to-install Linux bundle](https://github.com/alanism/enochian-scryer-media-player/releases/latest) already contains that engine and interface. Download and extract it before running the installer. Install both apps, with the player as the MP4 default:
@@ -40,13 +41,19 @@ Cards now show the original Tape Deck **Play in VLC** key directly. Separate, la
 
 When updating an already running companion, use its **Stop transfers and service** launcher action before installing, then reopen the app. Transfer records persist across the restart.
 
+The **SUBS** button selects English subtitles from an existing track or matching
+SRT. If none is found, it asks before downloading an English match from
+OpenSubtitles; **Open** selects a local SRT and **Cancel** dismisses the request.
+Downloads never overwrite an existing subtitle. Provider quotas and matching
+accuracy apply. See [subtitle behavior and dependencies](vlc/README.txt).
+
 ## Build plan and design evaluation
 
 Open [the HTML Kanban board](docs/build-board.html) locally to follow the work. It has expandable task cards, individual progress bars, an overall checklist percentage, and separate design scores. Serve `docs/` with `python3 -m http.server 19400 --bind 127.0.0.1 --directory docs` for live updates; opening the HTML directly shows its embedded snapshot. Task updates are made with `python3 tools/evaluation/plan.py TASK_ID --status working --completed N --note "Evidence or remaining work"`.
 
-[Iteration 2 evaluation and evidence](docs/evaluation/index.html) applies four unchanged, frozen 20-criterion, five-level rubrics. Evidence-backed self-evaluations are Ryo Lu **95**, GMUNK **96**, Jayse Hansen **95**, and Satori **96** out of 100. All eight required journeys pass and every criterion is at least 4. No designer endorsement or independent expert review is claimed.
+[Current evaluation and evidence](docs/evaluation/index.html) applies four unchanged, frozen 20-criterion, five-level rubrics. Evidence-backed self-evaluations are Ryo Lu **95**, GMUNK **96**, Jayse Hansen **95**, and Satori **96** out of 100. All eight required journeys pass and every criterion is at least 4. No designer endorsement or independent expert review is claimed.
 
-Native checks found and fixed invisible text widths, sprite shadow mattes, rotary hit interception and playlist XML leaking into EQ bindings. Fresh profiles also initialize missing EQ bands without replacing saved gains; native first-enable DSP loading is verified. VLC's real file pickers, named XSPF exporter, playlist drag editor, controls, tracks, EQ and fullscreen were exercised with generated files on an isolated native X11 display. Companion checks cover actual selected-file piece inventory, custom destinations, cancellation, real completed/per-file handoff, missing-file feedback and engine recovery. Standard player size is 1040×812; compact is 832×650.
+Native checks found and fixed invisible text widths, sprite shadow mattes, rotary hit interception and playlist XML leaking into EQ bindings. Fresh profiles also initialize missing EQ bands without replacing saved gains; native first-enable DSP loading is verified. VLC's real file pickers, named XSPF exporter, playlist drag editor, controls, tracks, EQ and fullscreen were exercised with generated files on an isolated native X11 display. Companion checks cover actual selected-file piece inventory, custom destinations, cancellation, real completed/per-file handoff, missing-file feedback and engine recovery. The player now starts at one quarter of the active monitor's usable area (960×525 on the tested Omarchy display), with native right/bottom/corner resize handles. FULL works while idle; BACK or Escape restores the previous size. Compact controls are selected automatically on smaller monitors.
 
 [Apple's desktop usability guidance](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos) informs familiar commands, file navigation, cancellation, density and fullscreen; Enochian artwork and Linux conventions remain. Native Qt dialog styling, small gray source labels, duplicate-name clarity, session-only rate limits and limited bitmap accessibility retain explicit score deductions. Physical speaker quality and high-DPI/multi-monitor behavior remain untested.
 

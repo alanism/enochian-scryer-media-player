@@ -1,0 +1,10 @@
+{
+  "package": "opensubs-cli",
+  "version": "0.1.1",
+  "resolved": "https://registry.npmjs.org/opensubs-cli/-/opensubs-cli-0.1.1.tgz",
+  "integrity": "sha512-wx4Mp2NrzTfAsKqzUO2G6mWH0dQxSlVQToMHLQI85+qUTtfiZmoC680SFqBnFJm992z9d4niIJAIc0otL0SpmQ==",
+  "upstream": "https://github.com/opensubtitles-dev/opensubs-cli",
+  "license": "MIT",
+  "runtime": "Node.js; Linux x86_64 native keytar/platform-folders dependencies in installable ZIP",
+  "consent": "Invoked only after the user selects Download in SUBS."
+}

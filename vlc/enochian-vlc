@@ -3,10 +3,11 @@
 set -euo pipefail
 bundle_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 finish="${ENOCHIAN_FINISH:-obsidian}"
-size="${ENOCHIAN_SIZE:-standard}"
+size="${ENOCHIAN_SIZE:-auto}"
 while (($#)); do
   case "$1" in
     --compact) size=compact; shift ;;
+    --standard) size=standard; shift ;;
     --ivory) finish=ivory; shift ;;
     --obsidian) finish=obsidian; shift ;;
     --) break ;;
@@ -14,8 +15,8 @@ while (($#)); do
   esac
 done
 case "$size" in
-  standard|compact) ;;
-  *) printf 'Unknown size: %s. Use standard or compact.\n' "$size" >&2; exit 2 ;;
+  auto|standard|compact) ;;
+  *) printf 'Unknown size: %s. Use auto, standard or compact.\n' "$size" >&2; exit 2 ;;
 esac
 case "$finish" in
   ivory) skin="$bundle_dir/skins/Enochian-Ivory.vlt" ;;
@@ -24,8 +25,11 @@ case "$finish" in
 esac
 if [[ "$size" == compact ]]; then skin="${skin%.vlt}-Compact.vlt"; fi
 if ! command -v vlc >/dev/null; then
-  printf '%s\n' 'VLC is missing. On Omarchy install:' '  sudo pacman -S vlc vlc-gui-skins2 vlc-plugin-ffmpeg xorg-xwayland' >&2
+  printf '%s\n' 'VLC is missing. On Omarchy install:' '  sudo pacman -S vlc vlc-gui-skins2 vlc-plugin-ffmpeg vlc-plugin-freetype xorg-xwayland python-gobject gtk3 nodejs' >&2
   exit 1
+fi
+if ! vlc --list 2>/dev/null | grep -E '^[[:space:]]+freetype[[:space:]]' >/dev/null; then
+  printf '%s\n' 'Subtitle text renderer is missing. Install: sudo pacman -S vlc-plugin-freetype' >&2
 fi
 if [[ -z "${DISPLAY:-}" ]]; then
   printf '%s\n' 'This VLC skin needs XWayland. Launch it inside your Omarchy desktop session.' >&2
@@ -47,7 +51,8 @@ eq_defaults=()
 if [[ ! -f "$config_dir/vlcrc" ]] || ! grep -Eq '^[[:space:]]*equalizer-bands=[[:space:]]*[^[:space:]]' "$config_dir/vlcrc"; then
   eq_defaults=("--equalizer-bands=0 0 0 0 0 0 0 0 0 0")
 fi
+skin="$(python3 "$bundle_dir/window_skin.py" "$bundle_dir/skins" --finish "$finish" --size "$size")"
 export QT_QPA_PLATFORM=xcb
-exec vlc --config="$config_dir/vlcrc" --no-one-instance --no-qt-privacy-ask --no-metadata-network-access \
+exec python3 "$bundle_dir/player_window.py" -- vlc --config="$config_dir/vlcrc" --no-one-instance --no-qt-privacy-ask --no-metadata-network-access \
   --intf=skins2 --skins2-last="$skin" \
-  --vout=xcb_x11 --avcodec-hw=none --no-video-title-show "${eq_defaults[@]}" "$@"
+  --vout=xcb_x11 --avcodec-hw=none --no-video-title-show --sub-language=en,eng,English "${eq_defaults[@]}" "$@"

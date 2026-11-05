@@ -1,0 +1,1 @@
+<?vlc local h=require 'httprequests';h.processcommands();h.printTableAsJson(h.getstatus(true)) ?>

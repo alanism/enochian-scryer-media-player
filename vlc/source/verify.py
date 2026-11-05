@@ -16,8 +16,13 @@ for skin in sorted((root/'skins').glob('*.vlt')):
   for guard_id in ['knob-hit-top','knob-hit-bottom']:
    guard=next(e for e in children if e.get('id')==guard_id)
    assert children.index(knob)<children.index(guard), 'Radial input guards must be above the knob'
-  full=next(e for e in children if e.get('action')=='vlc.fullscreen()')
+  full=next(e for e in children if e.get('action1')=='main.maximize()')
   assert children.index(guard)<children.index(full), 'Utility keys must remain above radial guards'
+  assert int(layout.get('minwidth'))<int(layout.get('width'))
+  assert int(layout.get('minheight'))<int(layout.get('height'))
+  assert {'resizeE','resizeS','resizeSE'} <= {e.get('action') for e in children}
+  assert full.get('action2')=='main.unmaximize()'
+  assert full.get('state')=='main.isMaximized'
   for elem in tree.iter():
    if elem.tag=='Text':assert int(elem.get('width','0'))>0,'Text must have visible, nonzero width'
    ident=elem.get('id')

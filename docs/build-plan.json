@@ -1,7 +1,7 @@
 {
   "title": "Enochian Scryer — build plan",
-  "updated": "2026-11-05T21:06:45.405551+07:00",
-  "phase": "Complete · verified, installed and published v0.4.1",
+  "updated": "2026-11-05T22:17:57.705078+07:00",
+  "phase": "v0.5.0 verified · preparing public release",
   "goal": "95+ on every evaluation; all areas covered",
   "scores": [
     {
@@ -21,7 +21,7 @@
       "score": 96
     }
   ],
-  "scoreNote": "Iteration 2 evidence-backed self-evaluation: 95 / 96 / 95 / 96. All four frozen gates pass; all eight journeys verified, every criterion at least 4. Remaining limits are explicit in each scorecard; no independent endorsement is claimed.",
+  "scoreNote": "v0.5.0 self-evaluation: Ryo Lu 95, GMUNK 96, Jayse Hansen 95, Satori 96. Window/subtitle areas reassessed with actual Omarchy and private native evidence; unchanged journeys retain iteration-2 proof. Frozen anchors unchanged; no independent endorsement.",
   "tasks": [
     {
       "id": "rubric-ryo",
@@ -391,6 +391,97 @@
         }
       ],
       "note": "Missing EQ bands initialize flat and saved gains are preserved. Native first-enable loaded the actual DSP filter, fader values changed it and disable removed it. Corrected launcher installed; v0.4.1 source and Linux release assets verified publicly."
+    },
+    {
+      "id": "window-sizing",
+      "title": "Fix default size, drag resizing and fullscreen",
+      "status": "done",
+      "lens": "User-reported usability gap",
+      "steps": [
+        {
+          "label": "Inspect actual Omarchy size and fixed skin bounds",
+          "done": true
+        },
+        {
+          "label": "Compose original controls for quarter-screen default",
+          "done": true
+        },
+        {
+          "label": "Add usable edge/corner drag resizing and full-player mode",
+          "done": true
+        },
+        {
+          "label": "Verify actual Omarchy resize/fullscreen/restore and playback",
+          "done": true
+        },
+        {
+          "label": "Install, publish and update evidence",
+          "done": true
+        }
+      ],
+      "note": "Installed Omarchy proof: quarter 960×525; Full 1920×1080 idle/playing; Back/Escape restore with playback/volume retained. All native drag handles/minimum verified."
+    },
+    {
+      "id": "knob-trim",
+      "title": "Remove the bright Obsidian knob trim",
+      "lens": "User visual correction",
+      "steps": [
+        {
+          "label": "Remove the light perimeter while keeping the original knob",
+          "done": true
+        },
+        {
+          "label": "Inspect all rotary frames and both player sizes",
+          "done": true
+        }
+      ],
+      "status": "done",
+      "note": "Removed only Obsidian dark-base border paint, retaining original geometry and all other dial artwork. Verified in actual native quarter/fullscreen captures."
+    },
+    {
+      "id": "english-srt",
+      "title": "Add English subtitles with download consent",
+      "lens": "Player feature",
+      "steps": [
+        {
+          "label": "Prefer local English SRT or existing English track",
+          "done": true
+        },
+        {
+          "label": "Ask before contacting the download provider",
+          "done": true
+        },
+        {
+          "label": "Integrate official English subtitle download and apply",
+          "done": true
+        },
+        {
+          "label": "Verify local, cancel, missing, error and download flows",
+          "done": true
+        }
+      ],
+      "status": "done",
+      "note": "SUBS selects English local/embedded subtitles or asks Download/Open/Cancel. Actual provider download, changed-input guard, Enter-to-Cancel and visible SRT text verified. Player installed; MP4 default retained."
+    },
+    {
+      "id": "release-050",
+      "title": "Deliver v0.5.0 window and subtitle update",
+      "status": "working",
+      "lens": "Release",
+      "steps": [
+        {
+          "label": "Verify four skins, provider consent and installed MP4 default",
+          "done": true
+        },
+        {
+          "label": "Push source and installable public Linux release",
+          "done": false
+        },
+        {
+          "label": "Verify public assets and final board",
+          "done": false
+        }
+      ]
     }
   ]
 }

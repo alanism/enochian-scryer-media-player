@@ -10,7 +10,7 @@ DIST=ROOT.parent
 FONT=ROOT/'IBMPlexMono-Regular.ttf'
 CSS=(ROOT/'reference/controls.css').read_text()
 ATLAS=(ROOT/'reference/atlas.html').read_text()
-W,H=1040,812
+W,H=960,525
 KEYS={
  'previous':('rew','Previous item'), 'play':('play','Play'),
  'next':('ff','Next item'), 'stop':('stop','Stop'), 'pause':('pause','Pause')}
@@ -37,7 +37,7 @@ class Sheet:
   self.x+=w+4;self.rowh=max(h,self.rowh)
  def render(self,out):
   page=f'''<!doctype html><meta charset="utf-8"><style>@font-face{{font-family:"IBM Plex Mono";src:url("{FONT.as_uri()}")}}{CSS}
- html,body{{margin:0!important;background:transparent!important}}.asset{{position:absolute;overflow:hidden;background:transparent!important}} .asset *{{box-sizing:border-box;transition:none!important;animation:none!important}} .asset .tp{{width:100%;height:100%;max-width:none;padding:0;display:block;border-radius:0;box-shadow:none}} .asset .tp-key{{width:80px}} .asset:not(.asset-case) .tp{{background:transparent}} .asset .fx{{padding:0;border-radius:0;width:100%;height:100%;display:block;background:transparent}} .asset .cp{{background:transparent;display:block;padding:0;width:100%;height:100%;box-shadow:none;border-radius:0}} .asset .sq-btn{{width:64px}} .utility{{position:absolute;left:3px;top:3px;transform:scale(1.4);transform-origin:0 0}} .transport{{position:absolute;left:8px;top:3px;transform:scale(1.25);transform-origin:0 0}} .asset .transport .tp-key{{width:64px}} .small{{position:absolute;left:8px;top:3px;transform:scale(.8);transform-origin:0 0}} .asset .hs{{width:100%;max-width:none;height:48px}} .asset .hs-th{{left:8px;top:24px}} .asset .hs-line{{left:0;right:0}} .asset .dial{{transform:scale(.5);transform-origin:0 0}} .asset .dial .dark-base,.asset .dial .dark-knob{{transition:none}} .asset .tp-display{{height:100%;width:100%}} .asset .tp-mini button{{height:30px}}
+ html,body{{margin:0!important;background:transparent!important}}.asset{{position:absolute;overflow:hidden;background:transparent!important}} .asset *{{box-sizing:border-box;transition:none!important;animation:none!important}} .asset .tp{{width:100%;height:100%;max-width:none;padding:0;display:block;border-radius:0;box-shadow:none}} .asset .tp-key{{width:80px}} .asset:not(.asset-case) .tp{{background:transparent}} .asset .fx{{padding:0;border-radius:0;width:100%;height:100%;display:block;background:transparent}} .asset .cp{{background:transparent;display:block;padding:0;width:100%;height:100%;box-shadow:none;border-radius:0}} .asset .sq-btn{{width:64px}} .utility{{position:absolute;left:3px;top:3px;transform:scale(1.4);transform-origin:0 0}} .transport{{position:absolute;left:8px;top:3px;transform:scale(1.25);transform-origin:0 0}} .asset .transport .tp-key{{width:64px}} .small{{position:absolute;left:8px;top:3px;transform:scale(.8);transform-origin:0 0}} .asset .hs{{width:100%;max-width:none;height:48px}} .asset .hs-th{{left:8px;top:24px}} .asset .hs-line{{left:0;right:0}} .asset .dial{{transform:scale(.5);transform-origin:0 0}} .asset .dial .dark-base,.asset .dial .dark-knob{{transition:none}} .asset .dial[data-finish="obsidian"] .dark-base{{border-color:transparent}} .asset .tp-display{{height:100%;width:100%}} .asset .tp-mini button{{height:30px}}
  </style>{''.join(self.parts)}'''
   src=out/'sheet.html';src.write_text(page)
   height=self.y+self.rowh+4
@@ -60,7 +60,7 @@ def assets(finish,out):
    if state=='on':key=key.replace('class="tp-led"','class="tp-led on"')
    s.add(name+'-'+state,96,148,f'<div class="tp" data-finish="{finish}"><div class="transport">{key}</div></div>')
  # Existing compact Drum Machine keys, relabelled for application actions.
- labels={'open':'OPEN','queue':'PLAYLIST','eq':'EQ','full':'FULL','menu':'MENU','close':'CLOSE','mute':'MUTE','repeat':'REPEAT','shuffle':'SHUFFLE','add':'ADD','remove':'REMOVE','save':'SAVE','sort':'SORT','manage':'MANAGE','network':'STREAM','min':'MIN','restore':'BACK'}
+ labels={'open':'OPEN','queue':'PLAYLIST','eq':'EQ','full':'FULL','menu':'MENU','close':'CLOSE','mute':'MUTE','repeat':'REPEAT','shuffle':'SHUFFLE','add':'ADD','remove':'REMOVE','save':'SAVE','sort':'SORT','manage':'MANAGE','network':'STREAM','min':'MIN','restore':'BACK','subtitles':'SUBS','download':'DOWNLOAD','cancel':'CANCEL'}
  for name,label in labels.items():
   for state in ['up','down','on']:
    attr='data-down="true"' if state=='down' else 'aria-pressed="true"' if state=='on' else ''
@@ -77,10 +77,17 @@ def assets(finish,out):
  seq=Image.new('RGBA',(110,11110))
  for i in range(101):seq.paste(Image.open(out/f'dial-{i}.png'),(0,i*110))
  seq.save(out/'volume.png')
- # Bound the native radial hit region without altering its original artwork.
+ # Resize the existing controls uniformly for the shorter player strip.
+ for name in list(KEYS)+list(labels):
+  factor=2/3
+  for state in ['up','down','on']:
+   im=Image.open(out/f'{name}-{state}.png');im.resize((round(im.width*factor),round(im.height*factor)),Image.Resampling.LANCZOS).save(out/f'mini-{name}-{state}.png')
+ for name,size in [('display',(208,69)),('seek-thumb',(66,38)),('seek-track',(928,38))]:
+  Image.open(out/(name+'.png')).resize(size,Image.Resampling.LANCZOS).save(out/('mini-'+name+'.png'))
+ Image.open(out/'volume.png').resize((88,8888),Image.Resampling.LANCZOS).save(out/'mini-volume.png')
  case=Image.open(out/'case.png')
- case.crop((874,0,984,584)).save(out/'knob-guard-top.png')
- case.crop((874,694,984,812)).save(out/'knob-guard-bottom.png')
+ case.crop((W-112,0,W-24,H-120)).save(out/'knob-guard-top.png')
+ case.crop((W-112,H-32,W-24,H)).save(out/'knob-guard-bottom.png')
  # Equalizer uses the same ribbed Slider 01, uniformly reduced and rotated.
  thumb=Image.open(out/'seek-thumb.png').resize((49,29),Image.Resampling.LANCZOS).rotate(90,expand=True)
  thumb.save(out/'eq-thumb.png')
@@ -138,14 +145,16 @@ def xml(finish,out):
  dark=finish=='obsidian'; ink='#f2f2f4' if dark else '#1d1d1f'; sub='#9a9aa0' if dark else '#737379'; case='#121214' if dark else '#ededf0'
  root=ET.Element('Theme',version='2.0',tooltipfont='defaultfont',magnet='0')
  E(root,'ThemeInfo',name=f'Enochian VLC · {finish.title()}',author='Enochian',webpage='https://uiux-nonhumanintelligence.web.app/UIUX')
- for size,name in [(12,'defaultfont'),(12,'mono'),(16,'title'),(24,'time')]:E(root,'Font',id=name,file=FONT.name,size=size)
+ for size,name in [(11,'defaultfont'),(11,'mono'),(16,'title'),(20,'time')]:E(root,'Font',id=name,file=FONT.name,size=size)
  names=['case','display','seek-track','seek-thumb','eq-thumb','eq-track','volume','knob-guard-top','knob-guard-bottom']
- names += [f'{k}-{st}' for k in list(KEYS)+['open','queue','eq','full','menu','close','mute','repeat','shuffle','add','remove','save','sort','manage','network','min','restore'] for st in ['up','down','on']]
+ names += ['mini-'+name for name in ['display','seek-thumb','seek-track','volume']]
+ names += [f'mini-{k}-{st}' for k in list(KEYS)+['open','queue','eq','full','menu','close','mute','repeat','shuffle','add','remove','save','sort','manage','network','min','restore','subtitles','download','cancel'] for st in ['up','down','on']]
+ names += [f'{k}-{st}' for k in list(KEYS)+['open','queue','eq','full','menu','close','mute','repeat','shuffle','add','remove','save','sort','manage','network','min','restore','subtitles','download','cancel'] for st in ['up','down','on']]
  for name in names:E(root,'Bitmap',id=name,file='assets/'+name+'.png',alphacolor='#FF00FF')
  def text(p,x,y,t,font='mono',color=ink,width=0,anchor=None,**kw):
   if not width:
    # VLC interprets an explicit width of zero literally; it does not size text.
-   size={'mono':12,'title':16,'time':24}[font]
+   size={'mono':11,'title':16,'time':20}[font]
    width={'$T':156,'/ $D':124}.get(t,max(16,math.ceil(len(t)*size*.65)+6))
   a=dict(x=x,y=y,text=t,font=font,color=color,width=width,**kw)
   if anchor:a.update(lefttop=anchor,rightbottom=anchor)
@@ -159,43 +168,51 @@ def xml(finish,out):
   if anchor:a.update(lefttop=anchor,rightbottom=anchor)
   return E(p,'Checkbox',**a)
  main=E(root,'Window',id='main',x=60,y=60,dragdrop='true',playondrop='true')
- l=E(main,'Layout',id='player',width=W,height=H,minwidth=W,minheight=H)
- E(l,'Image',image='case',resize='scale',rightbottom='rightbottom',action='move',action2='main.maximize()')
- # VLC's radial hit test can see other frames above/below the visible face.
- # Same-surface guards confine input; normal controls remain on top.
- E(l,'RadialSlider',id='volume-knob',x=874,y=584,sequence='volume',nbimages=101,minangle=45,maxangle=315,value='volume',lefttop='rightbottom',rightbottom='rightbottom',tooltiptext='Volume $V%')
- E(l,'Image',id='knob-hit-top',image='knob-guard-top',x=874,y=0,width=110,height=584,resize='scale',lefttop='righttop',rightbottom='rightbottom',action='move')
- E(l,'Image',id='knob-hit-bottom',image='knob-guard-bottom',x=874,y=694,width=110,height=118,lefttop='rightbottom',rightbottom='rightbottom',action='move')
- text(l,30,24,'ENOCHIAN','title');text(l,188,27,'VLC / MEDIA PLAYER',color=sub)
- button(l,'open',350,10,'dialogs.fileSimple()','Open media · Ctrl+O','righttop')
- button(l,'queue',448,10,'queue.show()','Create or edit a playlist','righttop')
- button(l,'eq',546,10,'equalizerwin.show()','Open equalizer','righttop')
- button(l,'menu',644,10,'dialogs.popup()','Tracks, subtitles, speed and preferences','righttop')
- button(l,'min',742,10,'vlc.minimize()','Minimize','righttop')
- button(l,'full',840,10,'vlc.fullscreen()','Video fullscreen (F)','righttop')
- button(l,'close',938,10,'vlc.quit()','Quit VLC','righttop')
- E(l,'Video',id='screen',x=24,y=96,width=992,height=416,rightbottom='rightbottom',autoresize='false',help='Drop files to play · F fullscreen · Space play/pause')
- # Bottom controls stay fixed in size while the video expands with the window.
- E(l,'Image',image='seek-track',x=24,y=526,lefttop='leftbottom',rightbottom='rightbottom',resize='scale')
- E(l,'Slider',id='seek',x=65,y=550,points='(0,0),(910,0)',up='seek-thumb',down='seek-thumb',over='seek-thumb',value='time',thickness=34,lefttop='leftbottom',rightbottom='rightbottom',tooltiptext='$T / $D')
- E(l,'Image',image='display',x=24,y=592,lefttop='leftbottom',rightbottom='leftbottom')
- text(l,40,602,'$N',width=278,color='#f2f2f4',anchor='leftbottom')
- text(l,40,628,'$T','time',color='#CC0000',anchor='leftbottom')
- text(l,206,638,'/ $D',color='#9a9aa0',anchor='leftbottom')
- text(l,40,675,'PLAYING',color='#3ccf7a',anchor='leftbottom',visible='vlc.isPlaying')
- text(l,40,675,'PAUSED',color='#F4A934',anchor='leftbottom',visible='vlc.isPaused')
- text(l,40,675,'READY · OPEN OR DROP MEDIA',color='#9a9aa0',anchor='leftbottom',visible='vlc.isStopped')
- button(l,'previous',352,584,'playlist.previous()','Previous item (P) · original REW key','leftbottom')
- check(l,'play',448,584,'vlc.isPlaying','vlc.play()','vlc.pause()','Play / pause (Space)','leftbottom')
- check(l,'pause',544,584,'vlc.isPaused','vlc.pause()','vlc.play()','Pause / resume','leftbottom')
- button(l,'stop',640,584,'vlc.stop()','Stop (S)','leftbottom')
- button(l,'next',736,584,'playlist.next()','Next item (N) · original FF key','leftbottom')
- text(l,887,704,'VOL $V%',color=sub,anchor='rightbottom',width=110)
- check(l,'shuffle',352,728,'playlist.isRandom','playlist.setRandom(true)','playlist.setRandom(false)','Shuffle playlist','leftbottom')
- check(l,'repeat',448,728,'playlist.isLoop','playlist.setLoop(true)','playlist.setLoop(false)','Loop playlist','leftbottom')
- check(l,'mute',544,728,'vlc.isMute','vlc.mute()','vlc.mute()','Mute / unmute (M)','leftbottom')
- button(l,'network',640,728,'dialogs.net()','Open network stream','leftbottom')
- text(l,30,724,'$H',color=sub,width=300,anchor='leftbottom')
+ l=E(main,'Layout',id='player-resizable-v3',width=W,height=H,minwidth=820,minheight=360,maxwidth=16384,maxheight=16384)
+ E(l,'Image',image='case',width=W,height=H,resize='scale',rightbottom='rightbottom',action='move')
+ E(l,'Image',image='case',width=W,height=H,resize='scale',rightbottom='rightbottom',action='move',visible='main.isMaximized')
+ E(l,'RadialSlider',id='volume-knob',x=W-112,y=H-120,sequence='mini-volume',nbimages=101,minangle=45,maxangle=315,value='volume',lefttop='rightbottom',rightbottom='rightbottom',tooltiptext='Volume $V%')
+ E(l,'Image',id='knob-hit-top',image='knob-guard-top',x=W-112,y=0,width=88,height=H-120,resize='scale',lefttop='righttop',rightbottom='rightbottom',action='move')
+ E(l,'Image',id='knob-hit-bottom',image='knob-guard-bottom',x=W-112,y=H-32,width=88,height=32,lefttop='rightbottom',rightbottom='rightbottom',action='move')
+ text(l,16,18,'ENOCHIAN','title');text(l,148,21,'MEDIA PLAYER',color=sub,width=150)
+ for i,(name,action,tip) in enumerate([
+  ('open','dialogs.fileSimple()','Open media · Ctrl+O'),
+  ('queue','queue.show()','Create or edit a playlist'),
+  ('eq','equalizerwin.show()','Open equalizer'),
+  ('menu','dialogs.popup()','Tracks, subtitles, speed and preferences'),
+  ('subtitles','none','English subtitles · use local SRT or ask before downloading'),
+  ('min','vlc.minimize()','Minimize'),
+  ('full','main.maximize()','Fullscreen player · BACK or Escape restores · F for video only'),
+  ('close','vlc.quit()','Quit VLC')]):
+  x=W-540+i*66
+  if name=='full':
+   c=check(l,'mini-full',x,4,'main.isMaximized','main.maximize()','main.unmaximize()',tip,'righttop')
+   c.set('id','window-fullscreen')
+   for attr in ['up2','down2','over2']:c.set(attr,'mini-restore-on')
+  else:
+   c=button(l,'mini-'+name,x,4,action,tip,'righttop')
+   if name=='subtitles':c.set('id','english-subtitles')
+ E(l,'Video',id='screen',x=16,y=64,width=W-32,height=H-234,rightbottom='rightbottom',autoresize='false',help='Drop files to play · F video fullscreen · Space play/pause')
+ E(l,'Image',image='mini-seek-track',x=16,y=H-164,width=W-32,height=38,lefttop='leftbottom',rightbottom='rightbottom',resize='scale')
+ E(l,'Slider',id='seek',x=49,y=H-145,points=f'(0,0),({W-98},0)',up='mini-seek-thumb',down='mini-seek-thumb',over='mini-seek-thumb',value='time',thickness=24,lefttop='leftbottom',rightbottom='rightbottom',tooltiptext='$T / $D')
+ E(l,'Image',image='mini-display',x=16,y=H-116,lefttop='leftbottom',rightbottom='leftbottom')
+ text(l,26,H-110,'$N',width=188,color='#f2f2f4',anchor='leftbottom')
+ text(l,26,H-89,'$T','time',width=110,color='#CC0000',anchor='leftbottom',visible='not vlc.isStopped')
+ text(l,142,H-80,'/ $D',width=76,color='#9a9aa0',anchor='leftbottom',visible='not vlc.isStopped')
+ text(l,26,H-89,'0:00','time',width=110,color='#CC0000',anchor='leftbottom',visible='vlc.isStopped')
+ text(l,142,H-80,'/ 0:00',width=76,color='#9a9aa0',anchor='leftbottom',visible='vlc.isStopped')
+ for label,color,state in [('PLAYING','#3ccf7a','vlc.isPlaying'),('PAUSED','#F4A934','vlc.isPaused'),('READY · OPEN MEDIA','#9a9aa0','vlc.isStopped')]:text(l,26,H-61,label,color=color,width=188,anchor='leftbottom',visible=state)
+ button(l,'mini-previous',240,H-120,'playlist.previous()','Previous item (P)','leftbottom')
+ check(l,'mini-play',304,H-120,'vlc.isPlaying','vlc.play()','vlc.pause()','Play / pause (Space)','leftbottom')
+ check(l,'mini-pause',368,H-120,'vlc.isPaused','vlc.pause()','vlc.play()','Pause / resume','leftbottom')
+ button(l,'mini-stop',432,H-120,'vlc.stop()','Stop (S)','leftbottom')
+ button(l,'mini-next',496,H-120,'playlist.next()','Next item (N)','leftbottom')
+ check(l,'mini-shuffle',576,H-120,'playlist.isRandom','playlist.setRandom(true)','playlist.setRandom(false)','Shuffle playlist','leftbottom')
+ check(l,'mini-repeat',642,H-120,'playlist.isLoop','playlist.setLoop(true)','playlist.setLoop(false)','Loop playlist','leftbottom')
+ check(l,'mini-mute',576,H-68,'vlc.isMute','vlc.mute()','vlc.mute()','Mute / unmute (M)','leftbottom')
+ button(l,'mini-network',642,H-68,'dialogs.net()','Open network stream','leftbottom')
+ text(l,W-118,H-23,'VOL $V%',color=sub,anchor='rightbottom',width=104)
+ text(l,16,H-22,'$H',color=sub,width=208,anchor='leftbottom')
  # The queue is skinned as a separate window so the video retains usable space.
  q=E(root,'Window',id='queue',visible='false',x=150,y=120)
  ql=E(q,'Layout',id='queue-layout',width=620,height=600,minwidth=620,minheight=600)
@@ -222,6 +239,22 @@ def xml(finish,out):
   E(el,'Slider',id='eq-'+str(i),x=x,y=124,points='(0,140),(0,0)',up='eq-thumb',down='eq-thumb',over='eq-thumb',value='equalizer.preamp' if i==0 else f'equalizer.band({i-1})',thickness=24,tooltiptext='Preamp' if i==0 else label+' Hz')
   text(el,x-12,300,label,width=52,alignment='center',color=sub)
  text(el,26,355,'ENOCHIAN / SLIDER 01 · VLC 10-BAND EQ',color=sub)
+ # App-owned resize regions work even when the compositor disables border resizing.
+ def resize_handles(layout,w,h,name,visible='true'):
+  case_image=Image.open(out/'assets/case.png').resize((w,h),Image.Resampling.LANCZOS)
+  for suffix,box,action,anchor in [
+   ('right',(w-7,0,w,h),'resizeE',('righttop','rightbottom')),
+   ('bottom',(0,h-7,w,h),'resizeS',('leftbottom','rightbottom')),
+   ('corner',(w-32,h-32,w,h),'resizeSE',('rightbottom','rightbottom'))]:
+   ident=name+'-resize-'+suffix;image=case_image.crop(box)
+   if suffix=='corner':
+    grip=Image.open(out/'assets/seek-thumb.png').resize((26,15),Image.Resampling.LANCZOS).rotate(45,expand=True)
+    image.alpha_composite(grip,((32-grip.width)//2,(32-grip.height)//2))
+   file='assets/'+ident+'.png';image.save(out/file)
+   bitmap=ET.Element('Bitmap',id=ident,file=file,alphacolor='#FF00FF');root.insert(next(i for i,e in enumerate(root) if e.tag=='Window'),bitmap)
+   E(layout,'Image',id=ident+'-hit',image=ident,x=box[0],y=box[1],width=box[2]-box[0],height=box[3]-box[1],resize='scale',lefttop=anchor[0],rightbottom=anchor[1],action=action,help='Drag to resize the window',visible=visible)
+ resize_handles(l,W,H,'player','not main.isMaximized')
+ resize_handles(ql,620,600,'queue')
  bake_cached_graphics(root,out)
  data=ET.tostring(root,encoding='utf-8',xml_declaration=True,short_empty_elements=False)
  (out/'theme.xml').write_bytes(data.replace(b'?>',b'?>\n<!DOCTYPE Theme PUBLIC "-//VideoLAN//DTD VLC Skins V2.0//EN" "skin.dtd">',1))
@@ -241,7 +274,7 @@ def build(finish):
    for p in sorted(skin.rglob('*')):
     if p.is_file():tar.add(p,arcname=str(p.relative_to(skin)),recursive=False)
   # Preview composed from the same assets/positions as the executable skin.
-  preview(skin,root,finish)
+  # Real native screenshots are used for this resizable layout, rather than a fabricated preview.
   shutil.copytree(skin,DIST/'source'/'built'/finish,dirs_exist_ok=True)
   print('Built and DTD-validated',vlt)
 

@@ -1,0 +1,477 @@
+{
+  "rubric": "jayse",
+  "rubric_version": "1.0",
+  "revision": "v0.5.0 window/subtitle revision after 907b3d5",
+  "assessment": "Evidence-backed self-evaluation with unchanged frozen anchors. Changed player areas reassessed against iteration-3 native proof; unchanged companion/playlist journeys retain explicit iteration-2 evidence. No independent designer endorsement. Existing grade-4 deductions remain; no totals rounded upward.",
+  "scores": [
+    {
+      "id": "purpose",
+      "score": 5,
+      "reason": "Native ready state and explicit Open/Playlist plus companion Add Link/Add File identify the task and entry route at first view.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "state",
+      "score": 5,
+      "reason": "Native Playing/Paused/Ready text and latched keys plus complete/partial/failure companion states were observed against real state.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "primary",
+      "score": 5,
+      "reason": "The media stage and Tape Deck transport dominate playback; Play in VLC and the relevant transfer content dominate card/detail views.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "sequence",
+      "score": 5,
+      "reason": "Observed Open/picker/cancel, native create/edit/Save/reopen and transfer review/handoff/retry paths preserve context and expose the next action through labels and outcomes.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "truth",
+      "score": 5,
+      "reason": "Elapsed/duration, selected percentage and 104/208 inventory agree with real engine/player state; zero/invalid counters remain unknown instead of implying success.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "accent",
+      "score": 5,
+      "reason": "Original red time and restrained status/latched accents identify state; no extra cinematic meters or ornamental highlights were introduced.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "space",
+      "score": 5,
+      "reason": "Header, media, transport, utility rows and modal groups retain visible separation at all observed sizes.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "monochrome",
+      "score": 5,
+      "reason": "Explicit state words, filenames, glyphs and latched/depressed geometry communicate without relying on hue alone in both finishes.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "shape",
+      "score": 5,
+      "reason": "Transport, utility, rotary and slider roles stay consistent across actual player, queue, EQ and companion views.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "motion",
+      "score": 5,
+      "reason": "Original press/release and selection feedback accompanies actual actions; no new ornamental animation obscures media or data.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "reduced",
+      "score": 4,
+      "reason": "Reduced-motion CSS retains the same information and actions by source inspection; a separate OS reduced-motion browser session was not observed.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "focus",
+      "score": 4,
+      "reason": "Browser modal/menu restoration and native shortcut/dialog routes pass. Bitmap controls do not provide complete native Tab-focus/accessibility semantics.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "context",
+      "score": 5,
+      "reason": "SUBS responds to available English track/local SRT or presents consent when missing. Download/Open/Cancel follow the current media; stale input prevents wrong-video application. Existing context controls retained.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json",
+        "docs/evaluation/evidence/iteration-3-native.json"
+      ]
+    },
+    {
+      "id": "depth",
+      "score": 5,
+      "reason": "Native Menu exposes audio/subtitle/speed, EQ exposes actual faders, Manage exposes drag editing and companion tabs/settings expose detail behind explicit entries.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "playlist",
+      "score": 5,
+      "reason": "Native Add, double-click, current item, Remove, Sort, Manage drag and named Save/Open were exercised with exact order readbacks.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "identity",
+      "score": 4,
+      "reason": "Exact Unicode/space file identity, per-file stream ID and custom destination were verified. Identical basenames need advanced source-location inspection.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "recovery",
+      "score": 4,
+      "reason": "Subtitle prompt focuses Cancel initially; Enter/Escape dismiss safely. Actual download after consent and useful changed-input feedback observed. Existing error/focus limitations remain bounded grade 4.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json",
+        "docs/evaluation/evidence/iteration-3-native.json"
+      ]
+    },
+    {
+      "id": "feedback",
+      "score": 5,
+      "reason": "English SRT selection/addition produces real active-track changes and visible subtitle text. Full/Back state and restore are observed; prior transfer/status feedback remains verified.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json",
+        "docs/evaluation/evidence/iteration-3-native.json"
+      ]
+    },
+    {
+      "id": "system",
+      "score": 4,
+      "reason": "Custom views share existing primitives and state words. Stock Qt dialogs/advanced editor remain a bounded vocabulary/typography exception.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    },
+    {
+      "id": "grounding",
+      "score": 5,
+      "reason": "Actual video decoding, track/EQ values, exported/reopened XSPF, streaming ranges and preserved transfer records substantiate the functions.",
+      "methods": [
+        "observed-ui",
+        "api",
+        "source"
+      ],
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/iteration-2-build-install.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
+      ]
+    }
+  ],
+  "mandatory_journeys": {
+    "open_local": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Native single/multiple picker flows, direct Ctrl+O and exact identities passed; invalid-file retry works with the noted automatic-feedback limit.",
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/browser-journeys.json"
+      ]
+    },
+    "playback": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Native transport, seek/boundaries, volume/mute, tracks/subtitles/speed, EQ and Full/Escape verified against actual VLC state in supported variants; silent sink used. New window/SRT checks recorded in iteration-3; no claim of provider timing accuracy.",
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-3-native.json"
+      ]
+    },
+    "playlist_create_edit": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Native Add/append, row selection, keep-files Remove, Sort and Manage drag verified; empty and manual-wrap boundaries observed.",
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/browser-journeys.json"
+      ]
+    },
+    "playlist_save_reload": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "VLC native exporter saved/canceled/reopened named XSPF with exact order/Unicode; missing generated file error recovered via another queue item.",
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/browser-journeys.json"
+      ]
+    },
+    "torrent_add_control": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Retained file/link import plus new subset/destination/cancel/inclusion/removal checks against the real isolated engine.",
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/browser-journeys.json"
+      ]
+    },
+    "torrent_play_show_file": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Browser completed-card/per-file actions decoded correct local/stream media in real isolated VLC; incomplete double-click did not launch. Custom-path reveal and missing feedback observed.",
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/browser-journeys.json"
+      ]
+    },
+    "settings_cancel": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Limits Save/Cancel/reopen from prior evidence plus observed failed Save with retained values and useful engine-restart guidance; cancel restored Setup focus.",
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/browser-journeys.json"
+      ]
+    },
+    "recovery": {
+      "passed": true,
+      "method": "observed-ui",
+      "note": "Native missing-file and URL failures/retry, corrupt-file retry, engine-failure/restart and retained destructive dismissal/reset checks passed with stated limits. New window/SRT checks recorded in iteration-3; no claim of provider timing accuracy.",
+      "evidence": [
+        "docs/evaluation/evidence/iteration-2-native.json",
+        "docs/evaluation/evidence/iteration-2-browser.json",
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/iteration-3-native.json"
+      ]
+    }
+  },
+  "unresolved_high_severity": []
+}

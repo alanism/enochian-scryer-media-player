@@ -1,0 +1,17 @@
+<?vlc
+local h=require 'httprequests'
+local input=vlc.object.input()
+local item=vlc.input.item()
+local uri=item and item:uri()
+local added,err
+if _GET['expected'] and _GET['expected']~=uri then
+ err='The video changed. The subtitle was saved but has not been applied to another video.'
+elseif input then
+ if _GET['subtitle'] then added=vlc.input.add_subtitle_mrl(_GET['subtitle'],true) end
+ if _GET['spu'] then vlc.var.set(input,'spu-es',tonumber(_GET['spu'])) end
+end
+if _GET['message'] then vlc.osd.message(_GET['message']) end
+local ids,names={},{}
+if input then ids,names=vlc.var.get_list(input,'spu-es') end
+h.printTableAsJson({uri=uri,spu=input and vlc.var.get(input,'spu-es'),subtitle_ids=ids,subtitle_names=names,subtitle_added=added,error=err})
+?>

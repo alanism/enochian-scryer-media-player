@@ -50,3 +50,23 @@ HTTP range seek and missing-file recovery. The harness wrote the M3U8 file;
 native Save/export and picker/drag gestures are NOT verified by these tests.
 Dummy audio provides no meaningful device-volume readback; audibility and
 device volume remain unverified. See ../docs/evaluation/index.html.
+
+
+v0.5.0 native checks (2026-11-05):
+- Actual Omarchy work area 1920×1050 yields 960×525 initial player.
+- Idle FULL reaches compositor fullscreen 1920×1080; BACK and Escape restore.
+- Native right, bottom and corner drag handles enlarge the player; shrinking
+  clamps to 820×360. Compact minimum is 656×288.
+- All four skins select an English sidecar, add a separate SRT through the
+  guarded Lua API, and pass native Play/Pause/Stop clicks on a private display.
+- Subtitle text is visibly rendered after installing vlc-plugin-freetype.
+- Missing English SRT opens the original-key Download/Open/Cancel prompt.
+  Cancel dismisses with no downloaded SRT. An actual provider request using
+  the generated Big Buck Bunny test filename downloaded an English SRT.
+  When the test clip ended during download, the stale-file guard saved it
+  without applying it to another input. Provider timing accuracy is not claimed.
+- Four archives pass DTD, assets, IDs, resize actions and exact dial-frame
+  geometry checks. Python (21 tests), frontend tests and production build pass.
+The automated UI used generated media and private profiles only. Speaker
+output, high-DPI/multiple monitors and every provider account/quota state
+remain untested. Prior iteration records above describe their original scope.

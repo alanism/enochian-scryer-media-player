@@ -1,0 +1,16 @@
+{
+  "installed_files_match_source": [
+    "enochian-vlc",
+    "player_window.py",
+    "subtitles.py",
+    "window_skin.py",
+    "skins/Enochian-Ivory-Compact.vlt",
+    "skins/Enochian-Ivory.vlt",
+    "skins/Enochian-Obsidian-Compact.vlt",
+    "skins/Enochian-Obsidian.vlt"
+  ],
+  "subtitle_renderer": "vlc-plugin-freetype 3.0.24-1",
+  "default_mp4": "enochian-vlc.desktop",
+  "torrent_companion": "No production state or files modified",
+  "runtime_downloader": "Official opensubs-cli 0.1.1 copied with dependencies"
+}

@@ -16,7 +16,7 @@ class VlcLauncherTests(unittest.TestCase):
             stub.write_text('#!/usr/bin/python3\nimport json,os,sys\nif "--list" in sys.argv: print("  skins2 custom interface")\nelse: open(os.environ["VLC_TEST_ARGS"],"w").write(json.dumps(sys.argv[1:]))\n')
             stub.chmod(0o755)
             capture = root / 'args.json'
-            env = {**os.environ, 'PATH': str(root) + ':' + os.environ['PATH'], 'DISPLAY': ':test', 'XDG_CONFIG_HOME': str(root / 'config'), 'VLC_TEST_ARGS': str(capture)}
+            env = {**os.environ, 'PATH': str(root) + ':' + os.environ['PATH'], 'DISPLAY': ':test', 'XDG_CONFIG_HOME': str(root / 'config'), 'VLC_TEST_ARGS': str(capture), 'XDG_CACHE_HOME': str(root / 'cache')}
             for flags in [['--ivory', '--compact'], ['--compact', '--ivory']]:
                 with self.subTest(flags=flags):
                     subprocess.run(['bash', str(launcher), *flags, '/tmp/example movie.mp4'], env=env, check=True, capture_output=True)
