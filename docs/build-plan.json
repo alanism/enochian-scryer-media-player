@@ -1,7 +1,7 @@
 {
   "title": "Enochian Scryer — build plan",
-  "updated": "2026-11-05T20:50:52.207001+07:00",
-  "phase": "Iteration 2 · final evidence, scoring and delivery",
+  "updated": "2026-11-05T20:55:53.053085+07:00",
+  "phase": "Complete · verified, installed and published v0.4.0",
   "goal": "95+ on every evaluation; all areas covered",
   "scores": [
     {
@@ -349,7 +349,7 @@
     {
       "id": "release-iteration-2",
       "title": "Install and publish the verified build",
-      "status": "working",
+      "status": "done",
       "lens": "Iteration 2 delivery",
       "steps": [
         {
@@ -362,14 +362,14 @@
         },
         {
           "label": "Publish scorecards and Linux bundle",
-          "done": false
+          "done": true
         },
         {
           "label": "Verify public source, bundle and final board",
-          "done": false
+          "done": true
         }
       ],
-      "note": "Installed source skins and frontend match verified artifacts. Existing production record IDs/hashes and MP4 default are preserved. Isolated restart recovered custom destination and inclusion flags. Preparing scorecards and public release."
+      "note": "v0.4.0 source and 21.7 MB Linux bundle are public; GitHub asset digests match local artifacts. Installed assets, existing production IDs/hashes and MP4 default verified. Final standalone board reflects completed delivery; the ZIP retains its packaging-time checklist snapshot."
     }
   ]
 }

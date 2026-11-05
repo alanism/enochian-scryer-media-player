@@ -1,0 +1,9 @@
+{
+  "release": "https://github.com/alanism/enochian-scryer-media-player/releases/tag/v0.4.0",
+  "release_source_revision": "6ea19d4af0e87ffb8a9a50a715ab87a48502f23c",
+  "public_source_head_verified": true,
+  "linux_zip_bytes": 21733240,
+  "linux_zip_sha256": "0fd10da03c69a04e3f241f6d2d52e1078ae27ac986e2bd66782134c45962fac0",
+  "public_asset_digests_matched": true,
+  "note": "Runtime/source and evidence are tagged at this revision. Subsequent delivery-only board updates appear on main and in the standalone HTML release asset; bundle checklist is a packaging-time snapshot."
+}
