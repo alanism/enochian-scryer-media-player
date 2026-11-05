@@ -11,6 +11,9 @@ Run `./install.sh` from this folder, then open **Enochian Rqbit** from the Omarc
 - **ADD LINK** accepts a magnet link or torrent URL; **ADD FILE** opens a torrent file.
 - Select a transfer to inspect it. **RESUME** and **PAUSE** operate on selected transfers.
 - **PLAY IN VLC** in Overview opens the first included media file. Files has a separate play key for each supported media file.
+- In **CARDS** view, double-click a completed torrent to open its first included media file directly in Enochian VLC. Incomplete torrents do not launch. Completed paused torrents stay paused while the local file plays.
+- Right-click a torrent card and choose **Show file** to reveal its first available included media file in the file manager. For non-media torrents, it reveals the first available included file. If file highlighting is unsupported, it opens the containing folder. Missing files produce an error on the card.
+- Keyboard users can focus a completed card and press **Enter** to play, or **Shift+F10** to open its menu. **Escape** closes the menu.
 - **IVORY / OBSIDIAN** changes the finish and remembers it. VLC opens in the same finish as the companion.
 - Downloads go to `~/Downloads/Enochian` by default; the add dialog can specify another folder.
 - Closing the app window keeps transfers running. To stop the engine, use the launcher's **Stop transfers and service** action, or run `python3 ~/.local/share/enochian-rqbit/companion.py --stop`.
@@ -31,6 +34,8 @@ From the rqbit repository root, `enochian/build.sh` installs the locked frontend
 ## Verification and limits
 
 Verified on this Omarchy desktop: TypeScript and production build; app loads without browser errors; transfer selection; Overview and Files; switching finishes; and Play in VLC. A private, tracker-free local MP4 fixture verified HTTP 206 byte ranges against the original bytes, pause/resume, the installed Obsidian VLC skin, Playing status and a five-second seek. No public torrent swarm was used for this test. Audible playback and live downloading from remote peers were not tested.
+
+The card actions were checked with separate local completed and incomplete fixtures: completed-card double-click opened the installed VLC with a local file, confirmed Playing and seeking, and preserved the torrent's paused state; incomplete-card double-click did not launch. Show file opened the fixture's download directory through the desktop file manager. The menu's keyboard opening, activation and dismissal were checked at 1280×720. Ten bridge tests cover completion checks, local path validation, file selection and folder fallback (`python3 -m unittest discover -s enochian -v`).
 
 The in-app browser comparison checked the original key silhouette and glyphs, key gradients and shadows, utility button edges, the two finish palettes, mono typography, and segmented progress. The compact table meter was adjusted to fit its column. New functional copy is limited to transfer labels and the VLC handoff. The 1280×720 desktop view was checked; narrow viewport overrides did not reliably apply to the background app tab, so mobile behavior remains unverified. This is a Linux desktop companion.
 

@@ -17,6 +17,32 @@ ENGINE = ROOT/'bin/rqbit'
 DIST = ROOT/'web'
 AUTH = 'Basic '+base64.b64encode(('enochian:'+secrets.token_urlsafe(32)).encode()).decode()
 ENGINE_PROCESS: subprocess.Popen | None = None
+MEDIA_FILE = re.compile(r'\.(mp4|mkv|webm|mov|m4v|avi|mp3|flac|ogg|wav)$', re.I)
+
+
+def torrent_id(data):
+    tid = data.get('torrent_id')
+    if type(tid) is not int or tid < 0:
+        raise ValueError('Choose a valid torrent')
+    return tid
+
+
+def downloaded_file(details, file):
+    """Resolve engine-owned filenames without accepting arbitrary local paths."""
+    components = file.get('components', [])
+    if not isinstance(components, list) or not components or any(not isinstance(c, str) or c in ('', '.', '..') or '/' in c or '\\' in c or '\0' in c for c in components):
+        raise ValueError('Invalid downloaded filename')
+    root = Path(details['output_folder']).resolve()
+    target = root.joinpath(*components).resolve()
+    if not target.is_relative_to(root) or not target.is_file():
+        raise ValueError('The downloaded file is not available on disk')
+    return target
+
+
+def included_files(details):
+    return [(i, f) for i, f in enumerate(details.get('files', []))
+            if f.get('included') and not f.get('attributes', {}).get('padding')
+            and not f.get('attributes', {}).get('symlink')]
 
 
 def engine_request(method: str, path: str, body: bytes | None = None, headers: dict | None = None):
@@ -83,6 +109,7 @@ class Handler(BaseHTTPRequestHandler):
             body=self.rfile.read(length)
             path=urllib.parse.urlsplit(self.path).path
             if path=='/enochian/play':self.play(json.loads(body));return
+            if path=='/enochian/show-file':self.show_file(json.loads(body));return
             if path=='/enochian/stop':
                 self.reply(200,{'stopped':True})
                 threading.Thread(target=self.server.shutdown,daemon=True).start();return
@@ -90,19 +117,27 @@ class Handler(BaseHTTPRequestHandler):
         except (ValueError,KeyError,TypeError) as e:self.reply(400,{'error':str(e)})
         except (OSError,http.client.HTTPException) as e:self.reply(502,{'error':str(e)})
     def play(self,data):
-        tid=data.get('torrent_id');fid=data.get('file_id');finish=data.get('finish','obsidian')
-        if type(tid) is not int or tid<0 or (fid is not None and (type(fid) is not int or fid<0)):
+        tid=torrent_id(data);fid=data.get('file_id');finish=data.get('finish','obsidian')
+        completed_only=data.get('completed_only',False)
+        if (fid is not None and (type(fid) is not int or fid<0)) or type(completed_only) is not bool:
             raise ValueError('Choose a valid torrent and file')
         if finish not in ('obsidian','ivory'):raise ValueError('Invalid finish')
         details=engine_json(f'/torrents/{tid}')
         files=details.get('files',[])
         if fid is None:
-            fid=next((i for i,f in enumerate(files) if f.get('included') and re.search(r'\.(mp4|mkv|webm|mov|m4v|avi|mp3|flac|ogg|wav)$',f['name'],re.I)),None)
+            fid=next((i for i,f in included_files(details) if MEDIA_FILE.search(f['name'])),None)
         if fid is None:raise ValueError('Select a media file in the Files tab')
         if fid>=len(files) or not files[fid].get('included'):raise ValueError('Select this file for download first')
         if not VLC.is_file():raise ValueError('Install Enochian VLC first')
+        stats=engine_json(f'/torrents/{tid}/stats/v1')
+        if completed_only:
+            if stats.get('finished') is not True or stats.get('error'):
+                raise ValueError('Wait for this torrent to finish downloading')
+            target=downloaded_file(details,files[fid])
+            subprocess.Popen([str(VLC),'--'+finish,str(target)],stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
+            self.reply(200,{'opened':True,'torrent_id':tid,'file_id':fid});return
         # Resume the selected torrent before opening its range-enabled HTTP stream.
-        state=engine_json(f'/torrents/{tid}/stats/v1').get('state')
+        state=stats.get('state')
         if state in ('paused','error'):
             conn,r=engine_request('POST',f'/torrents/{tid}/start',b'')
             try:
@@ -113,6 +148,26 @@ class Handler(BaseHTTPRequestHandler):
         url=f'{ORIGIN}/torrents/{tid}/stream/{fid}'
         subprocess.Popen([str(VLC),'--'+finish,url],stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
         self.reply(200,{'opened':True,'torrent_id':tid,'file_id':fid})
+    def show_file(self,data):
+        tid=torrent_id(data)
+        details=engine_json(f'/torrents/{tid}')
+        candidates=included_files(details)
+        candidates.sort(key=lambda item: not bool(MEDIA_FILE.search(item[1]['name'])))
+        target=None
+        for _,file in candidates:
+            try:
+                target=downloaded_file(details,file);break
+            except ValueError:continue
+        if target is None:raise ValueError('No downloaded files are available yet')
+        # FileManager1 highlights the file; the fallback opens its containing folder.
+        try:
+            subprocess.run(['dbus-send','--session','--print-reply','--reply-timeout=5000',
+                '--dest=org.freedesktop.FileManager1','/org/freedesktop/FileManager1',
+                'org.freedesktop.FileManager1.ShowItems','array:string:'+target.as_uri(),'string:'],
+                check=True,timeout=6,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        except (OSError,subprocess.SubprocessError):
+            subprocess.Popen(['xdg-open',str(target.parent)],stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,start_new_session=True)
+        self.reply(200,{'shown':True,'torrent_id':tid})
     def proxy(self,body=None):
         if not re.match(r'^/(?:\?|$|torrents(?:[/?]|$)|stats(?:[/?]|$)|dht/|stream_logs(?:\?|$)|rust_log(?:\?|$)|metrics(?:\?|$))',self.path):
             self.reply(404,{'error':'Unknown route'});return
@@ -151,9 +206,10 @@ def serve():
     credentials=base64.b64decode(AUTH.split()[1]).decode()
     env={**os.environ,'RQBIT_HTTP_BASIC_AUTH_USERPASS':credentials,
          'XDG_CONFIG_HOME':str(STATE/'config'),'XDG_CACHE_HOME':str(STATE/'cache'),'XDG_DATA_HOME':str(STATE/'data')}
+    test_mode=os.environ.get('ENOCHIAN_RQBIT_TEST')=='1'
     args=[str(ENGINE),'--http-api-listen-addr',f'127.0.0.1:{ENGINE_PORT}',
-          '--listen-port','4242','--disable-upnp-port-forward']
-    if os.environ.get('ENOCHIAN_RQBIT_TEST')=='1':args+=['--disable-dht','--disable-lsd','--disable-trackers','--listen-ip','127.0.0.1']
+          '--listen-port','0' if test_mode else '4242','--disable-upnp-port-forward']
+    if test_mode:args+=['--disable-dht','--disable-lsd','--disable-trackers','--listen-ip','127.0.0.1']
     args+=['server','start',str(DOWNLOADS),'--persistence-location',str(STATE/'session')]
     log=(STATE/'engine.log').open('ab')
     ENGINE_PROCESS=subprocess.Popen(args,env=env,stdin=subprocess.DEVNULL,stdout=log,stderr=log)

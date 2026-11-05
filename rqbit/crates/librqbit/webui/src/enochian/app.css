@@ -36,3 +36,8 @@ body{--btn:#fff;--btn-edge:#d4d4d8;--case:#fff;--ink:#111}body.dark{--btn:#20202
 
 /* Fit the existing segmented meter inside rqbit's compact table columns. */
 td .en-progress{min-width:0;gap:4px;width:100%}td .en-progress .lad-segs{min-width:20px;gap:1px}td .en-progress>span:last-child{font-size:9px;flex:none}
+
+.en-torrent-card:focus-visible,.en-torrent-menu button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.en-card-error{color:var(--color-error);font:12px var(--mono);padding:8px 12px}
+.en-torrent-menu{position:fixed;z-index:1000;width:184px;padding:6px;background:var(--case);border:1px solid var(--color-divider);border-radius:8px}
+.en-torrent-menu .sq-btn{width:100%;min-height:44px}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TapeKey } from "./TapeKey";
+import { desktopBridgeAvailable, playInVLC } from "./desktopBridge";
 export function PlayInVLC({
   torrentId,
   fileId,
@@ -12,22 +13,12 @@ export function PlayInVLC({
   const [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   // This capability is injected only by our local desktop bridge.
-  if (!document.querySelector('meta[name="enochian-bridge"]')) return null;
+  if (!desktopBridgeAvailable()) return null;
   const play = async () => {
     setBusy(true);
     setError("");
     try {
-      const r = await fetch("/enochian/play", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          torrent_id: torrentId,
-          file_id: fileId,
-          finish: document.documentElement.dataset.finish,
-        }),
-      });
-      const data = await r.json();
-      if (!r.ok) throw new Error(data.error ?? "Could not open Enochian VLC");
+      await playInVLC(torrentId, fileId);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Playback failed");
     } finally {

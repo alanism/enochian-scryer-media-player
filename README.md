@@ -34,6 +34,8 @@ The [ready-to-install Linux bundle](https://github.com/alanism/enochian-scryer-m
 
 Open **Enochian VLC** or **Enochian Rqbit** from the Omarchy launcher. The companion sends torrent media directly to VLC; the torrent engine continues running when the player closes. See [companion controls and background-service behavior](rqbit/enochian/README.md) and [VLC controls](vlc/README.txt).
 
+In the companion's **Cards** view, double-click a completed torrent to play its downloaded media in Enochian VLC. Right-click a card and choose **Show file** to reveal the download in your file manager. Incomplete cards wait for completion; the explicit **Play in VLC** key still supports streaming while a download is in progress.
+
 ## Why two apps
 
 rqbit already streams files through range-enabled HTTP and prioritizes pieces requested by a player. Keeping transfers in a companion avoids tying download lifetime to a VLC window. The local bridge accepts a torrent/file choice and launches the installed Enochian VLC with the stream URL and matching finish. No public server or browser extension is needed.
