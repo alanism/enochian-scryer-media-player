@@ -1,0 +1,15 @@
+{
+  "selected_files_complete": true,
+  "verified_pieces": 104,
+  "total_pieces": 208,
+  "inclusion": [
+    true,
+    false,
+    false
+  ],
+  "custom_destination_verified": true,
+  "canceled_import_left_zero_records": true,
+  "removed_record_kept_files": true,
+  "binary_size_units": "KiB/MiB",
+  "linked_file_checkboxes_labeled": true
+}

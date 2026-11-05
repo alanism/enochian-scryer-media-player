@@ -1,0 +1,261 @@
+{
+  "environment": "VLC 3.0.24 on Omarchy. Initial Open/cancel ran on real XWayland. Subsequent native workflow input/captures used a private authenticated Xvfb display, generated media, isolated config and silent Pulse sink. APIs supplied state readbacks; setup via API is called out.",
+  "checks": [
+    {
+      "name": "Native Open and cancel",
+      "passed": true,
+      "detail": "Clicked the original Open key. Actual Qt Open Media dialog appeared; Escape canceled and left the playlist empty.",
+      "screenshots": [
+        "native-open-media.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native single-file Open",
+      "passed": true,
+      "detail": "Selected generated Alpha in the real file picker and activated Play in the native Open Media dialog. Actual VLC reports Playing, 60s and exact file URI.",
+      "screenshots": [
+        "native-picker-selected-alpha.png",
+        "native-open-selection.png",
+        "native-playing-obsidian.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native Stop and Quit",
+      "passed": true,
+      "detail": "Original Stop key changed actual state to Stopped. Original Close key ended only the test player.",
+      "screenshots": [],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native multi-file Open and pause",
+      "passed": true,
+      "detail": "Range-selected Alpha, Bravo and Caf\u00e9 in the real file picker and accepted with Enter. Native Play created the exact three-item order; original Pause changed actual state and visible lamp.",
+      "screenshots": [
+        "native-multiple-selected.png",
+        "native-multiple-open-list.png",
+        "native-paused-obsidian.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native seek and transport",
+      "passed": true,
+      "detail": "Dragged the original ribbed slider while paused to 30s; native time readout agrees with real duration. Space resumed/paused. Original Next and Previous selected exact Bravo/Alpha IDs.",
+      "screenshots": [
+        "native-paused-seek.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native volume, mute, shuffle and repeat",
+      "passed": true,
+      "detail": "Rotary click changed actual Pulse stream volume to 167%; top position restored 100%. Original Mute, Shuffle and Repeat latched on, read back true and reversed. M unmuted. Audio remained in a silent test-only sink.",
+      "screenshots": [
+        "native-volume-adjusted.png",
+        "native-mute-shuffle-repeat.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native fullscreen keyboard and Escape",
+      "passed": true,
+      "detail": "F entered native fullscreen, Space paused and Escape restored context. Original Full key initially failed because of rotary hit interception; the corrected Full key was verified separately.",
+      "screenshots": [
+        "native-fullscreen-paused.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native playlist Save and cancel",
+      "passed": true,
+      "detail": "Original Save opens VLC\u2019s own XSPF exporter. Escape created no file and retained queue. Named Unicode/space path exported three tracks in exact order and did not alter queue.",
+      "screenshots": [
+        "native-save-named-playlist.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native named playlist reopen",
+      "passed": true,
+      "detail": "Original Open loaded VLC-exported XSPF from Caf\u00e9 playlists/My playlist.xspf after removing all queue entries. Exact Alpha/Bravo/Caf\u00e9 URI order and spaces/Unicode survived; generated files remain.",
+      "screenshots": [
+        "native-playlist-reopened.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native playlist editing",
+      "passed": true,
+      "detail": "Selected and removed native rows, preserving files. Manage drag moved Caf\u00e9 before Alpha; original Sort restored Alpha/Bravo/Caf\u00e9 order.",
+      "screenshots": [
+        "native-manage-reordered.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native append and selection",
+      "passed": true,
+      "detail": "Original Add appended media; native Remove cleared accidental repeated test selections while keeping source files. Double-click selected the exact Controls tracks.mp4 row and preserved original Alpha/Bravo/Caf\u00e9 entries.",
+      "screenshots": [],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native audio, subtitle and speed choice",
+      "passed": true,
+      "detail": "Native Menu exposed Test tone A/B; B read audio-es 2. Embedded English subtitles enabled with spu-es 3; V disabled them. Bracket-right increased rate; equals restored 1.0. Silent test-only output; no audible quality claim.",
+      "screenshots": [
+        "native-audio-tracks.png",
+        "native-subtitle-tracks.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Corrected Full key and EQ bindings",
+      "passed": true,
+      "detail": "Original Full key now enters fullscreen without changing volume. Space/Escape retain context. Explicit Playlist close restores EQ bindings: native faders read +10dB preamp and -10dB 60Hz; adjustments reversed and EQ disabled.",
+      "screenshots": [
+        "native-equalizer-verified.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native seek boundaries",
+      "passed": true,
+      "detail": "Paused thumb drag reached the end (58s or later) and returned to the start without losing the input.",
+      "screenshots": [],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native missing-file recovery",
+      "passed": true,
+      "detail": "After moving only generated Alpha aside, reopening the named XSPF retained its entry and showed a native Errors dialog with the missing MRL. Dismissal and double-click Bravo recovered playback; Alpha was restored.",
+      "screenshots": [
+        "native-missing-file-error.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native network playback and seek",
+      "passed": true,
+      "detail": "Original Stream opened the Network tab. Generated loopback HTTP media played with 60s duration, paused and sought to 30s through the original slider.",
+      "screenshots": [
+        "native-network-open.png",
+        "native-network-seek.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native URL failure and retry",
+      "passed": true,
+      "detail": "Unreachable loopback URL showed an Errors dialog. Dismissed it, corrected the URL through the same Network dialog and resumed real playback.",
+      "screenshots": [
+        "native-network-failure.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native invalid-file recovery",
+      "passed": true,
+      "detail": "Ctrl+O opened a direct native picker. Selecting generated invalid MP4 reached the real demux failure (moov atom not found); no new Errors dialog appeared in this instance. Selecting valid Alpha through the same picker recovered playback. Automatic invalid-file feedback remains a bounded limitation.",
+      "screenshots": [],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native absent-track behavior",
+      "passed": true,
+      "detail": "On one-audio/no-subtitle Alpha, V/B did not select nonexistent tracks, replace media or disturb paused state.",
+      "screenshots": [],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native ivory-standard smoke",
+      "passed": true,
+      "detail": "Actual native ready/paused labels and artwork bounds inspected. Original Pause, Full/Escape, Playlist, EQ, Mute/M, Shuffle and Repeat worked; direct Ctrl+O picker canceled without replacing paused media. Initial fixture loaded by API only.",
+      "screenshots": [
+        "native-ivory-standard-ready.png",
+        "native-ivory-standard-paused.png",
+        "native-ivory-standard-playlist.png",
+        "native-ivory-standard-eq.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native obsidian-compact smoke",
+      "passed": true,
+      "detail": "Actual native ready/paused labels and artwork bounds inspected. Original Pause, Full/Escape, Playlist, EQ, Mute/M, Shuffle and Repeat worked; direct Ctrl+O picker canceled without replacing paused media. Initial fixture loaded by API only.",
+      "screenshots": [
+        "native-obsidian-compact-ready.png",
+        "native-obsidian-compact-paused.png",
+        "native-obsidian-compact-playlist.png",
+        "native-obsidian-compact-eq.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native ivory-compact smoke",
+      "passed": true,
+      "detail": "Actual native ready/paused labels and artwork bounds inspected. Original Pause, Full/Escape, Playlist, EQ, Mute/M, Shuffle and Repeat worked; direct Ctrl+O picker canceled without replacing paused media. Initial fixture loaded by API only.",
+      "screenshots": [
+        "native-ivory-compact-ready.png",
+        "native-ivory-compact-paused.png",
+        "native-ivory-compact-playlist.png",
+        "native-ivory-compact-eq.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Completed-card real player handoff",
+      "passed": true,
+      "detail": "Double-clicking the finished synthetic collection in the browser launched real Enochian VLC Obsidian with exact local Episode A URI under the custom destination. Real video decoded. Unincluded B was not chosen.",
+      "screenshots": [
+        "companion-completed-native-player.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Partial per-file and finish handoff",
+      "passed": true,
+      "detail": "After including incomplete B, torrent stayed 50.16%. Double-click launched nothing. Files/Play on A opened exact /torrents/0/stream/0 in real Ivory Enochian VLC and decoded video, while inclusion flags and partial transfer record were retained.",
+      "screenshots": [
+        "companion-partial-per-file-ivory.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native queue boundaries",
+      "passed": true,
+      "detail": "Two-item Next selected Bravo; another Next did not select unrelated media (immediate readback retained the last item). With an empty queue, native Next/Previous/Stop left it empty and stopped. Play did not fabricate an item; any Open prompt was canceled.",
+      "screenshots": [
+        "native-empty-boundary.png"
+      ],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Final rotary hit-region regression",
+      "passed": true,
+      "detail": "After the hit-region fix, original knob still changed real Pulse stream volume to about 167% and back to 100%; Full then entered fullscreen while preserving volume. No artwork was redrawn.",
+      "screenshots": [],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    },
+    {
+      "name": "Native manual end boundary",
+      "passed": true,
+      "detail": "With two stable inputs, original Next moved Alpha \u2192 Bravo \u2192 Alpha. VLC manual Next wraps to the first item even when automatic loop is off. The test expectation was corrected from Stop to this actual policy; empty-queue behavior was checked separately.",
+      "screenshots": [],
+      "method": "User-approved isolated X11 input and actual VLC readbacks"
+    }
+  ],
+  "limits": [
+    "No physical speaker, high-DPI/multi-monitor or screen-reader session.",
+    "Native bitmap controls have Linux/VLC shortcuts but limited OS accessibility semantics.",
+    "Qt dialogs remain native; primary Open has an additional Open Media/Add stage.",
+    "Automatic invalid-media error feedback did not appear in one instance; retry worked."
+  ],
+  "native_export": {
+    "file": "iteration-2/native-export.xspf",
+    "sha256": "b2a5b8a992da16829dd031a9b20f66e1b3b97ae10b4fadabb7fd85b72682be5a",
+    "note": "Unmodified bytes from VLC native Save exporter; URIs refer only to synthetic evaluation media."
+  }
+}

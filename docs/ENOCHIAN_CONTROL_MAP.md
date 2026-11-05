@@ -40,3 +40,9 @@ shadow matched exactly; the utility cap's white surface, 5px corners and shadow
 also matched. Both finished app views were inspected at 1280×720. Card/header
 controls measured at least 44px in both dimensions. No new control artwork was
 drawn.
+
+## Iteration 2 native checks
+
+The earlier fidelity check above describes the prior council review. Iteration 2 rebuilds the four archives from the same source artwork to fix native text widths, X11 cached alpha compositing, rotary hit bounds and an explicit closing Playlist tag required before later EQ bindings. No cap, face, glyph, shadow or corner geometry is redrawn.
+
+The player type ramp is 12px labels/data, 16px headings and 24px elapsed time; compact uniformly scales these and the artwork to 80% (rounded to whole pixels). Main/playlist/EQ groups use repeated utility and transport modules. Actual standard and compact windows in both finishes are captured in the [current evaluation](evaluation/index.html). Small gray source labels remain a documented readability deduction.

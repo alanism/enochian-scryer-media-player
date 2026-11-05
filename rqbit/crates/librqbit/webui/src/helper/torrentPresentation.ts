@@ -16,9 +16,20 @@ export function torrentStatus(stats?: TorrentStats | null): string {
   return stats.finished ? "Seeding" : "Downloading";
 }
 
-export function pieceCount(stats: TorrentStats, total: number): string {
-  if (stats.finished)
-    return `${total.toLocaleString()}/${total.toLocaleString()}`;
-  // A per-session network-download counter is not the on-disk piece inventory.
-  return `—/${total.toLocaleString()}`;
+export function pieceCount(bitmap: Uint8Array | null, total: number): string {
+  if (!Number.isSafeInteger(total) || total < 0) return "—";
+  if (!bitmap || bitmap.length < Math.ceil(total / 8))
+    return `—/${total.toLocaleString()}`;
+  // The engine's MSB0 inventory includes on-disk pieces; selection completion
+  // and per-session network counters cannot establish this count.
+  let count = 0;
+  for (let index = 0; index < Math.ceil(total / 8); index++) {
+    const remaining = total - index * 8;
+    let bits = bitmap[index] & (remaining < 8 ? 0xff << (8 - remaining) : 0xff);
+    while (bits) {
+      bits &= bits - 1;
+      count++;
+    }
+  }
+  return `${count.toLocaleString()}/${total.toLocaleString()}`;
 }

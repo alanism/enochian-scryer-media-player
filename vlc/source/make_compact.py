@@ -15,7 +15,7 @@ for finish in ['Obsidian','Ivory']:
    if e.get('points'):e.set('points',re.sub(r'-?\d+',lambda m:str(round(int(m[0])*.8)),e.get('points')))
   for p in (base/'assets').glob('*.png'):
    im=Image.open(p);im.resize((round(im.width*.8),round(im.height*.8)),Image.Resampling.LANCZOS).save(p)
-  data=ET.tostring(doc.getroot(),encoding='utf-8',xml_declaration=True)
+  data=ET.tostring(doc.getroot(),encoding='utf-8',xml_declaration=True,short_empty_elements=False)
   data=data.replace(b'?>',b'?>\n<!DOCTYPE Theme PUBLIC "-//VideoLAN//DTD VLC Skins V2.0//EN" "skin.dtd">',1)
   (base/'theme.xml').write_bytes(data)
   subprocess.run(['xmllint','--noout','--valid',str(base/'theme.xml')],check=True)

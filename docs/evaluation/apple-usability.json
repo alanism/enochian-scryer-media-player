@@ -1,0 +1,66 @@
+{
+  "scope": "Use Apple Human Interface Guidelines as a usability reference for this Linux/Omarchy suite; preserve Enochian artwork and Linux shortcut/window conventions. No macOS visual styling or API compliance is claimed. Frozen evaluation anchors and weights remain unchanged.",
+  "sources": [
+    "https://developer.apple.com/design/human-interface-guidelines/designing-for-macos",
+    "https://developer.apple.com/design/human-interface-guidelines/keyboards",
+    "https://developer.apple.com/design/human-interface-guidelines/file-management",
+    "https://developer.apple.com/design/human-interface-guidelines/going-full-screen"
+  ],
+  "checks": [
+    {
+      "principle": "Keep frequent actions direct and avoid unnecessary dialog layers.",
+      "application": "The primary Open control requests the native simple-file dialog. Ctrl+O was observed opening a direct picker. Other Open Media/Add and advanced routes remain available; preserve native cancellation and Linux conventions. Companion Play and Show file remain direct actions.",
+      "criteria": [
+        "ryo.open_local",
+        "ryo.first_run",
+        "jayse.sequence",
+        "satori.friction"
+      ]
+    },
+    {
+      "principle": "Provide familiar command access and keyboard routes.",
+      "application": "Preserve Linux/VLC shortcuts and verify keyboard transport, Escape cancellation, focus order and return focus.",
+      "criteria": [
+        "ryo.keyboard_access",
+        "jayse.focus"
+      ]
+    },
+    {
+      "principle": "Use familiar file navigation and clear preservation outcomes.",
+      "application": "Verify file identity, named playlist export/reopen, destination selection and cancel without changes.",
+      "criteria": [
+        "ryo.playlist_persist",
+        "ryo.locations",
+        "ryo.recovery"
+      ]
+    },
+    {
+      "principle": "Let users control window layout and full-screen transitions.",
+      "application": "Check normal/compact, full-screen exit and playback continuity using VLC and Omarchy conventions.",
+      "criteria": [
+        "ryo.viewing",
+        "gmunk.scale",
+        "satori.platform"
+      ]
+    },
+    {
+      "principle": "Keep essential controls reachable when content takes focus.",
+      "application": "Verify native keyboard/context-menu playback and full-screen controls rather than adding decorative overlays.",
+      "criteria": [
+        "ryo.transport",
+        "jayse.context",
+        "gmunk.interactivity"
+      ]
+    },
+    {
+      "principle": "Maintain readable information density and precise input.",
+      "application": "Check real labels, resized original controls, truthful piece inventory and clear selected-file states in both finishes.",
+      "criteria": [
+        "ryo.status_truth",
+        "ryo.visual_fidelity",
+        "gmunk.type",
+        "satori.proportionality"
+      ]
+    }
+  ]
+}

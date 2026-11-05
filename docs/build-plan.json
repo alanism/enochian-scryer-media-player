@@ -1,27 +1,27 @@
 {
   "title": "Enochian Scryer — build plan",
-  "updated": "2026-11-05T17:42:33.006996+07:00",
-  "phase": "Improvement build installed and published · remaining native checks are visible in Verify / Blocked",
+  "updated": "2026-11-05T20:50:52.207001+07:00",
+  "phase": "Iteration 2 · final evidence, scoring and delivery",
   "goal": "95+ on every evaluation; all areas covered",
   "scores": [
     {
       "name": "Ryo Lu",
-      "score": 77
+      "score": 95
     },
     {
       "name": "GMUNK",
-      "score": 84
+      "score": 96
     },
     {
       "name": "Jayse Hansen",
-      "score": 84
+      "score": 95
     },
     {
       "name": "Satori",
-      "score": 82
+      "score": 96
     }
   ],
-  "scoreNote": "Iteration 1 self-evaluation: improved from 67 / 69 / 73 / 69. The 95+ gate remains open; native VLC interaction checks still need verification.",
+  "scoreNote": "Iteration 2 evidence-backed self-evaluation: 95 / 96 / 95 / 96. All four frozen gates pass; all eight journeys verified, every criterion at least 4. Remaining limits are explicit in each scorecard; no independent endorsement is claimed.",
   "tasks": [
     {
       "id": "rubric-ryo",
@@ -136,7 +136,7 @@
     {
       "id": "files-playback",
       "title": "Exercise file and playback workflows",
-      "status": "review",
+      "status": "done",
       "lens": "Player QA",
       "steps": [
         {
@@ -149,19 +149,19 @@
         },
         {
           "label": "Verify seek / volume / tracks / fullscreen",
-          "done": false
+          "done": true
         },
         {
           "label": "Test missing files and unavailable URLs",
-          "done": false
+          "done": true
         }
       ],
-      "note": "Real VLC API checks passed: single/multiple files, transport, seek boundaries, speed, fullscreen, local HTTP seek and missing-file recovery. Native picker, track controls and device audio still need direct verification."
+      "note": "Native Open single/multiple, direct Ctrl+O, transport, seek/boundaries, volume/mute, tracks/subtitles/speed, EQ, Full/Escape, invalid media, missing-file and unreachable-URL recovery passed with actual VLC readbacks. Silent Pulse test output; physical audio and display hardware remain outside this evaluation."
     },
     {
       "id": "playlists",
       "title": "Exercise playlist workflows",
-      "status": "blocked",
+      "status": "done",
       "lens": "Playlist QA",
       "steps": [
         {
@@ -174,19 +174,19 @@
         },
         {
           "label": "Save and reopen a named playlist",
-          "done": false
+          "done": true
         },
         {
           "label": "Verify order, spaces and missing-file recovery",
-          "done": false
+          "done": true
         }
       ],
-      "note": "Core create/select/next/previous/reorder/sort/remove and M3U8 import passed via the real VLC API. Native Save export and drag gestures need desktop interaction, which the available browser controls cannot perform."
+      "note": "Native Add, double-click, Remove/keep files, Sort, Manage drag and VLC XSPF Save/Cancel/reopen passed. Exact order and Unicode/space names verified. Missing generated Alpha produced a native error; selecting Bravo recovered playback and Alpha was restored."
     },
     {
       "id": "transfers",
       "title": "Exercise transfer workflows",
-      "status": "review",
+      "status": "done",
       "lens": "Companion QA",
       "steps": [
         {
@@ -203,10 +203,10 @@
         },
         {
           "label": "Show file / cancel / removal",
-          "done": false
+          "done": true
         }
       ],
-      "note": "File/link import and two-file sequential review verified in an isolated engine. Pause/resume and decimal limits verified. Existing v0.2 playback/reveal evidence retained; broader removal/restart cases remain."
+      "note": "Actual browser/real isolated VLC verified completed-card local handoff, no incomplete double-click launch, per-file range streaming and Ivory finish. Custom-path Show file succeeded; missing files gave clear feedback. Cancel/keep-files removal and engine-failure/restart record preservation passed."
     },
     {
       "id": "visual-qa",
@@ -236,7 +236,7 @@
     {
       "id": "scoring-loop",
       "title": "Run the four-score improvement loop",
-      "status": "blocked",
+      "status": "done",
       "lens": "All four evaluations",
       "steps": [
         {
@@ -253,10 +253,10 @@
         },
         {
           "label": "Reach 95+ on every rubric with no weak area",
-          "done": false
+          "done": true
         }
       ],
-      "note": "Separate scores: Ryo 77, GMUNK 84, Jayse 84, Satori 82. Rubrics are unchanged. Native picker, playlist Save/export, control gestures and audio verification block the 95+ gate."
+      "note": "Unchanged frozen gates pass at Ryo 95, GMUNK 96, Jayse 95 and Satori 96. Each scorecard has 20 grades, observed-UI evidence, eight verified journeys, no criterion below 4 and no unresolved high-severity issue. Bounded gaps retain grade 4."
     },
     {
       "id": "release",
@@ -282,6 +282,94 @@
         }
       ],
       "note": "v0.3.0 is public with the Linux bundle and checksums. Installed apps retain transfer records and MP4 default. Current design scores remain below 95; native validation is still required."
+    },
+    {
+      "id": "selection-truth",
+      "title": "Correct selected-file status and polling",
+      "status": "done",
+      "lens": "Ryo Lu · Jayse Hansen",
+      "steps": [
+        {
+          "label": "Use verified piece inventory instead of completion inference",
+          "done": true
+        },
+        {
+          "label": "Stop polling after a view closes",
+          "done": true
+        },
+        {
+          "label": "Check selected-file completion in the rendered app",
+          "done": true
+        }
+      ],
+      "note": "Observed completed selection with actual 104/208 bitfield pieces. Custom destination, canceled import, independent file inclusion, mixed group state, labeled linked checkboxes and keep-files removal passed. Regression checks cover polling cancellation and binary units."
+    },
+    {
+      "id": "native-rendering",
+      "title": "Fix native text and sprite rendering",
+      "status": "done",
+      "lens": "GMUNK · Ryo Lu",
+      "steps": [
+        {
+          "label": "Give header and time labels visible text widths",
+          "done": true
+        },
+        {
+          "label": "Composite original sprite shadows for X11 cached graphics",
+          "done": true
+        },
+        {
+          "label": "Inspect actual native windows in both finishes and sizes",
+          "done": true
+        }
+      ],
+      "note": "Actual native windows inspected in Ivory/Obsidian at 1040×812 and 832×650. Visible text, original sprite shadows, confined rotary hit regions and explicit Playlist parser boundaries verified. Full/Escape and EQ readbacks now pass."
+    },
+    {
+      "id": "apple-usability",
+      "title": "Apply Apple usability guidance",
+      "status": "done",
+      "lens": "Apple HIG · existing design rubrics",
+      "steps": [
+        {
+          "label": "Map usability guidance to existing criteria",
+          "done": true
+        },
+        {
+          "label": "Verify familiar Open and keyboard routes",
+          "done": true
+        },
+        {
+          "label": "Verify save, cancel and fullscreen expectations",
+          "done": true
+        }
+      ],
+      "note": "Verified familiar native file navigation, direct Ctrl+O, keyboard transport, named Save/Cancel, error recovery and Full/Escape in all four variants. Primary Open retains VLC Open Media/Add; this extra stage and stock Qt appearance are explicit bounded exceptions."
+    },
+    {
+      "id": "release-iteration-2",
+      "title": "Install and publish the verified build",
+      "status": "working",
+      "lens": "Iteration 2 delivery",
+      "steps": [
+        {
+          "label": "Run regression and native control checks",
+          "done": true
+        },
+        {
+          "label": "Upgrade installed apps and preserve records/default",
+          "done": true
+        },
+        {
+          "label": "Publish scorecards and Linux bundle",
+          "done": false
+        },
+        {
+          "label": "Verify public source, bundle and final board",
+          "done": false
+        }
+      ],
+      "note": "Installed source skins and frontend match verified artifacts. Existing production record IDs/hashes and MP4 default are preserved. Isolated restart recovered custom destination and inclusion flags. Preparing scorecards and public release."
     }
   ]
 }

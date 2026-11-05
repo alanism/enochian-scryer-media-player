@@ -169,11 +169,19 @@ const FileTreeComponent: React.FC<{
   return (
     <>
       <div className="flex items-center">
-        <IconButton onClick={() => setExpanded(!expanded)}>
+        <IconButton
+          onClick={() => setExpanded(!expanded)}
+          title={`${expanded ? "Collapse" : "Expand"} ${tree.name || "files"}`}
+        >
           {expanded ? <CiSquareMinus /> : <CiSquarePlus />}
         </IconButton>
         <FormCheckbox
           checked={children.every((c) => selectedFiles.has(c))}
+          indeterminate={
+            getTotalSelectedFiles() > 0 &&
+            getTotalSelectedFiles() < children.length
+          }
+          disabled={disabled}
           label={`${
             tree.name ? tree.name + ", " : ""
           } ${getTotalSelectedFiles()} files, ${formatBytes(

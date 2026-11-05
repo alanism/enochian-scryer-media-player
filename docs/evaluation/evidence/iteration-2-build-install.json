@@ -1,0 +1,17 @@
+{
+  "release": "v0.4.0",
+  "production_existing_record_count": 1,
+  "record_ids_and_hashes_preserved": true,
+  "installed_skin_hashes_match_source": 4,
+  "installed_frontend_matches_source": true,
+  "mp4_default": "enochian-vlc.desktop",
+  "desktop_entries_valid": true,
+  "background_service_available": true,
+  "isolation_restart": "Synthetic record ID, custom destination and inclusion flags survived engine-failure/restart.",
+  "checks": "15 Python regressions, UI logic test file, production TypeScript/Vite build, four skin DTD/assets/input-boundary checks passed.",
+  "limits": [
+    "No physical speaker or high-DPI/multi-monitor test; native workflow checks used private authenticated Xvfb.",
+    "Rate limits are session settings; they reset on engine restart.",
+    "Native Qt dialog styling and automatic invalid-file feedback remain bounded exceptions."
+  ]
+}

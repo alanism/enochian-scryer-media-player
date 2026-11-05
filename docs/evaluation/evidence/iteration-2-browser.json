@@ -1,0 +1,44 @@
+{
+  "method": "Observed in-app browser with a real isolated rqbit engine; native handoff verified against a real source launcher on private Xvfb.",
+  "checks": [
+    {
+      "name": "Selected-file truth",
+      "detail": "Canceled custom-destination review left no record; re-review reset choices. A-only custom path completed while the actual bitmap held 104/208 pieces. Overview showed 100% selected completion, not fabricated full inventory. B remained excluded and its Play disabled."
+    },
+    {
+      "name": "Inclusion and removal",
+      "detail": "Toggling B changed only B. Mixed group state and explicit labels were present. Remove with keep-files emptied the record list and preserved all generated files; re-add succeeded."
+    },
+    {
+      "name": "Completed/partial handoff",
+      "detail": "Finished card double-click launched exact local Episode A in Obsidian. Including incomplete B made the torrent partial; double-click launched nothing. Per-file A Play streamed exact file ID 0 and decoded in Ivory. Transfer flags and destination remained."
+    },
+    {
+      "name": "Show file and recovery",
+      "detail": "Right-click Show file on custom destination acknowledged Showing file then File shown in file manager. Moving both generated candidates aside showed No downloaded files are available yet. Restoring them recovered successful reveal. Native file-manager contents were not captured."
+    },
+    {
+      "name": "Engine failure and settings",
+      "detail": "With setup open, stopping only the isolated engine made Save retain 2.5 in the form and report Error saving limits plus restart guidance. Cancel restored Setup focus. Service restart preserved record ID, custom destination and inclusion flags. The transient-error state was not reported as success."
+    },
+    {
+      "name": "Final layout",
+      "detail": "Both finishes observed at 445px and 1280px CSS width. Selected download and Verified pieces labels wrap without document overflow. Fresh desktop tab had no relevant console warning/error. The browser visible-frame capture cropped a 1280px viewport; full-page captures correct that artifact and show the complete modal."
+    }
+  ],
+  "retained_evidence": "Iteration 1 browser evidence still covers file/link imports, sequential review, limits Save/Cancel, dialog Tab loop and destructive-choice resets; those code paths were not changed this iteration.",
+  "bounded_gaps": [
+    "Rate limits reset when the engine restarts. Finish and view preferences persist in browser storage.",
+    "Fallback reveal is regression-tested with a mocked FileManager1 failure; custom-path and missing-file feedback were observed in UI.",
+    "Duplicate basenames need the advanced editor to distinguish source locations.",
+    "Original small gray control labels and native Qt dialog typography remain."
+  ],
+  "screenshots": [
+    "iteration-2/companion-settings-error.png",
+    "iteration-2/companion-missing-show-file.png",
+    "iteration-2/companion-desktop-ivory-full.png",
+    "iteration-2/companion-desktop-obsidian-full.png",
+    "iteration-2/companion-final-ivory.png",
+    "iteration-2/companion-final-obsidian.png"
+  ]
+}

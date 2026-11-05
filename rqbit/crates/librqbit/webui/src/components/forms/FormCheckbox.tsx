@@ -2,6 +2,7 @@ import { ChangeEventHandler } from "react";
 
 export const FormCheckbox: React.FC<{
   checked: boolean;
+  indeterminate?: boolean;
   label: string;
   name: string;
   help?: string;
@@ -13,6 +14,7 @@ export const FormCheckbox: React.FC<{
   labelLink?: string | null;
 }> = ({
   checked,
+  indeterminate = false,
   name,
   disabled,
   onChange,
@@ -30,6 +32,11 @@ export const FormCheckbox: React.FC<{
           className="block mt-1"
           id={name}
           name={name}
+          aria-label={label}
+          aria-checked={indeterminate ? "mixed" : checked}
+          ref={(input) => {
+            if (input) input.indeterminate = indeterminate;
+          }}
           disabled={disabled}
           checked={checked}
           onChange={onChange}

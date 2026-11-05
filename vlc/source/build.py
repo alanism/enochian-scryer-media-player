@@ -77,6 +77,10 @@ def assets(finish,out):
  seq=Image.new('RGBA',(110,11110))
  for i in range(101):seq.paste(Image.open(out/f'dial-{i}.png'),(0,i*110))
  seq.save(out/'volume.png')
+ # Bound the native radial hit region without altering its original artwork.
+ case=Image.open(out/'case.png')
+ case.crop((874,0,984,584)).save(out/'knob-guard-top.png')
+ case.crop((874,694,984,812)).save(out/'knob-guard-bottom.png')
  # Equalizer uses the same ribbed Slider 01, uniformly reduced and rotated.
  thumb=Image.open(out/'seek-thumb.png').resize((49,29),Image.Resampling.LANCZOS).rotate(90,expand=True)
  thumb.save(out/'eq-thumb.png')
@@ -85,15 +89,64 @@ def assets(finish,out):
  return s.boxes
 
 def E(parent,tag,**attrs):return ET.SubElement(parent,tag,{k:str(v) for k,v in attrs.items()})
+
+def bake_cached_graphics(root,out):
+ # Skins2 caches controls in X11 pixmaps and later copies them without alpha
+ # blending. Composite the unchanged source artwork onto its actual host
+ # surface first, rather than letting soft shadows acquire black mattes.
+ bitmaps={b.get('id'):b.get('file') for b in root.findall('Bitmap')}
+ case=Image.open(out/bitmaps['case']).convert('RGBA')
+ serial=0
+ def save(image,source):
+  nonlocal serial
+  serial+=1;ident=f'host-{serial}-{source}';file=f'assets/{ident}.png'
+  image.save(out/file)
+  item=ET.Element('Bitmap',id=ident,file=file,alphacolor='#FF00FF')
+  root.insert(next(i for i,e in enumerate(root) if e.tag=='Window'),item)
+  return ident
+ for layout in root.findall('Window/Layout'):
+  background=case.resize((int(layout.get('width')),int(layout.get('height'))),Image.Resampling.LANCZOS)
+  for image in layout.findall('Image'):
+   source=image.get('image')
+   if source=='case':continue
+   sprite=Image.open(out/bitmaps[source]).convert('RGBA');x=int(image.get('x','0'));y=int(image.get('y','0'))
+   host=background.crop((x,y,x+sprite.width,y+sprite.height))
+   image.set('image',save(Image.alpha_composite(host,sprite),source))
+   background.alpha_composite(sprite,(x,y))
+  for control in layout:
+   if control.tag not in ['Button','Checkbox','Slider','RadialSlider']:continue
+   converted={}
+   for attribute in ['up','down','over','up1','up2','down1','down2','over1','over2','sequence']:
+    source=control.get(attribute)
+    if not source or source=='none':continue
+    if source not in converted:
+     sprite=Image.open(out/bitmaps[source]).convert('RGBA')
+     frames=int(control.get('nbimages','1')) if attribute=='sequence' else 1
+     height=sprite.height//frames;x=int(control.get('x','0'));y=int(control.get('y','0'))
+     if control.tag=='Slider':
+      import re
+      points=[tuple(map(int,p)) for p in re.findall(r'\((-?\d+),(-?\d+)\)',control.get('points'))]
+      x+=round(sum(p[0] for p in points)/len(points))-sprite.width//2
+      y+=round(sum(p[1] for p in points)/len(points))-height//2
+     host=background.crop((x,y,x+sprite.width,y+height))
+     baked=Image.new('RGBA',sprite.size)
+     for frame in range(frames):
+      baked.paste(Image.alpha_composite(host,sprite.crop((0,frame*height,sprite.width,(frame+1)*height))),(0,frame*height))
+     converted[source]=save(baked,source)
+    control.set(attribute,converted[source])
 def xml(finish,out):
  dark=finish=='obsidian'; ink='#f2f2f4' if dark else '#1d1d1f'; sub='#9a9aa0' if dark else '#737379'; case='#121214' if dark else '#ededf0'
  root=ET.Element('Theme',version='2.0',tooltipfont='defaultfont',magnet='0')
  E(root,'ThemeInfo',name=f'Enochian VLC · {finish.title()}',author='Enochian',webpage='https://uiux-nonhumanintelligence.web.app/UIUX')
  for size,name in [(12,'defaultfont'),(12,'mono'),(16,'title'),(24,'time')]:E(root,'Font',id=name,file=FONT.name,size=size)
- names=['case','display','seek-track','seek-thumb','eq-thumb','eq-track','volume']
+ names=['case','display','seek-track','seek-thumb','eq-thumb','eq-track','volume','knob-guard-top','knob-guard-bottom']
  names += [f'{k}-{st}' for k in list(KEYS)+['open','queue','eq','full','menu','close','mute','repeat','shuffle','add','remove','save','sort','manage','network','min','restore'] for st in ['up','down','on']]
  for name in names:E(root,'Bitmap',id=name,file='assets/'+name+'.png',alphacolor='#FF00FF')
  def text(p,x,y,t,font='mono',color=ink,width=0,anchor=None,**kw):
+  if not width:
+   # VLC interprets an explicit width of zero literally; it does not size text.
+   size={'mono':12,'title':16,'time':24}[font]
+   width={'$T':156,'/ $D':124}.get(t,max(16,math.ceil(len(t)*size*.65)+6))
   a=dict(x=x,y=y,text=t,font=font,color=color,width=width,**kw)
   if anchor:a.update(lefttop=anchor,rightbottom=anchor)
   return E(p,'Text',**a)
@@ -108,8 +161,13 @@ def xml(finish,out):
  main=E(root,'Window',id='main',x=60,y=60,dragdrop='true',playondrop='true')
  l=E(main,'Layout',id='player',width=W,height=H,minwidth=W,minheight=H)
  E(l,'Image',image='case',resize='scale',rightbottom='rightbottom',action='move',action2='main.maximize()')
+ # VLC's radial hit test can see other frames above/below the visible face.
+ # Same-surface guards confine input; normal controls remain on top.
+ E(l,'RadialSlider',id='volume-knob',x=874,y=584,sequence='volume',nbimages=101,minangle=45,maxangle=315,value='volume',lefttop='rightbottom',rightbottom='rightbottom',tooltiptext='Volume $V%')
+ E(l,'Image',id='knob-hit-top',image='knob-guard-top',x=874,y=0,width=110,height=584,resize='scale',lefttop='righttop',rightbottom='rightbottom',action='move')
+ E(l,'Image',id='knob-hit-bottom',image='knob-guard-bottom',x=874,y=694,width=110,height=118,lefttop='rightbottom',rightbottom='rightbottom',action='move')
  text(l,30,24,'ENOCHIAN','title');text(l,188,27,'VLC / MEDIA PLAYER',color=sub)
- button(l,'open',350,10,'dialogs.file()','Open media · Ctrl+O','righttop')
+ button(l,'open',350,10,'dialogs.fileSimple()','Open media · Ctrl+O','righttop')
  button(l,'queue',448,10,'queue.show()','Create or edit a playlist','righttop')
  button(l,'eq',546,10,'equalizerwin.show()','Open equalizer','righttop')
  button(l,'menu',644,10,'dialogs.popup()','Tracks, subtitles, speed and preferences','righttop')
@@ -132,7 +190,6 @@ def xml(finish,out):
  check(l,'pause',544,584,'vlc.isPaused','vlc.pause()','vlc.play()','Pause / resume','leftbottom')
  button(l,'stop',640,584,'vlc.stop()','Stop (S)','leftbottom')
  button(l,'next',736,584,'playlist.next()','Next item (N) · original FF key','leftbottom')
- E(l,'RadialSlider',id='volume-knob',x=874,y=584,sequence='volume',nbimages=101,minangle=45,maxangle=315,value='volume',lefttop='rightbottom',rightbottom='rightbottom',tooltiptext='Volume $V%')
  text(l,887,704,'VOL $V%',color=sub,anchor='rightbottom',width=110)
  check(l,'shuffle',352,728,'playlist.isRandom','playlist.setRandom(true)','playlist.setRandom(false)','Shuffle playlist','leftbottom')
  check(l,'repeat',448,728,'playlist.isLoop','playlist.setLoop(true)','playlist.setLoop(false)','Loop playlist','leftbottom')
@@ -165,7 +222,8 @@ def xml(finish,out):
   E(el,'Slider',id='eq-'+str(i),x=x,y=124,points='(0,140),(0,0)',up='eq-thumb',down='eq-thumb',over='eq-thumb',value='equalizer.preamp' if i==0 else f'equalizer.band({i-1})',thickness=24,tooltiptext='Preamp' if i==0 else label+' Hz')
   text(el,x-12,300,label,width=52,alignment='center',color=sub)
  text(el,26,355,'ENOCHIAN / SLIDER 01 · VLC 10-BAND EQ',color=sub)
- data=ET.tostring(root,encoding='utf-8',xml_declaration=True)
+ bake_cached_graphics(root,out)
+ data=ET.tostring(root,encoding='utf-8',xml_declaration=True,short_empty_elements=False)
  (out/'theme.xml').write_bytes(data.replace(b'?>',b'?>\n<!DOCTYPE Theme PUBLIC "-//VideoLAN//DTD VLC Skins V2.0//EN" "skin.dtd">',1))
  shutil.copy(ROOT/'reference/skin.dtd',out/'skin.dtd');shutil.copy(FONT,out/FONT.name)
  return root

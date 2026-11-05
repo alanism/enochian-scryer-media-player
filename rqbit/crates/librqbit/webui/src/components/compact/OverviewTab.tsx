@@ -10,6 +10,7 @@ import { getCompletionETA } from "../../helper/getCompletionETA";
 import { PlaylistLink } from "../buttons/PlaylistButton";
 import { ProgressBar } from "../ProgressBar";
 import { pieceCount, torrentProgress } from "../../helper/torrentPresentation";
+import { useTorrentHaves } from "../../hooks/useTorrentHaves";
 
 interface OverviewTabProps {
   torrent: TorrentListItem | null;
@@ -29,6 +30,8 @@ const LV: React.FC<{
 
 export const OverviewTab: React.FC<OverviewTabProps> = ({ torrent }) => {
   const statsResponse = torrent?.stats ?? null;
+  const totalPieces = torrent?.total_pieces ?? 0;
+  const bitmap = useTorrentHaves(torrent?.id, totalPieces, statsResponse);
 
   if (!torrent || !statsResponse) {
     return <div className="p-3 text-tertiary">Loading...</div>;
@@ -42,9 +45,6 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ torrent }) => {
   const progressBytes = statsResponse.progress_bytes ?? 0;
   const finished = statsResponse.finished || false;
   const paused = statsResponse.initializing_paused ?? false;
-
-  const totalPieces = torrent.total_pieces ?? 0;
-  const pieceSize = totalPieces > 0 ? totalBytes / totalPieces : 0;
 
   const totalUploadedBytes = statsResponse.live?.snapshot.uploaded_bytes ?? 0;
 
@@ -88,7 +88,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ torrent }) => {
       {/* Main stats line */}
       <div className="flex flex-wrap gap-x-4 gap-y-1">
         <span>
-          <LV label="Progress" value={`${progressPct.toFixed(1)}%`} />
+          <LV label="Selected download" value={`${progressPct.toFixed(1)}%`} />
           <span className="text-tertiary">
             {" "}
             ({formatBytes(progressBytes)}/{formatBytes(totalBytes)})
@@ -113,13 +113,10 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({ torrent }) => {
       <div className="flex flex-wrap gap-x-4 gap-y-1">
         {totalPieces > 0 && (
           <span>
-            <LV label="Pieces" value={pieceCount(statsResponse, totalPieces)} />
-            {pieceSize > 0 && (
-              <span className="text-tertiary">
-                {" "}
-                ({formatBytes(pieceSize)} each)
-              </span>
-            )}
+            <LV
+              label="Verified pieces"
+              value={pieceCount(bitmap, totalPieces)}
+            />
           </span>
         )}
         {peers && (

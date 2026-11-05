@@ -9,7 +9,17 @@ for skin in sorted((root/'skins').glob('*.vlt')):
   with tarfile.open(skin) as t:t.extractall(temp,filter='data')
   base=Path(temp);subprocess.run(['xmllint','--noout','--valid',str(base/'theme.xml')],check=True)
   tree=ET.parse(base/'theme.xml');ids={}
+  raw=(base/'theme.xml').read_text()
+  assert '</Playlist>' in raw, 'VLC needs an explicit Playlist close before later slider bindings'
+  layout=tree.getroot().find('Window/Layout');children=list(layout)
+  knob=next(e for e in children if e.get('id')=='volume-knob')
+  for guard_id in ['knob-hit-top','knob-hit-bottom']:
+   guard=next(e for e in children if e.get('id')==guard_id)
+   assert children.index(knob)<children.index(guard), 'Radial input guards must be above the knob'
+  full=next(e for e in children if e.get('action')=='vlc.fullscreen()')
+  assert children.index(guard)<children.index(full), 'Utility keys must remain above radial guards'
   for elem in tree.iter():
+   if elem.tag=='Text':assert int(elem.get('width','0'))>0,'Text must have visible, nonzero width'
    ident=elem.get('id')
    if ident:
     assert ident not in ids, f'Duplicate id: {ident}'
