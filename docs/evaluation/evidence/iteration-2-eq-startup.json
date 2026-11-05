@@ -1,0 +1,16 @@
+{
+  "method": "Native original EQ enable/faders on a brand-new isolated profile; real audio-filter logs plus readbacks. Fixture setup by API; output uses a silent Pulse sink.",
+  "first_enable_loaded_dsp": true,
+  "active_module": "equalizer",
+  "filter_proof": [
+    "equalizer audio filter debug: equalizer loaded for 44100 Hz with 10 bands 1 pass",
+    "main audio filter debug: using audio filter module \"equalizer\""
+  ],
+  "readbacks": {
+    "preamp": 9.87,
+    "band_60hz": -10.1
+  },
+  "disable_removed_filter": true,
+  "saved_band_values_preserved": "Launcher regression verified nonzero gains, including leading whitespace, remain unmodified and are not overridden.",
+  "screenshot": "iteration-2/native-eq-cold-dsp-verified.png"
+}

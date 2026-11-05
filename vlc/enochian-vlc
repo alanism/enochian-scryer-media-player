@@ -40,7 +40,14 @@ fi
 # --no-one-instance prevents a stock VLC instance from swallowing the skin launch.
 config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/enochian-vlc"
 mkdir -p "$config_dir"
+# VLC 3 can reject a fresh equalizer when its inherited band string is empty,
+# even with the default preset. Seed flat bands only when no saved bands exist;
+# leave EQ disabled and preserve any explicit saved gains. User CLI args follow.
+eq_defaults=()
+if [[ ! -f "$config_dir/vlcrc" ]] || ! grep -Eq '^[[:space:]]*equalizer-bands=[[:space:]]*[^[:space:]]' "$config_dir/vlcrc"; then
+  eq_defaults=("--equalizer-bands=0 0 0 0 0 0 0 0 0 0")
+fi
 export QT_QPA_PLATFORM=xcb
 exec vlc --config="$config_dir/vlcrc" --no-one-instance --no-qt-privacy-ask --no-metadata-network-access \
   --intf=skins2 --skins2-last="$skin" \
-  --vout=xcb_x11 --avcodec-hw=none --no-video-title-show "$@"
+  --vout=xcb_x11 --avcodec-hw=none --no-video-title-show "${eq_defaults[@]}" "$@"

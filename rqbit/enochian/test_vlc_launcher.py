@@ -24,6 +24,14 @@ class VlcLauncherTests(unittest.TestCase):
                     self.assertTrue(any(a.endswith('Enochian-Ivory-Compact.vlt') for a in args))
                     self.assertEqual(args[-1], '/tmp/example movie.mp4')
                     self.assertNotIn('--compact', args)
+            self.assertIn('--equalizer-bands=0 0 0 0 0 0 0 0 0 0', args)
+            profile = root / 'config/enochian-vlc/vlcrc'
+            saved = '[equalizer]\nequalizer-bands=  3.0 0 0 0 0 0 0 0 0 -2.0\n'
+            profile.write_text(saved)
+            subprocess.run(['bash', str(launcher), '/tmp/example movie.mp4'], env=env, check=True, capture_output=True)
+            warm_args = json.loads(capture.read_text())
+            self.assertFalse(any(a.startswith('--equalizer-bands=') for a in warm_args))
+            self.assertEqual(profile.read_text(), saved)
             subprocess.run(['bash', str(launcher), '--ivory', '--', '--compact'], env=env, check=True, capture_output=True)
             args = json.loads(capture.read_text())
             self.assertTrue(any(a.endswith('Enochian-Ivory.vlt') for a in args))

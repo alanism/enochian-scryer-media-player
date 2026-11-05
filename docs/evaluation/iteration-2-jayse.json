@@ -1,7 +1,7 @@
 {
   "rubric": "jayse",
   "rubric_version": "1.0",
-  "revision": "v0.4.0 preparation; code changes after 8839fde; installed artifact hashes verified",
+  "revision": "v0.4.1 preparation after e77a54f; additional fresh-profile DSP proof and installed launcher verification",
   "assessment": "Evidence-backed self-evaluation using unchanged frozen anchors. No designer or independent reviewer endorsement. Grade 4 retains the specific bounded limits; no score was rounded up.",
   "scores": [
     {
@@ -18,7 +18,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -35,7 +37,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -52,7 +56,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -69,7 +75,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -86,7 +94,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -103,7 +113,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -120,7 +132,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -137,7 +151,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -154,7 +170,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -171,7 +189,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -188,7 +208,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -205,7 +227,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -222,7 +246,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -239,7 +265,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -256,7 +284,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -273,7 +303,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -290,7 +322,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -307,7 +341,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -324,7 +360,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     },
     {
@@ -341,7 +379,9 @@
         "docs/evaluation/evidence/iteration-2-browser.json",
         "docs/evaluation/evidence/iteration-2-build-install.json",
         "docs/evaluation/evidence/browser-journeys.json",
-        "docs/evaluation/apple-usability.json"
+        "docs/evaluation/apple-usability.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json",
+        "docs/evaluation/evidence/iteration-2-eq-install.json"
       ]
     }
   ],
@@ -363,7 +403,8 @@
       "evidence": [
         "docs/evaluation/evidence/iteration-2-native.json",
         "docs/evaluation/evidence/iteration-2-browser.json",
-        "docs/evaluation/evidence/browser-journeys.json"
+        "docs/evaluation/evidence/browser-journeys.json",
+        "docs/evaluation/evidence/iteration-2-eq-startup.json"
       ]
     },
     "playlist_create_edit": {

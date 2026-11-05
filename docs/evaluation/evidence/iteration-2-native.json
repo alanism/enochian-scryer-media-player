@@ -257,5 +257,6 @@
     "file": "iteration-2/native-export.xspf",
     "sha256": "b2a5b8a992da16829dd031a9b20f66e1b3b97ae10b4fadabb7fd85b72682be5a",
     "note": "Unmodified bytes from VLC native Save exporter; URIs refer only to synthetic evaluation media."
-  }
+  },
+  "follow_up": "v0.4.1: earlier EQ value readbacks did not prove first-enable DSP startup. An additional audit found an empty inherited band-string issue. Missing bands are now initialized flat, saved gains are preserved, and the first native enable loaded the actual audio-filter module. See iteration-2-eq-startup.json."
 }

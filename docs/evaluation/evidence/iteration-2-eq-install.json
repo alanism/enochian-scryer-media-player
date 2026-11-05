@@ -1,0 +1,8 @@
+{
+  "release": "v0.4.1",
+  "installed_launcher_matches_source": true,
+  "production_record_ids_and_hashes_preserved": true,
+  "mp4_default": "enochian-vlc.desktop",
+  "launcher_regressions": "Cold initialization and preservation of saved nonzero gains/leading whitespace passed, along with finish/size/filename argument checks.",
+  "native_filter_proof": "iteration-2-eq-startup.json"
+}
