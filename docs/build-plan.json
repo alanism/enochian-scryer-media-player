@@ -1,7 +1,7 @@
 {
   "title": "Enochian Scryer — build plan",
-  "updated": "2026-11-05T17:38:40.323363+07:00",
-  "phase": "Iteration 1 fixes verified · native player interaction checks remain before 95+",
+  "updated": "2026-11-05T17:42:33.006996+07:00",
+  "phase": "Improvement build installed and published · remaining native checks are visible in Verify / Blocked",
   "goal": "95+ on every evaluation; all areas covered",
   "scores": [
     {
@@ -261,7 +261,7 @@
     {
       "id": "release",
       "title": "Install and publish this improvement build",
-      "status": "working",
+      "status": "done",
       "lens": "Delivery",
       "steps": [
         {
@@ -274,14 +274,14 @@
         },
         {
           "label": "Publish source and Linux bundle",
-          "done": false
+          "done": true
         },
         {
           "label": "Update scores, evidence and this board",
-          "done": false
+          "done": true
         }
       ],
-      "note": "Production build, regression tests and all four skin checks passed. Installed update restarted cleanly with every existing transfer ID/hash preserved; MP4 default retained."
+      "note": "v0.3.0 is public with the Linux bundle and checksums. Installed apps retain transfer records and MP4 default. Current design scores remain below 95; native validation is still required."
     }
   ]
 }

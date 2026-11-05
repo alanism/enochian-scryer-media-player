@@ -1,0 +1,19 @@
+{
+  "release": "v0.3.0",
+  "build_commit": "d09fe3d",
+  "frontend_production_build": "passed",
+  "bridge_tests": 15,
+  "ui_logic_test_file": "passed",
+  "skin_archives_valid": 4,
+  "all_four_real_playback": "passed",
+  "installed_restart_records_preserved": true,
+  "mp4_default": "enochian-vlc.desktop",
+  "desktop_entries_valid": true,
+  "synthetic_fixture_services_stopped": true,
+  "linux_bundle_bytes": 16341396,
+  "linux_bundle_sha256": "673e392e5418906e1896a1f6b55575acfa84cd23fa84ceac4cb74d0ce078adc5",
+  "remaining_limits": [
+    "Native file-picker, Save/export, pointer/dial/drag gestures and device audio remain unverified.",
+    "95+ gate not reached."
+  ]
+}
